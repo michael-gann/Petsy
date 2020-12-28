@@ -8,7 +8,7 @@ Users who have an account can browse items to purchase. Petsy offers both pets f
 
 
 ### Shopping Cart
-Users can add items to their cart that they are interested in purchasing or want to save to purchase later. This way they can keep track of items and have a quick reference to them to continue browsing.
+Users can add items to their cart that they are interested in purchasing or want to save to purchase later. This way they can keep track of items and have a quick reference to them and continue browsing.
 
 
 ### Comments/Reviews
