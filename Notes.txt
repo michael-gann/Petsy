@@ -1,0 +1,20 @@
+
+
+
+Landing page (with product listings)
+
+- Items -
+Image (stretch goal: multiple images), description, price, add to cart button, name of seller
+comments/reviews
+
+more from this user below (items by item owner)
+
+- shopping cart -
+seller, link to product
+image, description, price, quantity? (stretch goal: checkout)
+
+- comments/reviews -
+
+
+- stretch goals -
+user profiles
