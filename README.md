@@ -19,7 +19,7 @@ React / CSS / Flask / JS / Python
 
 ### Example Feature:
 
-Adding an expense:
+BROWSING WEBSITE GIF HERE
 
 ![Alt Text](https://media.giphy.com/media/t5C1q10hDeQtLN0y80/giphy.gif)
 
