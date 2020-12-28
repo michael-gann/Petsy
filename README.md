@@ -8,11 +8,11 @@ Users who have an account can browse items to purchase. Petsy offers both pets f
 
 
 ### Shopping Cart
-Users can create expenses between multiple friends to keep track of how much money they owe a friend or are owed by a friend.
+Users can add items to their cart that they are interested in purchasing or want to save to purchase later. This way they can keep track of items and have a quick reference to them to continue browsing.
 
 
 ### Comments/Reviews
-Users can see their recent activity to see who added them to an expense or who they've added to an expense.
+Users can see and leave reviews for items they want to or have purchased. Users can also rate an item between 1 and 5 stars to give other users an idea of the quality of the item they are looking at.
 
 ### Application Architecture && Technologies Used:
 React / CSS / Flask / JS / Python
