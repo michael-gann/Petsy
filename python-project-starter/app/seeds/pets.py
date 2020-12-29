@@ -14,7 +14,7 @@ def seed_pets():
                gender='Female'
                )
     pet2 = Pet(sellerId=1,
-               name='Dixon,
+               name='Dixon',
                description="He loves the snow, the sun, any place where he can run.",
                price=570.00,
                imgurl="https://cdn.pixabay.com/photo/2020/11/24/17/54/australian-shepherd-5773397_1280.jpg",
@@ -49,7 +49,7 @@ def seed_pets():
     pet5 = Pet(sellerId=1,
                name='Rusty',
                description="A little fat, a little slow, but man, you seen those eyes? He'll love you to the moon and back.",
-               price=235,
+               price=235.00,
                imgurl="https://cdn.pixabay.com/photo/2017/06/24/09/13/dog-2437110_1280.jpg",
                categoryId=1,
                breed='Mutt',
@@ -112,7 +112,7 @@ def seed_pets():
                weight=59,
                gender='Female'
                )
-    
+
 
     db.session.add(pet1)
     db.session.add(pet2)

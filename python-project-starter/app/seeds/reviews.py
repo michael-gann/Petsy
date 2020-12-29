@@ -18,7 +18,6 @@ def seed_reviews():
     db.session.add(demo_review3)
     db.session.add(demo_review4)
     db.session.add(demo_review5)
-
     db.session.commit()
 
 
