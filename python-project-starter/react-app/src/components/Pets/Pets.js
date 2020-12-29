@@ -11,7 +11,8 @@ function Pets() {
             console.log(resData)
             // setPets(resData)
         }
-    })
+        fetchData()
+    }, [])
     return (
         <div>
             <div className="header-text">
@@ -30,4 +31,4 @@ function Pets() {
     )
 }
 
-export default Pet
+export default Pets
