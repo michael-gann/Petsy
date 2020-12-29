@@ -16,7 +16,8 @@ const customStyles = {
 
 const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const history = useHistory()
-  const [username, setUsername] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -32,15 +33,19 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(username, email, password);
+      const user = await signUp(firstName, lastName, email, password);
       if (!user.errors) {
         setAuthenticated(true);
       }
     }
   };
 
-  const updateUsername = (e) => {
-    setUsername(e.target.value);
+  const updateFirstName = (e) => {
+    setFirstName(e.target.value);
+  };
+
+  const updateLastName = (e) => {
+    setLastName(e.target.value);
   };
 
   const updateEmail = (e) => {
@@ -66,14 +71,25 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
       style={customStyles}
       contentLabel="Example Modal"
     >
+      <h2>Create your account</h2>
+      <h3>Registration is easy.</h3>
       <form onSubmit={onSignUp}>
         <div>
-          <label>User Name</label>
+          <label>First Name</label>
           <input
             type="text"
-            name="username"
-            onChange={updateUsername}
-            value={username}
+            name="firstName"
+            onChange={updateFirstName}
+            value={firstName}
+          ></input>
+        </div>
+        <div>
+          <label>Last Name</label>
+          <input
+            type="text"
+            name="lastName"
+            onChange={updateLastName}
+            value={lastName}
           ></input>
         </div>
         <div>
@@ -104,7 +120,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
             required={true}
           ></input>
         </div>
-        <button type="submit">Sign Up</button>
+        <button type="submit">Register</button>
       </form>
     </Modal>
   );
