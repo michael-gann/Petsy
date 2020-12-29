@@ -10,7 +10,7 @@ class Item(db.Model):
     description = db.Column(db.String)
     price = db.Column(db.Integer)
     imgurl = db.Column(db.String)
-    catergoryId = db.Column(db.Integer)
+    categoryId = db.Column(db.Integer)
 
     reviews = db.relationship("Review", back_populates="item")
     user = db.relationship("User", back_populates="item")

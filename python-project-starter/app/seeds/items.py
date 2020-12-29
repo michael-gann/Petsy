@@ -1,7 +1,4 @@
-from werkzeug.security import generate_password_hash
 from app.models import db, Item
-
-# Adds a demo user, you can add other users here if you want
 
 
 def seed_items():
@@ -174,7 +171,7 @@ def seed_items():
                       toughness. This tactical collar near-unbreakable collar:
                       tear and wear proof, break and snap proof. Machine
                       washing at low temp would not do it any damage!''',
-                  price='',
+                  price=25.00,
                   imgurl='https://source.unsplash.com/random/300x200',
                   categoryId=2)
 
@@ -197,6 +194,6 @@ def seed_items():
 # the auto incrementing primary key
 
 
-def undo_users():
-    db.session.execute('TRUNCATE users;')
+def undo_items():
+    db.session.execute('TRUNCATE items CASCADE;')
     db.session.commit()

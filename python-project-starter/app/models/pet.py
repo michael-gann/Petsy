@@ -8,10 +8,9 @@ class Pet(db.Model):
     sellerId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     name = db.Column(db.String)
     description = db.Column(db.String)
-    price = db.Column(db.Numeric(precision=2, scale=None,
-                                 decimal_return_scale=None, asdecimal=True))
+    price = db.Column(db.Float)
     imgurl = db.Column(db.String)
-    catergoryId = db.Column(db.Integer)
+    categoryId = db.Column(db.Integer, db.ForeignKey("categories.id"))
     breed = db.Column(db.String)
     age = db.Column(db.Integer)
     weight = db.Column(db.Integer)

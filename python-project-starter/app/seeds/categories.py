@@ -15,5 +15,5 @@ def seed_categories():
 # TRUNCATE Removes all the data from the table, and resets
 # the auto incrementing primary key
 def undo_categories():
-    db.session.execute('TRUNCATE categories;')
+    db.session.execute('TRUNCATE categories CASCADE;')
     db.session.commit()
