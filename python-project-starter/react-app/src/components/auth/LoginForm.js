@@ -19,18 +19,14 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [modalIsOpen, setIsOpen] = useState(true)
+  const [modalIsOpen, setIsOpen] = useState(true);
 
 
   //* Modal Functions
-  // function afterOpenModal() {
-  //   subtitle.style.color = '#f00';
-  // }
-
   function closeModal() {
     setIsOpen(false);
     return history.push('/')
-  }
+  };
 
 
   //* Login functions
@@ -59,7 +55,6 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   return (
     <Modal
       isOpen={modalIsOpen}
-      // onAfterOpen={afterOpenModal}
       onRequestClose={closeModal}
       style={customStyles}
       contentLabel="Example Modal"
