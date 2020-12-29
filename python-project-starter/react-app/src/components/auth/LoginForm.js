@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory, NavLink } from "react-router-dom";
 import { login } from "../../services/auth";
 import Modal from 'react-modal';
 
@@ -59,6 +59,14 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
       style={customStyles}
       contentLabel="Example Modal"
     >
+      <div>
+        <h2>Sign in</h2>
+      </div>
+      <div>
+        <NavLink to="/sign-up" exact={true} activeClassName="active">
+          Register
+          </NavLink>
+      </div>
       <form onSubmit={onLogin}>
         <div>
           {errors.map((error) => (
@@ -67,6 +75,8 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         </div>
         <div>
           <label htmlFor="email">Email</label>
+        </div>
+        <div>
           <input
             name="email"
             type="text"
@@ -77,6 +87,8 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         </div>
         <div>
           <label htmlFor="password">Password</label>
+        </div>
+        <div>
           <input
             name="password"
             type="password"
@@ -84,7 +96,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
             value={password}
             onChange={updatePassword}
           />
-          <button type="submit">Login</button>
+          <button type="submit">Sign in</button>
         </div>
       </form>
     </Modal>
