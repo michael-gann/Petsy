@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+<<<<<<< HEAD
 import { Redirect, useHistory } from "react-router-dom";
 import { signUp } from '../../services/auth';
 import Modal from 'react-modal';
@@ -34,18 +35,38 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
     e.preventDefault();
     if (password === repeatPassword) {
       const user = await signUp(firstName, lastName, email, password);
+=======
+import { Redirect } from 'react-router-dom';
+import { signUp } from '../../services/auth';
+
+const SignUpForm = ({authenticated, setAuthenticated}) => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
+
+  const onSignUp = async (e) => {
+    e.preventDefault();
+    if (password === repeatPassword) {
+      const user = await signUp(username, email, password);
+>>>>>>> db-models
       if (!user.errors) {
         setAuthenticated(true);
       }
     }
   };
 
+<<<<<<< HEAD
   const updateFirstName = (e) => {
     setFirstName(e.target.value);
   };
 
   const updateLastName = (e) => {
     setLastName(e.target.value);
+=======
+  const updateUsername = (e) => {
+    setUsername(e.target.value);
+>>>>>>> db-models
   };
 
   const updateEmail = (e) => {
@@ -65,6 +86,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   }
 
   return (
+<<<<<<< HEAD
     <Modal
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
@@ -133,6 +155,48 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
         <button type="submit">Register</button>
       </form>
     </Modal>
+=======
+    <form onSubmit={onSignUp}>
+      <div>
+        <label>User Name</label>
+        <input
+          type="text"
+          name="username"
+          onChange={updateUsername}
+          value={username}
+        ></input>
+      </div>
+      <div>
+        <label>Email</label>
+        <input
+          type="text"
+          name="email"
+          onChange={updateEmail}
+          value={email}
+        ></input>
+      </div>
+      <div>
+        <label>Password</label>
+        <input
+          type="password"
+          name="password"
+          onChange={updatePassword}
+          value={password}
+        ></input>
+      </div>
+      <div>
+        <label>Repeat Password</label>
+        <input
+          type="password"
+          name="repeat_password"
+          onChange={updateRepeatPassword}
+          value={repeatPassword}
+          required={true}
+        ></input>
+      </div>
+      <button type="submit">Sign Up</button>
+    </form>
+>>>>>>> db-models
   );
 };
 
