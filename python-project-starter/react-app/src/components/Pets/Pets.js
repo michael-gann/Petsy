@@ -22,7 +22,7 @@ function Pets() {
                 {/* pets.map(pet => {
                     return (
                         <li key={pet.id}>
-                            <Pet pet={pet}
+                            <Pet pet={pet} />
                         </li>
                     )
                 }) */}
