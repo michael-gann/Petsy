@@ -18,4 +18,5 @@ def items():
 @item_routes.route("/<id>")
 def item(id):
     item = db.session.query(Item).get(id)
+
     return jsonify(item.to_dict())
