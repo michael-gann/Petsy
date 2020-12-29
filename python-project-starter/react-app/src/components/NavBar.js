@@ -12,39 +12,39 @@ const NavBar = ({ setAuthenticated, isAuthenticated }) => {
             <NavLink to="/" exact={true} activeClassName="active">
               Petsy
           </NavLink>
-        </li>
-        <input type="text" placeholder="Search for anything"></input>
-        {!isAuthenticated &&
-          <>
-            <li className="nav navbar-item">
-              <NavLink to="/login" exact={true} activeClassName="active">
-                Login
+          </li>
+          <input type="text" placeholder="Search for anything"></input>
+          {!isAuthenticated &&
+            <>
+              <li className="nav navbar-item">
+                <NavLink to="/login" exact={true} activeClassName="active">
+                  Login
           </NavLink>
-            </li>
-            <li className="nav navbar-item">
-              <NavLink to="/sign-up" exact={true} activeClassName="active">
-                Sign Up
+              </li>
+              <li className="nav navbar-item">
+                <NavLink to="/sign-up" exact={true} activeClassName="active">
+                  Sign Up
           </NavLink>
-            </li>
-          </>}
-      </ul>
-      {isAuthenticated &&
+              </li>
+            </>}
+        </ul>
+        {isAuthenticated &&
 
-        <div class="dropdown">
-          <button class="dropbtn">You
+          <div class="dropdown">
+            <button class="dropbtn">You
           <i class="fa fa-caret-down"></i>
-          </button>
-          <div class="dropdown-content">
-            <LogoutButton setAuthenticated={setAuthenticated} />
-          </div>
-        </div>}
+            </button>
+            <div class="dropdown-content">
+              <LogoutButton setAuthenticated={setAuthenticated} />
+            </div>
+          </div>}
       </div>
       <div className="lower-section">
         <div>
-          <NavLink to="/pets" exact={true}>Pets to Adopt</NavLink>
+          <NavLink to="/pets" exact={true}>Pets</NavLink>
         </div>
         <div>
-          <NavLink to="/items" exact={true}>Items For Your Pets</NavLink>
+          <NavLink to="/items" exact={true}>Products</NavLink>
         </div>
       </div>
     </nav>
