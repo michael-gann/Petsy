@@ -30,11 +30,11 @@ const NavBar = ({ setAuthenticated, isAuthenticated }) => {
         </ul>
         {isAuthenticated &&
 
-          <div class="dropdown">
-            <button class="dropbtn">You
-          <i class="fa fa-caret-down"></i>
+          <div className="dropdown">
+            <button className="dropbtn">You
+          <i className="fa fa-caret-down"></i>
             </button>
-            <div class="dropdown-content">
+            <div className="dropdown-content">
               <LogoutButton setAuthenticated={setAuthenticated} />
             </div>
           </div>}

@@ -4,6 +4,7 @@ import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import Homepage from "./components/Homepage/Homepage"
+import Footer from "./components/Footer/Footer"
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
@@ -47,6 +48,7 @@ function App() {
       </ProtectedRoute>
       <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
         <Homepage />
+        <Footer />
       </ProtectedRoute>
     </BrowserRouter>
   );
