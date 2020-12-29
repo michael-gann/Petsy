@@ -18,7 +18,13 @@ function Pets() {
                 <h2>PETS</h2>
             </div>
             <div className="pet-components">
-                {/* import pet component here */}
+                {/* pets.map(pet => {
+                    return (
+                        <li key={pet.id}>
+                            <Pet pet={pet}
+                        </li>
+                    )
+                }) */}
             </div>
         </div>
     )
