@@ -12,3 +12,7 @@ class Review(db.Model):
 
     user = db.relationship("User", back_populates="reviews")
     item = db.relationship("Item", back_populates="reviews")
+
+    def to_dict(self):
+        return {"id": self.id, "userId": self.userId, "itemId": self.itemId,
+                "score": self.score, "review": self.review}
