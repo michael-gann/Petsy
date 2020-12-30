@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import NumberFormat from "react-number-format";
 import { useParams } from 'react-router-dom'
-import BySeller from '../MoreFromSeller/BySeller'
+import PetBySeller from '../MoreFromSeller/PetBySeller'
 
 function PetDetail({ user }) {
     const [pet, setPet] = useState([])
@@ -46,7 +46,7 @@ function PetDetail({ user }) {
                     Price: <NumberFormat value={pet.price} decimalScale={2} fixedDecimalScale={true} displayType={'text'} thousandSeparator={true} prefix={'$'} />
                 </div>
                 <div>
-                    <BySeller user={user} sellerId={pet.sellerId}></BySeller>
+                    <PetBySeller user={user} sellerId={pet.sellerId}></PetBySeller>
                 </div>
             </div>
         </div>

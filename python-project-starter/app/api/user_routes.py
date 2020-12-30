@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
 from app.models import User, Item, Pet, db
+from sqlalchemy.orm import selectinload
 
 user_routes = Blueprint('users', __name__)
 
@@ -29,8 +30,8 @@ def user_items(userId, itemId):
 
 @user_routes.route("/<userId>/pets/<petId>")
 def user_pets(userId,petId):
-    pets = db.session.query(Pet).filter_by(sellerId=userId).filter(Pet.id!=petId).all()
+    pets = db.session.query(Pet).filter_by(sellerId=userId).filter(Pet.id!=petId).options(selectinload(Pet.user)).all()
 
-    user_pets = [pet.to_dict() for pet in pets]
+    user_pets = [{**pet.to_dict(), "user": pet.user.to_dict()} for pet in pets]
 
     return jsonify(user_pets)
