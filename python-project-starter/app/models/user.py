@@ -17,7 +17,6 @@ class User(db.Model, UserMixin):
     pets = db.relationship("Pet", back_populates="user")
     order = db.relationship("Order", back_populates="user")
 
-
     @property
     def password(self):
         return self.hashed_password
@@ -31,8 +30,8 @@ class User(db.Model, UserMixin):
 
     def to_dict(self):
         return {
-          "id": self.id,
-          "firstName": self.firstName,
-          "lastName": self.lastName,
-          "email": self.email
+            "id": self.id,
+            "firstName": self.firstName,
+            "lastName": self.lastName,
+            "email": self.email
         }

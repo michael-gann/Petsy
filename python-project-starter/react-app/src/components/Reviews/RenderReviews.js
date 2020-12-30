@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom"
+import StarRatings from "react-star-ratings"
 
 function RenderReviews() {
     const [reviews, setReviews] = useState([])
@@ -9,14 +10,31 @@ function RenderReviews() {
         async function fetchReviews() {
             const res = await fetch(`/api/items/${id}/reviews`)
             const resData = await res.json()
-            console.log(resData)
+            setReviews(resData)
         }
         fetchReviews()
     }, [])
+    console.log(reviews)
     return (
-        <div>
-
-        </div>
+        <>
+            {reviews.map((review) => {
+                return (
+                    
+                    <StarRatings
+                        rating={review.score}
+                        starRatedColor="black"
+                        numberOfStars={5}
+                        name="rating"
+                    />
+                )
+            })}
+            {/* <StarRatings
+                rating={review.score}
+                starRatedColor="black"
+                numberOfStars={5}
+                name="rating"
+            /> */}
+        </>
     )
 }
 
