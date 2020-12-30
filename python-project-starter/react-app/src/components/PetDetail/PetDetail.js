@@ -46,7 +46,7 @@ function PetDetail({ user }) {
                     Price: <NumberFormat value={pet.price} decimalScale={2} fixedDecimalScale={true} displayType={'text'} thousandSeparator={true} prefix={'$'} />
                 </div>
                 <div>
-                    <BySeller user={user}></BySeller>
+                    <BySeller user={user} sellerId={pet.sellerId}></BySeller>
                 </div>
             </div>
         </div>
