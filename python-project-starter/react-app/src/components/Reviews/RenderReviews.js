@@ -4,7 +4,7 @@ import StarRatings from "react-star-ratings"
 
 function RenderReviews() {
     const [reviews, setReviews] = useState([])
-    const [date, setDate] = useState(null)
+    const [avgReview, setAvgReview] = useState(null)
     const { id } = useParams()
 
     const dateStringManipulation = (review) => {
@@ -24,32 +24,60 @@ function RenderReviews() {
         fetchReviews()
     }, [])
 
-    console.log(reviews[0])
+    useEffect(() => {
+        let count = reviews.length
+        let sum = 0
+        if (reviews.length) {
+            sum = reviews.reduce((sum, review) => {
+                return sum + parseFloat(review.score)
+            }, 0)
+        }
+        console.log(sum)
+        setAvgReview(sum / count)
+    }, [reviews])
+
+    console.log(avgReview)
     return (
         <>
-            {reviews.map((review) => {
-                return (
-                    <div key={review.id}>
-                        <div className="user-and-date">
-                            {`${review.user.firstName} ${review.user.firstName}`} {dateStringManipulation(review)}
+            <div>
+                <h2>
+                    {reviews.length} {reviews.length > 1 ? "reviews" : "review"}
+                    <StarRatings
+                        rating={avgReview}
+                        starRatedColor="black"
+                        starEmptyColor='grey'
+                        numberOfStars={5}
+                        starDimension="22px"
+                        starSpacing="0px"
+                        name="rating"
+                    />
+                </h2>
+            </div>
+            <div>
+                {reviews.map((review) => {
+                    return (
+                        <div key={review.id}>
+                            <div className="user-and-date">
+                                {`${review.user.firstName} ${review.user.lastName}`} {dateStringManipulation(review)}
+                            </div>
+                            <div className="star-rating">
+                                <StarRatings
+                                    rating={review.score}
+                                    starRatedColor="black"
+                                    starEmptyColor='grey'
+                                    numberOfStars={5}
+                                    starDimension="22px"
+                                    starSpacing="0px"
+                                    name="rating"
+                                />
+                            </div>
+                            <div className="review-description">
+                                {review.review}
+                            </div>
                         </div>
-                        <div className="star-rating">
-                            <StarRatings
-                                rating={review.score}
-                                starRatedColor="black"
-                                starEmptyColor='grey'
-                                numberOfStars={5}
-                                starDimension="22px"
-                                starSpacing="0px"
-                                name="rating"
-                            />
-                        </div>
-                        <div className="review-description">
-                            {review.review}
-                        </div>
-                    </div>
-                )
-            })}
+                    )
+                })}
+            </div>
         </>
     )
 }
