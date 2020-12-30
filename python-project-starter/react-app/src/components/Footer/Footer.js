@@ -1,31 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { NavLink } from "react-router-dom"
-import axios from 'axios'
-import ReactCountryFlag from "react-country-flag"
-import ISO6391 from 'iso-639-1'
-import currencyFormatter from 'currency-formatter'
+import BottomFooter from "./BottomFooter"
 
 function Footer() {
-    const [countryCode, setCountryCode] = useState(null)
-    const [countryName, setCountryName] = useState(null)
-    const [currencySymbol, setCurrencySymbol] = useState(null)
-    const [currency, setCurrency] = useState(null)
-    const [language, setLanguage] = useState(null)
-
-
-    useEffect(() => {
-        const getCountryInfo = async () => {
-            let res = await axios.get('https://ipapi.co/json/')
-            setCountryCode(res.data.country_code)
-            setCountryName(res.data.country_name)
-            setLanguage(ISO6391.getName(res.data.languages.split(",")[0].split("-")[0]))
-            setCurrency(res.data.currency)
-            const currencyData = await currencyFormatter.findCurrency(res.data.currency)
-            setCurrencySymbol(currencyData.symbol)
-        }
-        getCountryInfo()
-    }, [])
-
     return (
         <div className="footer">
             <div className="top-footer">
@@ -40,23 +17,47 @@ function Footer() {
                         <NavLink to="/items">Products</NavLink>
                     </h4>
                 </div>
+                <div className="about">
+                    <h2>
+                        <a rel="noopener noreferrer" href="https://github.com/michael-gann/Petsy/wiki" target="_blank">About</a>
+                    </h2>
+                    <h4>
+                        <a rel="noopener noreferrer" href="https://github.com/michael-gann/Petsy/blob/master/readme.md" target="_blank">Project README</a>
+                    </h4>
+                    <h4>
+                        <a rel="noopener noreferrer" href="https://github.com/michael-gann/Petsy/wiki/6.-Database-Schema" target="_blank">Project Database Schema</a>
+                    </h4>
+                </div>
+                <div className="team">
+                    <h2 className="team">Team</h2>
+                    <h4>
+                        <a rel="noopener noreferrer" href="https://www.linkedin.com/in/danielpong/" target="_blank">Danny Pong</a>
+                        <a rel="noopener noreferrer" href="https://github.com/pongdanny" target="_blank">
+                            <i class="fab fa-github-alt"></i>
+                        </a>
+                    </h4>
+                    <h4>
+                        <a rel="noopener noreferrer" href="https://www.linkedin.com/in/michael-gann-1a2161201/" target="_blank">Michael Gann</a>
+                        <a rel="noopener noreferrer" href="https://github.com/michael-gann" target="_blank">
+                            <i class="fab fa-github-alt"></i>
+                        </a>
+                    </h4>
+                    <h4>
+                        <a rel="noopener noreferrer" href="https://www.linkedin.com/in/nickfmatthews/" target="_blank">Nick Matthews</a>
+                        <a rel="noopener noreferrer" href="https://github.com/nappernick" target="_blank">
+                            <i class="fab fa-github-alt"></i>
+                        </a>
+                    </h4>
+                    <h4>
+                        <a rel="noopener noreferrer" href="https://www.linkedin.com/in/ryan-young-b67a7aab/" target="_blank">Ryan Young</a>
+                        <a rel="noopener noreferrer" href="https://github.com/ryoung7986" target="_blank">
+                            <i class="fab fa-github-alt"></i>
+                        </a>
+                    </h4>
+                </div>
             </div>
             <div className="bottom-footer">
-                <div className="country">
-                    <p>{countryName}
-                        <ReactCountryFlag
-                            countryCode={countryCode}
-                            svg
-                            cdnUrl="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/1x1/"
-                            cdnSuffix="svg"
-                            title={countryCode}
-                        />  |
-                    {language}({countryCode}) | {currencySymbol} ({currency})
-                    </p>
-                </div>
-                <div className="copyright">
-                    <p>©2020 Petsy, Inc.</p>
-                </div>
+                <BottomFooter />
             </div>
         </div>
     )
