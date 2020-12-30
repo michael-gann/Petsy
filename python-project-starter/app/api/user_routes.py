@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User
+from app.models import User, Item, Pet, db
 
 user_routes = Blueprint('users', __name__)
 
@@ -17,3 +17,20 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+
+@user_routes.route("/<userId>/items/<itemId>")
+def user_items(userId, itemId):
+    items = db.session.query(Item).filter_by(sellerId=userId).filter(Item.id!=itemId).all()
+
+    user_items = [item.to_dict() for item in items]
+
+    return jsonify(user_items)
+
+@user_routes.route("/<userId>/pets/<petId>")
+def user_pets(userId,petId):
+    pets = db.session.query(Pet).filter_by(sellerId=userId).filter(Pet.id!=petId).all()
+
+    user_pets = [pet.to_dict() for pet in pets]
+
+    return jsonify(user_pets)

@@ -15,12 +15,14 @@ import { authenticate } from "./services/auth";
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [sessionUser, setSessionUser] = useState(undefined)
 
   useEffect(() => {
     (async () => {
       const user = await authenticate();
       if (!user.errors) {
         setAuthenticated(true);
+        setSessionUser(user);
       }
       setLoaded(true);
     })();
@@ -55,7 +57,7 @@ function App() {
         <Homepage />
       </Route>
       <Route path="/pets/:id" exact={true}>
-        <PetDetail />
+        <PetDetail user={sessionUser}/>
       </Route>
       <Footer />
     </BrowserRouter>
