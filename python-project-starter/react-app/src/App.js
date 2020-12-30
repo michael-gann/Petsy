@@ -6,7 +6,7 @@ import NavBar from "./components/NavBar";
 import Homepage from "./components/Homepage/Homepage"
 import Footer from "./components/Footer/Footer"
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
+import ItemsList from "./components/ItemsList";
 import User from "./components/User";
 import { authenticate } from "./services/auth";
 
@@ -40,8 +40,9 @@ function App() {
       <Route path="/sign-up" exact={true}>
         <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
       </Route>
-      <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
-        <UsersList />
+      <ProtectedRoute path="/items" exact={true} authenticated={authenticated}>
+        <ItemsList />
+        {/* {<h1>Items Page</h1>} */}
       </ProtectedRoute>
       <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
         <User />

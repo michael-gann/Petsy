@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import Item, db
+from app.models import Item, Review, db
 from sqlalchemy.orm import selectinload
 
 
@@ -20,3 +20,12 @@ def item(id):
     item = db.session.query(Item).get(id)
 
     return jsonify(item.to_dict())
+
+
+@item_routes.route("/<id>/reviews")
+def item_reviews(id):
+    reviews = Review.query.filter_by(itemId=id)
+
+    reviews_by_item = [{**review.to_dict()} for review in reviews]
+
+    return jsonify(reviews_by_item)
