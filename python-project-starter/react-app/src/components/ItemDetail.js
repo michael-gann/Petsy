@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import NumberFormat from 'react-number-format';
+import RenderReviews from './Reviews/RenderReviews'
 
 function ItemDetail() {
   const [item, setItem] = useState([]);
@@ -17,8 +18,6 @@ function ItemDetail() {
     }
     fetchData();
   }, [id]);
-
-  console.log(item)
 
   // useEffect(() => {
   //   async function fetchData() {
@@ -57,6 +56,7 @@ function ItemDetail() {
           />
         </div>
       </section>
+      <RenderReviews />
     </>
   )
 }
