@@ -22,9 +22,9 @@ function Pets() {
             <div className="pet-components">
                 {pets.map((pet) => {
                     return (
-                        <li key={pet.id}>
+                        <div key={pet.id}>
                             <Pet pet={pet} />
-                        </li>
+                        </div>
                     )
                 })}
             </div>

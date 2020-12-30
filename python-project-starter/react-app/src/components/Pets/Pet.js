@@ -2,7 +2,7 @@ import React from 'react'
 
 function Pet({ pet }) {
     return (
-        <div>
+        <>
             <div className="image-container">
                 <img src={pet.imgurl} alt="Pet pic" />
             </div>
@@ -12,7 +12,7 @@ function Pet({ pet }) {
                 {pet.breed}
                 {pet.price}
             </div>
-        </div>
+        </>
     )
 }
 
