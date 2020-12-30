@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import NumberFormat from 'react-number-format';
+import ItemBySeller from "./MoreFromSeller/ItemBySeller"
 
 function ItemDetail() {
   const [item, setItem] = useState([]);
   const [seller, setSeller] = useState('');
   const { id } = useParams();
 
-  console.log("ID:", id)
+  // console.log("ID:", id)
 
   useEffect(() => {
     async function fetchData() {
@@ -18,7 +19,7 @@ function ItemDetail() {
     fetchData();
   }, [id]);
 
-  console.log(item)
+  // console.log(item)
 
   // useEffect(() => {
   //   async function fetchData() {
@@ -57,6 +58,9 @@ function ItemDetail() {
           />
         </div>
       </section>
+      <div>
+        <ItemBySeller sellerId={item.sellerId} />
+      </div>
     </>
   )
 }
