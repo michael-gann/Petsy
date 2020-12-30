@@ -27,6 +27,4 @@ def undo():
     undo_items()
     undo_reviews()
     undo_pets()
-
-
     # Add other undo functions here
