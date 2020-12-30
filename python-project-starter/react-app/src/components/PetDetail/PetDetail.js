@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from "react";
 import NumberFormat from "react-number-format";
 import { useParams } from 'react-router-dom'
+import BySeller from '../MoreFromSeller/BySeller'
 
-function PetDetail() {
+function PetDetail({ user }) {
     const [pet, setPet] = useState([])
     const { id } = useParams()
 
     useEffect(() => {
         async function fetchData() {
-            console.log(id)
+            // console.log(id)
             const res = await fetch(`/api/pets/${id}`);
             const resData = await res.json();
             setPet(resData);
-            console.log(resData)
+            // console.log(resData)
         }
         fetchData()
     }, [id])
+
     return (
         <div>
             <div className="image-container">
@@ -42,6 +44,9 @@ function PetDetail() {
                 </div>
                 <div>
                     Price: <NumberFormat value={pet.price} decimalScale={2} fixedDecimalScale={true} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                </div>
+                <div>
+                    <BySeller user={user}></BySeller>
                 </div>
             </div>
         </div>
