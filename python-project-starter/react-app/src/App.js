@@ -9,6 +9,7 @@ import PetDetail from "./components/PetDetail/PetDetail"
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import ItemsList from "./components/ItemsList";
 import ItemDetail from "./components/ItemDetail"
+import PetsList from "./components/Pets/PetsList"
 import User from "./components/User";
 import { authenticate } from "./services/auth";
 
@@ -46,6 +47,9 @@ function App() {
       </Route>
       <ProtectedRoute path="/items" exact={true} authenticated={authenticated}>
         <ItemsList />
+      </ProtectedRoute>
+      <ProtectedRoute path="/pets" exact={true} authenticated={authenticated}>
+        <PetsList />
       </ProtectedRoute>
       <ProtectedRoute path="/items/:id" exact={true} authenticated={authenticated}>
         <ItemDetail />
