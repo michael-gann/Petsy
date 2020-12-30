@@ -8,6 +8,7 @@ import Footer from "./components/Footer/Footer"
 import PetDetail from "./components/PetDetail/PetDetail"
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import ItemsList from "./components/ItemsList";
+import ItemDetail from "./components/ItemDetail"
 import User from "./components/User";
 import { authenticate } from "./services/auth";
 
@@ -43,6 +44,9 @@ function App() {
       </Route>
       <ProtectedRoute path="/items" exact={true} authenticated={authenticated}>
         <ItemsList />
+      </ProtectedRoute>
+      <ProtectedRoute path="/items/:id" exact={true} authenticated={authenticated}>
+        <ItemDetail />
       </ProtectedRoute>
       <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
         <User />
