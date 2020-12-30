@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { NavLink } from "react-router-dom"
 import axios from 'axios'
 import ReactCountryFlag from "react-country-flag"
 import ISO6391 from 'iso-639-1'
@@ -28,19 +29,33 @@ function Footer() {
     return (
         <div className="footer">
             <div className="top-footer">
-
+                <div className="shop">
+                    <h2>
+                        <NavLink to="/">Shop</NavLink>
+                    </h2>
+                    <h4>
+                        <NavLink to="/pets">Pets</NavLink>
+                    </h4>
+                    <h4>
+                        <NavLink to="/items">Products</NavLink>
+                    </h4>
+                </div>
             </div>
             <div className="bottom-footer">
                 <div className="country">
-                    {countryName}
-                    <ReactCountryFlag
-                        countryCode={countryCode}
-                        svg
-                        cdnUrl="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/1x1/"
-                        cdnSuffix="svg"
-                        title={countryCode}
-                    /> |
+                    <p>{countryName}
+                        <ReactCountryFlag
+                            countryCode={countryCode}
+                            svg
+                            cdnUrl="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/1x1/"
+                            cdnSuffix="svg"
+                            title={countryCode}
+                        />  |
                     {language}({countryCode}) | {currencySymbol} ({currency})
+                    </p>
+                </div>
+                <div className="copyright">
+                    <p>©2020 Petsy, Inc.</p>
                 </div>
             </div>
         </div>
