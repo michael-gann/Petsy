@@ -4,7 +4,16 @@ import StarRatings from "react-star-ratings"
 
 function RenderReviews() {
     const [reviews, setReviews] = useState([])
+    const [date, setDate] = useState(null)
     const { id } = useParams()
+
+    const dateStringManipulation = (review) => {
+        let date = review.updatedAt
+        //Wed, 30 Dec 2020 17:31:08 GMT
+        let dateArr = date.split(' ')
+        let newDate = `${dateArr[2]} ${dateArr[1]}, ${dateArr[3]}`
+        return newDate
+    }
 
     useEffect(() => {
         async function fetchReviews() {
@@ -14,26 +23,33 @@ function RenderReviews() {
         }
         fetchReviews()
     }, [])
-    console.log(reviews)
+
+    console.log(reviews[0])
     return (
         <>
             {reviews.map((review) => {
                 return (
-                    
-                    <StarRatings
-                        rating={review.score}
-                        starRatedColor="black"
-                        numberOfStars={5}
-                        name="rating"
-                    />
+                    <div key={review.id}>
+                        <div className="user-and-date">
+                            {`${review.user.firstName} ${review.user.firstName}`} {dateStringManipulation(review)}
+                        </div>
+                        <div className="star-rating">
+                            <StarRatings
+                                rating={review.score}
+                                starRatedColor="black"
+                                starEmptyColor='grey'
+                                numberOfStars={5}
+                                starDimension="22px"
+                                starSpacing="0px"
+                                name="rating"
+                            />
+                        </div>
+                        <div className="review-description">
+                            {review.review}
+                        </div>
+                    </div>
                 )
             })}
-            {/* <StarRatings
-                rating={review.score}
-                starRatedColor="black"
-                numberOfStars={5}
-                name="rating"
-            /> */}
         </>
     )
 }
