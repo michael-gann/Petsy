@@ -31,5 +31,5 @@ def seed_reviews():
 
 
 def undo_reviews():
-    db.session.execute('TRUNCATE reviews;')
+    db.session.execute('TRUNCATE TABLE reviews RESTART IDENTITY CASCADE;')
     db.session.commit()
