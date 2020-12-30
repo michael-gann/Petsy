@@ -14,4 +14,3 @@ def reviews():
     return {"Reviews": [review.to_dict() for review in reviews]}
 
 
-

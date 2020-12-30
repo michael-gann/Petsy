@@ -3,9 +3,9 @@ import { BrowserRouter, Route } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
-import Homepage from "./components/Homepage/Homepage"
-import Footer from "./components/Footer/Footer"
-import PetDetail from "./components/PetDetail/PetDetail"
+import Homepage from "./components/Homepage/Homepage";
+import Footer from "./components/Footer/Footer";
+import PetDetail from "./components/PetDetail/PetDetail";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import ItemsList from "./components/ItemsList";
 import User from "./components/User";
@@ -31,7 +31,10 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar setAuthenticated={setAuthenticated} isAuthenticated={authenticated} />
+      <NavBar
+        setAuthenticated={setAuthenticated}
+        isAuthenticated={authenticated}
+      />
       <Route path="/login" exact={true}>
         <LoginForm
           authenticated={authenticated}
@@ -39,12 +42,19 @@ function App() {
         />
       </Route>
       <Route path="/sign-up" exact={true}>
-        <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+        <SignUpForm
+          authenticated={authenticated}
+          setAuthenticated={setAuthenticated}
+        />
       </Route>
       <ProtectedRoute path="/items" exact={true} authenticated={authenticated}>
         <ItemsList />
       </ProtectedRoute>
-      <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
+      <ProtectedRoute
+        path="/users/:userId"
+        exact={true}
+        authenticated={authenticated}
+      >
         <User />
       </ProtectedRoute>
       <Route path="/" exact={true} authenticated={authenticated}>

@@ -1,4 +1,5 @@
-import React from 'react'
+import React from "react";
+import AddToCart from "./AddToCart";
 
 function Item({ item }) {
   return (
@@ -9,9 +10,10 @@ function Item({ item }) {
       <div>
         {item.name}
         {item.price}
+        <AddToCart />
       </div>
     </div>
-  )
+  );
 }
 
-export default Item
+export default Item;
