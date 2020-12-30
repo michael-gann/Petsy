@@ -5,6 +5,7 @@ import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import Homepage from "./components/Homepage/Homepage"
 import Footer from "./components/Footer/Footer"
+import PetDetail from "./components/PetDetail/PetDetail"
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import ItemsList from "./components/ItemsList";
 import User from "./components/User";
@@ -42,15 +43,17 @@ function App() {
       </Route>
       <ProtectedRoute path="/items" exact={true} authenticated={authenticated}>
         <ItemsList />
-        {/* {<h1>Items Page</h1>} */}
       </ProtectedRoute>
       <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
         <User />
       </ProtectedRoute>
-      <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+      <Route path="/" exact={true} authenticated={authenticated}>
         <Homepage />
-        <Footer />
-      </ProtectedRoute>
+      </Route>
+      <Route path="/pets/:id" exact={true}>
+        <PetDetail />
+      </Route>
+      <Footer />
     </BrowserRouter>
   );
 }
