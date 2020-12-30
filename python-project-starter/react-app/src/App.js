@@ -3,6 +3,8 @@ import { BrowserRouter, Route } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
+import Homepage from "./components/Homepage/Homepage"
+import Footer from "./components/Footer/Footer"
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import ItemsList from "./components/ItemsList";
 import User from "./components/User";
@@ -46,7 +48,8 @@ function App() {
         <User />
       </ProtectedRoute>
       <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-        <h1>My Home Page</h1>
+        <Homepage />
+        <Footer />
       </ProtectedRoute>
     </BrowserRouter>
   );
