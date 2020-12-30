@@ -1,5 +1,6 @@
 from app.models import Pet, db
 
+
 def seed_pets():
 
     pet1 = Pet(sellerId=1,
@@ -102,17 +103,16 @@ def seed_pets():
                gender='Female'
                )
     pet10 = Pet(sellerId=1,
-               name='Victoria',
-               description="Elegance defined. She enjoys cocktail parties, fine dining, and an occassional fart. Ok, we admit it, she's a gassy girl, but full of love.",
-               price=1779.99,
-               imgurl="https://cdn.pixabay.com/photo/2017/12/29/10/47/animal-company-3047244_1280.jpg",
-               categoryId=1,
-               breed='Greyhound',
-               age=1,
-               weight=59,
-               gender='Female'
-               )
-
+                name='Victoria',
+                description="Elegance defined. She enjoys cocktail parties, fine dining, and an occassional fart. Ok, we admit it, she's a gassy girl, but full of love.",
+                price=1779.99,
+                imgurl="https://cdn.pixabay.com/photo/2017/12/29/10/47/animal-company-3047244_1280.jpg",
+                categoryId=1,
+                breed='Greyhound',
+                age=1,
+                weight=59,
+                gender='Female'
+                )
 
     db.session.add(pet1)
     db.session.add(pet2)
@@ -127,6 +127,7 @@ def seed_pets():
 
     db.session.commit()
 
+
 def undo_pets():
-    db.session.execute('TRUNCATE pets;')
+    db.session.execute('TRUNCATE TABLE pets RESTART IDENTITY CASCADE;')
     db.session.commit()

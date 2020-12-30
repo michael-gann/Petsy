@@ -27,7 +27,7 @@ def seed_items():
                       Thank you very much for choosing me!
 
                       Gazenfer''',
-                 price=199,
+                 price=199.00,
                  imgurl='https://source.unsplash.com/random/300x200',
                  categoryId=2)
 
@@ -80,7 +80,7 @@ def seed_items():
 
                       Handmade and hand sewn! All bandanas have a finished
                       over lock edge.''',
-                 price=15,
+                 price=15.00,
                  imgurl='https://source.unsplash.com/random/300x200',
                  categoryId=2)
 
@@ -94,7 +94,7 @@ def seed_items():
                       Himalayan Chew - Himalayan Yak Milk - Natural Yak Chew,
                       Long Lasting Dog Treats for Aggressive Chewers ,
                       5 stick per pack''',
-                 price=25,
+                 price=25.00,
                  imgurl='https://source.unsplash.com/random/300x200',
                  categoryId=2)
 
@@ -106,7 +106,7 @@ def seed_items():
                       catnip, handmade with love in Canada. This adorable
                       catnip toy will make a purrfect gift for cats
                       and cat lovers. :)''',
-                 price=13,
+                 price=13.00,
                  imgurl='https://source.unsplash.com/random/300x200',
                  categoryId=2)
 
@@ -195,5 +195,5 @@ def seed_items():
 
 
 def undo_items():
-    db.session.execute('TRUNCATE items CASCADE;')
+    db.session.execute('TRUNCATE TABLE items RESTART IDENTITY CASCADE;')
     db.session.commit()
