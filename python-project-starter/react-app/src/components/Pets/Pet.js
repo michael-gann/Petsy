@@ -4,7 +4,7 @@ function Pet({ pet }) {
     return (
         <div>
             <div className="image-container">
-                <img src="{pet.imgurl}" alt="Pet pic" />
+                <img src={pet.imgurl} alt="Pet pic" />
             </div>
             <div className="details">
                 {pet.sellerId.name}

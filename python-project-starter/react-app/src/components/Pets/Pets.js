@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Pet from './Pet'
 
 
 function Pets() {
@@ -6,10 +7,10 @@ function Pets() {
 
     useEffect(() => {
         async function fetchData() {
-            const res = await fetch("/api/pets/")
+            const res = await fetch("/api/pets")
             const resData = await res.json();
             console.log(resData)
-            // setPets(resData)
+            setPets(resData)
         }
         fetchData()
     }, [])
@@ -19,13 +20,13 @@ function Pets() {
                 <h2>PETS</h2>
             </div>
             <div className="pet-components">
-                {/* pets.map(pet => {
+                {pets.map((pet) => {
                     return (
                         <li key={pet.id}>
                             <Pet pet={pet} />
                         </li>
                     )
-                }) */}
+                })}
             </div>
         </div>
     )
