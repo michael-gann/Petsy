@@ -9,7 +9,6 @@ function Pets() {
         async function fetchData() {
             const res = await fetch("/api/pets")
             const resData = await res.json();
-            console.log(resData)
             setPets(resData)
         }
         fetchData()
