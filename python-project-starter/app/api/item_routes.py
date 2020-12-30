@@ -13,3 +13,10 @@ def items():
     items_with_seller = [{**item.to_dict(), "user": item.user.to_dict()} for item in items]
 
     return jsonify(items_with_seller)
+
+
+@item_routes.route("/<id>")
+def item(id):
+    item = db.session.query(Item).get(id)
+
+    return jsonify(item.to_dict())
