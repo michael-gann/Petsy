@@ -11,6 +11,7 @@ import ItemsList from "./components/ItemsList";
 import ItemDetail from "./components/ItemDetail";
 import PetsList from "./components/Pets/PetsList";
 import User from "./components/User";
+import Cart from "./components/ShoppingCart/Cart"
 import Search from "./components/Search/Search";
 import { authenticate } from "./services/auth";
 
@@ -61,6 +62,9 @@ function App() {
       </Route>
       <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
         <User />
+      </ProtectedRoute>
+      <ProtectedRoute path="/cart" exact={true} authenticated={authenticated}>
+        <Cart />
       </ProtectedRoute>
       <Route path="/" exact={true} authenticated={authenticated}>
         <Homepage />
