@@ -66,6 +66,8 @@ function ItemDetail({ user, isAuthenticated }) {
             thousandSeparator={true}
             prefix={'$'}
             renderText={value => <div>{value}</div>}
+            decimalScale={2}
+            fixedDecimalScale={true}
           />
         </div>
       </section>
