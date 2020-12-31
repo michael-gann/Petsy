@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Item from "./Item"
+import Item from "./Item";
 
 function Items() {
   const [items, setItems] = useState([]);
@@ -8,7 +8,7 @@ function Items() {
     async function fetchData() {
       const response = await fetch("/api/items");
       const itemData = await response.json();
-      setItems(itemData)
+      setItems(itemData);
     }
     fetchData();
   }, []);
@@ -23,8 +23,10 @@ function Items() {
 
   return (
     <>
-      <h1>Items: </h1>
-      <ul>{itemComponents}</ul>
+      <div className="header-text">
+        <h1>ITEMS </h1>
+      </div>
+      <div className="item-components">{itemComponents}</div>
     </>
   );
 }
