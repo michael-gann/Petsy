@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
@@ -15,11 +15,14 @@ import Cart from "./components/ShoppingCart/Cart"
 import Search from "./components/Search/Search";
 import { authenticate } from "./services/auth";
 
+export const ScoreContext = createContext();
+
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [sessionUser, setSessionUser] = useState(undefined);
   const [results, setResults] = useState([]);
+  const [scores, setScores] = useState({})
 
   useEffect(() => {
     (async () => {
@@ -30,50 +33,58 @@ function App() {
       }
       setLoaded(true);
     })();
+    const fetchScores = async () => {
+      const res = await fetch("/api/reviews")
+      const scoresObj = await res.json()
+      setScores(scoresObj)
+    }
+    fetchScores()
   }, []);
 
   if (!loaded) {
     return null;
   }
-
+  
   return (
-    <BrowserRouter>
-      <NavBar setResults={setResults} setAuthenticated={setAuthenticated} isAuthenticated={authenticated} />
-      <Route path="/login" exact={true}>
-        <LoginForm
-          authenticated={authenticated}
-          setAuthenticated={setAuthenticated}
-        />
-      </Route>
-      <Route path="/sign-up" exact={true}>
-        <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
-      </Route>
-      <Route path="/search" exact={true}>
-        <Search results={results}></Search>
-      </Route>
-      <Route path="/items" exact={true} authenticated={authenticated}>
-        <ItemsList />
-      </Route>
-      <Route path="/pets" exact={true} authenticated={authenticated}>
-        <PetsList />
-      </Route>
-      <Route path="/items/:id" exact={true} authenticated={authenticated}>
-        <ItemDetail user={sessionUser} isAuthenticated={authenticated} />
-      </Route>
-      <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
-        <User />
-      </ProtectedRoute>
-      <ProtectedRoute path="/cart" exact={true} authenticated={authenticated}>
-        <Cart />
-      </ProtectedRoute>
-      <Route path="/" exact={true} authenticated={authenticated}>
-        <Homepage />
-      </Route>
-      <Route path="/pets/:id" exact={true}>
-        <PetDetail user={sessionUser} />
-      </Route>
-      <Footer />
-    </BrowserRouter>
+    <ScoreContext.Provider score={scores}>
+      <BrowserRouter>
+        <NavBar setResults={setResults} setAuthenticated={setAuthenticated} isAuthenticated={authenticated} />
+        <Route path="/login" exact={true}>
+          <LoginForm
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+          />
+        </Route>
+        <Route path="/sign-up" exact={true}>
+          <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+        </Route>
+        <Route path="/search" exact={true}>
+          <Search results={results}></Search>
+        </Route>
+        <Route path="/items" exact={true} authenticated={authenticated}>
+          <ItemsList />
+        </Route>
+        <Route path="/pets" exact={true} authenticated={authenticated}>
+          <PetsList />
+        </Route>
+        <Route path="/items/:id" exact={true} authenticated={authenticated}>
+          <ItemDetail user={sessionUser} isAuthenticated={authenticated} />
+        </Route>
+        <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
+          <User />
+        </ProtectedRoute>
+        <ProtectedRoute path="/cart" exact={true} authenticated={authenticated}>
+          <Cart />
+        </ProtectedRoute>
+        <Route path="/" exact={true} authenticated={authenticated}>
+          <Homepage />
+        </Route>
+        <Route path="/pets/:id" exact={true}>
+          <PetDetail user={sessionUser} />
+        </Route>
+        <Footer />
+      </BrowserRouter>
+    </ScoreContext.Provider>
   );
 }
 

@@ -3,7 +3,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css';
 
-const NavBar = ({ setAuthenticated, isAuthenticated, setResults}) => {
+const NavBar = ({ setAuthenticated, isAuthenticated, setResults }) => {
   const history = useHistory();
   const [search, setSearch] = useState('');
   const [data, setData] = useState([]);
@@ -47,9 +47,11 @@ const NavBar = ({ setAuthenticated, isAuthenticated, setResults}) => {
           </NavLink>
           </li>
           <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} onKeyUp={
-            (e) => {if (e.key === 'Enter'){
-            return  handleSubmit()
-            }}}
+            (e) => {
+              if (e.key === 'Enter') {
+                return handleSubmit()
+              }
+            }}
             placeholder="Search for anything"></input>
           {!isAuthenticated &&
             <>
@@ -85,7 +87,7 @@ const NavBar = ({ setAuthenticated, isAuthenticated, setResults}) => {
         </div>
       </div>
       <a rel="noopener noreferrer" href="/cart">
-      <i class="fas fa-shopping-cart"></i>
+        <i className="fas fa-shopping-cart"></i>
       </a>
     </nav>
   );
