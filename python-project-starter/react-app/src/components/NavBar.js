@@ -10,17 +10,31 @@ const NavBar = ({ setAuthenticated, isAuthenticated, setResults}) => {
 
   useEffect(() => {
     const fetchAll = async () => {
-      const res = await fetch('/api/items');
-      const resData = await res.json();
-      setData(resData);
+      const itemRes = await fetch('/api/items');
+      const itemResData = await itemRes.json();
+
+      const petRes = await fetch('/api/pets');
+      const petResData = await petRes.json();
+
+      let itemsAndPets = [];
+      itemsAndPets.push(itemResData);
+      itemsAndPets.push(petResData);
+
+      setData(itemsAndPets);
     }
-    fetchAll()
+    fetchAll();
   }, []);
 
   const handleSubmit = () => {
-    const filteredResults = data.filter(item => item.name.includes(search.toLowerCase()));
-    setResults(filteredResults);
-    return history.push('/search')
+    const itemFilteredResults = data[0].filter(item => item.name.includes(search));
+    const petFilteredResults = data[1].filter(pet => pet.name.includes(search));
+
+    let petsAndItemsFiltered = [];
+    petsAndItemsFiltered.push(itemFilteredResults);
+    petsAndItemsFiltered.push(petFilteredResults);
+    setResults(petsAndItemsFiltered);
+    setSearch("");
+    return history.push('/search');
   };
 
   return (
@@ -75,6 +89,6 @@ const NavBar = ({ setAuthenticated, isAuthenticated, setResults}) => {
       </a>
     </nav>
   );
-}
+};
 
 export default NavBar;
