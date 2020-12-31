@@ -113,6 +113,116 @@ def seed_pets():
                 weight=59,
                 gender='Female'
                 )
+    pet11 = Pet(sellerId=2,
+               name='Myron',
+               description="Yappy but full of love! Definitely a people-person, especially if you've got treats!",
+               price=1649.99,
+               imgurl="https://cdn.pixabay.com/photo/2014/08/10/08/17/dog-414570_960_720.jpg",
+               categoryId=1,
+               breed='Pomeranian',
+               age=1,
+               weight=10,
+               gender='Male'
+               )
+    pet12 = Pet(sellerId=2,
+               name='Bentley',
+               description="Stubborn but who cares? He's adorable! Never quick to get aggressive, and simply wants your love!",
+               price=2500.00,
+               imgurl="https://cdn.pixabay.com/photo/2018/10/10/20/41/puppy-3738257_960_720.jpg",
+               categoryId=1,
+               breed='French Bulldog',
+               age=1,
+               weight=15,
+               gender='Male'
+               )
+    pet13 = Pet(sellerId=2,
+               name='Ariel',
+               description="With those eyes full of emotion, how could you ever resist not playing with her?",
+               price=1229.49,
+               imgurl="https://cdn.pixabay.com/photo/2020/12/09/07/17/dog-5816636_960_720.jpg",
+               categoryId=1,
+               breed='Border Collie',
+               age=1,
+               weight=27,
+               gender='Female'
+               )
+    pet14 = Pet(sellerId=2,
+               name='Kilo',
+               description="She may look intimidating, but she's a real big scaredy cat! And she loves blueberries!",
+               price=1099.99,
+               imgurl="https://cdn.pixabay.com/photo/2020/05/12/17/51/bully-5164227_960_720.jpg",
+               categoryId=1,
+               breed='Pitbull',
+               age=1,
+               weight=50,
+               gender='Female'
+               )
+    pet15 = Pet(sellerId=2,
+               name='Chewie',
+               description="He may seem to growl when you pet him, but that's just his way of saying he loves it!",
+               price=720.00,
+               imgurl="https://cdn.pixabay.com/photo/2019/09/30/20/54/shi-tzu-4516719_960_720.jpg",
+               categoryId=1,
+               breed='Shi Tzu',
+               age=1,
+               weight=15,
+               gender='Male'
+               )
+    pet16 = Pet(sellerId=2,
+               name='Henny',
+               description="She's charming and she knows it, and she'll get what she wants.. In this case, its dinner.",
+               price=1999.99,
+               imgurl="https://cdn.pixabay.com/photo/2017/05/21/02/44/labradoodle-2330320_960_720.jpg",
+               categoryId=1,
+               breed='Labradoodle',
+               age=1,
+               weight=21,
+               gender='Female'
+               )
+    pet17 = Pet(sellerId=2,
+               name='Marshmello',
+               description="Meet the world's cutest most smallest pupper in the world! Joking, but you gotta admit he's pretty adorable!",
+               price=999.99,
+               imgurl="https://cdn.pixabay.com/photo/2015/11/10/20/10/dog-1037702_960_720.jpg",
+               categoryId=1,
+               breed='Maltese',
+               age=0,
+               weight=2,
+               gender='Male'
+               )
+    pet18 = Pet(sellerId=3,
+               name='Milano',
+               description="Shy but longs for attention.. She just wants to open up the right people!",
+               price=1799.79,
+               imgurl="https://cdn.pixabay.com/photo/2015/12/08/00/52/puppy-1082141_960_720.jpg",
+               categoryId=1,
+               breed='Labrador Retriever',
+               age=0,
+               weight=4,
+               gender='Female'
+               )
+    pet19 = Pet(sellerId=3,
+               name='Senior',
+               description="Hey! Grandpas need love too! Just kidding, he's not that old!",
+               price=750.00,
+               imgurl="https://cdn.pixabay.com/photo/2016/07/16/20/33/dog-1522644_960_720.jpg",
+               categoryId=1,
+               breed='Bloodhound',
+               age=2,
+               weight=60,
+               gender='Male'
+               )
+    pet20 = Pet(sellerId=3,
+                name='Marley',
+                description="A dog doesnt care if youre rich or poor, educated or illiterate, clever or dull. Give him your heart and he will give you his",
+                price=2000.00,
+                imgurl="https://cdn.pixabay.com/photo/2019/08/07/14/10/dog-4390884_960_720.jpg",
+                categoryId=1,
+                breed='Golden Retriever',
+                age=1,
+                weight=7,
+                gender='Male'
+                )
 
     db.session.add(pet1)
     db.session.add(pet2)
@@ -124,6 +234,16 @@ def seed_pets():
     db.session.add(pet8)
     db.session.add(pet9)
     db.session.add(pet10)
+    db.session.add(pet11)
+    db.session.add(pet12)
+    db.session.add(pet13)
+    db.session.add(pet14)
+    db.session.add(pet15)
+    db.session.add(pet16)
+    db.session.add(pet17)
+    db.session.add(pet18)
+    db.session.add(pet19)
+    db.session.add(pet20)
 
     db.session.commit()
 
