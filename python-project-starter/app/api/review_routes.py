@@ -23,7 +23,22 @@ def reviews():
     # reviews = db.session.query(Review).options(selectinload(Review.review)).all()
     # return jsonify(reviews)
     reviews = Review.query.all()
-    return {"Reviews": [review.to_dict() for review in reviews]}
+    reviews_list = [review.to_dict() for review in reviews]
+    # Goal: {itemId1: {countReviews: 3, sumReviews: 12}}
+
+    def buildScoreDic(reviews_list):
+        score = dict()
+        for review in reviews_list:
+            if review["itemId"] in score:
+                score[review["itemId"]]["countReviews"] += 1
+                score[review["itemId"]]["sumReviews"] += review["score"]
+            else:
+                score[review["itemId"]] = {
+                    "countReviews": 1, "sumReviews": review["score"]}
+
+        return score
+    score = buildScoreDic(reviews_list)
+    return score
 
 
 @review_routes.route("/", methods=["POST"])
