@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom"
 import StarRatings from "react-star-ratings"
 
-function RenderReviews() {
-    const [reviews, setReviews] = useState([])
+function RenderReviews({ reviews, setReviews }) {
     const [avgReview, setAvgReview] = useState(null)
     const { id } = useParams()
 
@@ -54,7 +53,7 @@ function RenderReviews() {
                 </h2>
             </div>
             <div>
-                {reviews.map((review) => {
+                {reviews.length && reviews.map((review) => {
                     return (
                         <div key={review.id}>
                             <div className="user-and-date">

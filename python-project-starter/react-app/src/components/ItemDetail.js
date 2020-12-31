@@ -3,11 +3,14 @@ import { useParams } from 'react-router-dom'
 import NumberFormat from 'react-number-format';
 import RenderReviews from './Reviews/RenderReviews'
 import ItemBySeller from "./MoreFromSeller/ItemBySeller"
+import PostReview from "./Reviews/PostReview"
 
-function ItemDetail() {
+function ItemDetail({ user, isAuthenticated }) {
+  const [reviews, setReviews] = useState([])
   const [item, setItem] = useState([]);
   const [seller, setSeller] = useState('');
   const { id } = useParams();
+  console.log(reviews)
 
   // console.log("ID:", id)
 
@@ -59,7 +62,10 @@ function ItemDetail() {
           />
         </div>
       </section>
-      <RenderReviews />
+      <div className="reviews">
+        <RenderReviews reviews={reviews} setReviews={setReviews} />
+        {isAuthenticated && <PostReview user={user} reviews={reviews} setReviews={setReviews} />}
+      </div>
       <div>
         <ItemBySeller sellerId={item.sellerId} />
       </div>
