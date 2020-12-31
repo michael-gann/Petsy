@@ -6,6 +6,8 @@ import RemoveFromCart from './ShoppingCart/RemoveFromCart';
 import RenderReviews from './Reviews/RenderReviews'
 import ItemBySeller from "./MoreFromSeller/ItemBySeller"
 import PostReview from "./Reviews/PostReview"
+import ScoreAvg from "./Reviews/ScoreAvg"
+
 
 function ItemDetail({ user, isAuthenticated }) {
   const [reviews, setReviews] = useState([])
@@ -25,17 +27,15 @@ function ItemDetail({ user, isAuthenticated }) {
     fetchData();
   }, [id]);
 
-  // console.log(item)
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const sellerId = item.sellerId
-  //     const response = await fetch(`/api/users/${sellerId}`);
-  //     const sellerData = await response.json();
-  //     setSeller(sellerData)
-  //   }
-  //   fetchData();
-  // }, [item]);
+  useEffect(() => {
+    async function fetchData() {
+      const sellerId = item.sellerId
+      const response = await fetch(`/api/users/${sellerId}`);
+      const sellerData = await response.json();
+      setSeller(sellerData)
+    }
+    fetchData();
+  }, [item]);
 
   // console.log(seller)
 
@@ -46,7 +46,12 @@ function ItemDetail({ user, isAuthenticated }) {
       </div>
       <section>
         <div>
-          <h6>{seller.firstName} {seller.lastName}</h6>
+          <div>
+            <h6>{seller.firstName} {seller.lastName}</h6>
+          </div>
+          <div>
+            <ScoreAvg itemId={id} />
+          </div>
         </div>
         <div>
           <h3>{item.name}</h3>

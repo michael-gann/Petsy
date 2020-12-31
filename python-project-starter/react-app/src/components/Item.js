@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import NumberFormat from 'react-number-format';
 import ScoreAvg from "./Reviews/ScoreAvg"
 
 function Item({ item }) {
@@ -16,8 +17,18 @@ function Item({ item }) {
       </div>
       <div className="item-details">
         {item.name}
-        {item.price}
-        <ScoreAvg itemId={item.id} />
+        <div>
+          <NumberFormat
+            value={item.price}
+            displayType={'text'}
+            thousandSeparator={true}
+            prefix={'$'}
+            renderText={value => <div>{value}</div>}
+          />
+        </div>
+        <div className="score">
+          <ScoreAvg itemId={item.id} />
+        </div>
       </div>
     </div>
   );
