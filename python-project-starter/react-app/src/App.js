@@ -3,22 +3,22 @@ import { BrowserRouter, Route } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
-import Homepage from "./components/Homepage/Homepage"
-import Footer from "./components/Footer/Footer"
-import PetDetail from "./components/PetDetail/PetDetail"
+import Homepage from "./components/Homepage/Homepage";
+import Footer from "./components/Footer/Footer";
+import PetDetail from "./components/PetDetail/PetDetail";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import ItemsList from "./components/ItemsList";
-import ItemDetail from "./components/ItemDetail"
-import PetsList from "./components/Pets/PetsList"
+import ItemDetail from "./components/ItemDetail";
+import PetsList from "./components/Pets/PetsList";
 import User from "./components/User";
-import Search from "./components/Search/Search"
+import Search from "./components/Search/Search";
 import { authenticate } from "./services/auth";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const [sessionUser, setSessionUser] = useState(undefined)
-  const [results, setResults] = useState([])
+  const [sessionUser, setSessionUser] = useState(undefined);
+  const [results, setResults] = useState([]);
 
   useEffect(() => {
     (async () => {
