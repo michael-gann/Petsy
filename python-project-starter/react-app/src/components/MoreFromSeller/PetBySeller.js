@@ -1,29 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import Item from "../Item"
+import Pet from "../Pets/Pet"
 
-const BySeller = ({ user, sellerId }) => {
-  const [item, setItem] = useState([])
+const PetBySeller = ({ user, sellerId }) => {
+  const [pet, setPet] = useState([])
   const { id } = useParams()
-  const userId = user.id
 
   useEffect(() => {
-   const getItems =  async () => {
+   const getPets =  async () => {
       const res = await fetch(`/api/users/${sellerId}/pets/${id}`);
       const json = await res.json();
-      console.log("----JSON----", json)
-      setItem(json);
+      setPet(json);
     }
-    getItems();
+    getPets();
   }, [id, sellerId]);
 
 
   return (
     <>
     <h3>More from this seller:</h3>
-    {item.map(item => <Item item={item}></Item>)}
+    {pet.map(pet => <Pet key={pet.id} pet={pet}></Pet>)}
     </>
   )
 };
 
-export default BySeller;
+export default PetBySeller;
