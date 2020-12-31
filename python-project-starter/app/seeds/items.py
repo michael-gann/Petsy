@@ -24,7 +24,7 @@ mostly 10% to the total value of the product.
 
 Thank you very much for choosing me!
 
-Gazenfer''', price=199.00, imgurl='https://source.unsplash.com/random/300x200', categoryId=2)
+Gazenfer''', price=199.00, imgurl='https://www.contemporist.com/wp-content/uploads/2018/09/modern-dog-house-wood-green-roof-040918-1255-01-800x534.jpg', categoryId=2)
 
     demo2 = Item(sellerId=1, name='''Engraved leather dog collar, Personalized dog collar,
 Personalized leather dog collar, cat collar, leather cat
@@ -57,7 +57,7 @@ the collar won't fit. Always choose a size bigger if in
 between sizes.
 
 You'll be able to easily adjust the collar to find
-the most comfortable fit.''', price=14.62, imgurl='https://source.unsplash.com/random/300x200', categoryId=2)
+the most comfortable fit.''', price=14.62, imgurl='https://images-na.ssl-images-amazon.com/images/I/71u57aBUBOL._SL1200_.jpg', categoryId=2)
 
     demo3 = Item(sellerId=1, name='''Personalized Dog Bandana - Custom Dog Bandana -
 Buffalo Plaid Dog Bandana - Pet Bandana - Flannel Dog
@@ -67,7 +67,7 @@ Personalized with your Dog’s Name or Nickname!
 100% soft cotton / Snuggle Flannel
 
 Handmade and hand sewn! All bandanas have a finished
-over lock edge.''', price=15.00, imgurl='https://source.unsplash.com/random/300x200', categoryId=2)
+over lock edge.''', price=15.00, imgurl='https://images-na.ssl-images-amazon.com/images/I/71imNxr9t7L._AC_SY450_.jpg', categoryId=2)
 
     demo4 = Item(sellerId=1, name='''5 Large Yak Cheese Dog Treat - Long Lasting, Natural
 Dental Chew, Large(5-packs variety stick), 1 POUND oz.
@@ -76,20 +76,20 @@ Cheese Bone, Natural Dental Chew, Large Size, Suitable
 for Dogs under 55 lbs. Tibetan Dog Chew Yak Cheese
 Himalayan Chew - Himalayan Yak Milk - Natural Yak Chew,
 Long Lasting Dog Treats for Aggressive Chewers ,
-5 stick per pack''', price=25.00, imgurl='https://source.unsplash.com/random/300x200', categoryId=2)
+5 stick per pack''', price=25.00, imgurl='https://www.jimhodgesdogtraining.com/wp-content/uploads/2014/09/Buy-Himalayn-Dog-Chew.jpg', categoryId=2)
 
     demo5 = Item(sellerId=2, name='''Cat Toys Baguette Catnip Cat Toys Birthday Cat Gifts
 Cat Toys Cat Gifts for Cat Lover Gifts Cat Toy Cat Toy
 Crazy Cat Lady Gifts Cat Treats''', description='''Felt baguette cat toy filled with organic
 catnip, handmade with love in Canada. This adorable
 catnip toy will make a purrfect gift for cats
-and cat lovers. :)''', price=13.00, imgurl='https://source.unsplash.com/random/300x200', categoryId=2)
+and cat lovers. :)''', price=13.00, imgurl='https://images-na.ssl-images-amazon.com/images/I/61za936W3bL._SY500_.jpg', categoryId=2)
 
     demo6 = Item(sellerId=2, name='''Adjustable Scratching Climbing Tree |Cat Toy
 Protecting Furniture| Floor to Ceiling Climbing Pole''', description='''Climbing tree features a 3 tier activity
 platform in varying forms including scratching areas
 offering endless fun time to climb, play and rest.
-Perfect for kittens or smaller cats.''', price=95.20, imgurl='https://source.unsplash.com/random/300x200', categoryId=2)
+Perfect for kittens or smaller cats.''', price=95.20, imgurl='https://cdn.shopify.com/s/files/1/0584/7261/products/1_d2f11d4a-de8f-4151-affa-c317713bc9cf_large.jpg?v=1541996885', categoryId=2)
 
     demo7 = Item(sellerId=2, name='''Cat toy ,Realistic flipping fish cat toy,
 rechargeable simulation fish''', description='''Keep your cat active with this gift that keeps
@@ -98,14 +98,14 @@ The tail moves when your cat touches the fish.
 A simulation cat toy made with cotton and a refillable
 catnip pouch.
 Washable but battery inside needs
-to be removed first.''', price=18.90, imgurl='https://source.unsplash.com/random/300x200', categoryId=2)
+to be removed first.''', price=18.90, imgurl='https://x4j5u6e5.rocketcdn.me/wp-content/uploads/2020/01/0-52a33d.jpeg', categoryId=2)
 
     demo8 = Item(sellerId=2, name='''Soft Long Plush Cat Dog Bed, Marshmellow Donut Cat
 Bed Fall and Winter Self Warming Indoor Round Pet Perch
 House Cushion Bed''', description='''The fall and winter months are coming, and
 with the chilly winds, it's time for you to get a plush
 bed for your pet. Make your cat feel warm and cozy like
-spring even on cold winter days.''', price=48.60, imgurl='https://source.unsplash.com/random/300x200', categoryId=2)
+spring even on cold winter days.''', price=48.60, imgurl='https://images-na.ssl-images-amazon.com/images/I/71RkaSEY0zL._AC_SL1500_.jpg', categoryId=2)
 
     demo9 = Item(sellerId=3, name='''Customized Dog Socks - Put Your Cute Dog on Custom
 Socks, Dog Lovers, Dog GIft, Cute Dog Personalized, Dog
@@ -113,7 +113,7 @@ Gift Socks, Fathers Day''', description='''Get custom socks with your very own f
 face on them! They make the perfect gift for anyone who
 loves their dog! Perfect for any holiday, birthday, or
 anniversary! Handmade by local part time moms in
-Portland, Oregon every pair is made to order.''', price=24.99, imgurl='https://source.unsplash.com/random/300x200', categoryId=2)
+Portland, Oregon every pair is made to order.''', price=24.99, imgurl='https://images-na.ssl-images-amazon.com/images/I/61Y4WZTP5yL._AC_UL1200_.jpg', categoryId=2)
 
     demo10 = Item(sellerId=3, name='''HEAVY DUTY Dog Tactical Collar with Handle K9
 Military Training Width 1.5"
@@ -123,7 +123,7 @@ gear around the world. 1.5 inch wide military grade
 polyamide webbing sewn into two layers for extra
 toughness. This tactical collar near-unbreakable collar:
 tear and wear proof, break and snap proof. Machine
-washing at low temp would not do it any damage!''', price=25.00, imgurl='https://source.unsplash.com/random/300x200', categoryId=2)
+washing at low temp would not do it any damage!''', price=25.00, imgurl='https://www.modernicon.us/wp-content/uploads/2018/04/3rigid-blk.jpg', categoryId=2)
 
     demo11 = Item(sellerId=4, name='''Luxury Pet Harness and Leash''', description='''Handmade
 Materials: leather, fabric, denim Harness adjustable and Leash include
@@ -150,7 +150,7 @@ L 55 45 30 21 8 30
 
     demo14 = Item(sellerId=3, name='''Squeaking Colorful Tennis Ball Dog Toy, 3-Pack''', description='''Whether you’re playing singles or doubles, these squeaking tennis balls are sure to turn up the fun. They provide the bouncing action and loud squeaking dogs love—in fun color combinations! Unlike regular tennis balls though, these are covered with non-abrasive felt that’s gentle on dogs’ teeth and gums when they catch them. Get your pup chasing after them for daily play and exercise.''', price=20.00, imgurl='https://img.chewy.com/is/image/catalog/152846_Main._AC_SS55_V1549655069_.jpg', categoryId=2)
 
-    demo15 = Item(sellerId=4, name='''Rope with 5 Knots Dog Toy''' description='''
+    demo15 = Item(sellerId=4, name='''Rope with 5 Knots Dog Toy''', description='''
 Let the games begin with this knotty, twisty, brightly colored fetch toy. This rope toy is made from a cotton/poly blend and is perfect for everyday play, at home or at the park. The knots add the fun variety dogs love, and make it easy to grip, too. Bring out the big dogs—this oversized rope toy is specially sized for larger breeds.''', price=25.00, imgurl='https://img.chewy.com/is/image/catalog/152836_Main._AC_SS55_V1549654978_.jpg', categoryId=2)
 
     demo16 = Item(sellerId=4, name='''Cactus Cat Scratching Post''', description='''
