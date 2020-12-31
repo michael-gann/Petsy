@@ -10,7 +10,7 @@ def seed_reviews():
     demo_review3 = Review(userId=3, itemId=3, score=3,
                           review='''I don’t like the amount of pressure you have to use to hold down the button, but besides that decent purchase.''')
     demo_review4 = Review(userId=4, itemId=4, score=5, review='''I\'ve had a cheaper version of this before but the lock on it was not well made and eventually the seal went. However our dogs love the design and it\'s a very easy and convenient way to carry water on a walk!''')
-    demo_review5 = Review(userId=5, itemId=5, score=1,
+    demo_review5 = Review(userId=1, itemId=5, score=1,
                           review='''Bottle is no good, the little switch to lock the bottle is extremely stiff, so most of the time I can’t shut it.. So far its leaked pretty often into my backpack and I\'m very unhappy about this.''')
     demo_review6 = Review(userId=1, itemId=6, score=4,
                           review='''Super stylish bandana! The listing says its for dogs but my cat is still swagging in it!''')
@@ -22,6 +22,8 @@ def seed_reviews():
                           review='''This climbing tree is the best! Foundation is strong, and my cat is scartching it nonstop! Great buy!''')
     demo_review10 = Review(userId=5, itemId=10, score=3,
                            review='''HIGHLY recommend this dog bed, its super soft and well made! Quality material and will keep your furry friends warm and cozy!''')
+    demo_review11 = Review(userId=2, itemId=1, score=3,
+                           review="I really hate to complain, but I will. This wooden dog house is mediocre at best. No mini-bar, no airconditioning, like is my dog some forest dwelling animal? No. He's a person, and his house should reflect that.")
     db.session.add(demo_review1)
     db.session.add(demo_review2)
     db.session.add(demo_review3)
@@ -32,6 +34,7 @@ def seed_reviews():
     db.session.add(demo_review8)
     db.session.add(demo_review9)
     db.session.add(demo_review10)
+    db.session.add(demo_review11)
     db.session.commit()
 
 

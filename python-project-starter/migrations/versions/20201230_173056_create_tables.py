@@ -1,8 +1,8 @@
-"""create_all_tables
+"""create_tables
 
-Revision ID: c3db00a97bd1
+Revision ID: ffc4cda95a8a
 Revises: 
-Create Date: 2020-12-29 13:57:30.637307
+Create Date: 2020-12-30 17:30:56.673911
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'c3db00a97bd1'
+revision = 'ffc4cda95a8a'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -40,9 +40,10 @@ def upgrade():
     sa.Column('sellerId', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=True),
     sa.Column('description', sa.String(), nullable=True),
-    sa.Column('price', sa.Integer(), nullable=True),
+    sa.Column('price', sa.Float(), nullable=True),
     sa.Column('imgurl', sa.String(), nullable=True),
     sa.Column('categoryId', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['categoryId'], ['categories.id'], ),
     sa.ForeignKeyConstraint(['sellerId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -60,7 +61,7 @@ def upgrade():
     sa.Column('description', sa.String(), nullable=True),
     sa.Column('price', sa.Float(), nullable=True),
     sa.Column('imgurl', sa.String(), nullable=True),
-    sa.Column('categoryId', sa.Integer(), nullable=True),
+    sa.Column('categoryId', sa.Integer(), nullable=False),
     sa.Column('breed', sa.String(), nullable=True),
     sa.Column('age', sa.Integer(), nullable=True),
     sa.Column('weight', sa.Integer(), nullable=True),
@@ -72,9 +73,11 @@ def upgrade():
     op.create_table('reviews',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
-    sa.Column('itemId', sa.Integer(), nullable=False),
+    sa.Column('itemId', sa.Integer(), nullable=True),
     sa.Column('score', sa.Integer(), nullable=False),
     sa.Column('review', sa.String(), nullable=False),
+    sa.Column('createdAt', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
+    sa.Column('updatedAt', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.ForeignKeyConstraint(['itemId'], ['items.id'], ),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')

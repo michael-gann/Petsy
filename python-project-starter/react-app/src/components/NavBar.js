@@ -1,9 +1,42 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css';
 
-const NavBar = ({ setAuthenticated, isAuthenticated }) => {
+const NavBar = ({ setAuthenticated, isAuthenticated, setResults}) => {
+  const history = useHistory();
+  const [search, setSearch] = useState('');
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchAll = async () => {
+      const itemRes = await fetch('/api/items');
+      const itemResData = await itemRes.json();
+
+      const petRes = await fetch('/api/pets');
+      const petResData = await petRes.json();
+
+      let itemsAndPets = [];
+      itemsAndPets.push(itemResData);
+      itemsAndPets.push(petResData);
+
+      setData(itemsAndPets);
+    }
+    fetchAll();
+  }, []);
+
+  const handleSubmit = () => {
+    const itemFilteredResults = data[0].filter(item => item.name.includes(search));
+    const petFilteredResults = data[1].filter(pet => pet.name.includes(search));
+
+    let petsAndItemsFiltered = [];
+    petsAndItemsFiltered.push(itemFilteredResults);
+    petsAndItemsFiltered.push(petFilteredResults);
+    setResults(petsAndItemsFiltered);
+    setSearch("");
+    return history.push('/search');
+  };
+
   return (
     <nav className="nav navbar-container">
       <div className="upper-section">
@@ -13,7 +46,11 @@ const NavBar = ({ setAuthenticated, isAuthenticated }) => {
               Petsy
           </NavLink>
           </li>
-          <input type="text" placeholder="Search for anything"></input>
+          <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} onKeyUp={
+            (e) => {if (e.key === 'Enter'){
+            return  handleSubmit()
+            }}}
+            placeholder="Search for anything"></input>
           {!isAuthenticated &&
             <>
               <li className="nav navbar-item">
@@ -47,8 +84,11 @@ const NavBar = ({ setAuthenticated, isAuthenticated }) => {
           <NavLink to="/items" exact={true}>Products</NavLink>
         </div>
       </div>
+      <a rel="noopener noreferrer" href="/cart">
+      <i class="fas fa-shopping-cart"></i>
+      </a>
     </nav>
   );
-}
+};
 
 export default NavBar;

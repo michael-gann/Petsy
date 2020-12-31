@@ -4,11 +4,11 @@ import { useHistory } from 'react-router-dom';
 
 function Pet({ pet }) {
     const history = useHistory()
+
     const handleClick = () => {
-        console.log("here")
         return history.push(`/pets/${pet.id}`)
-        // return <Redirect to={`/pet/${pet.id}`} />
     }
+
     return (
         <>
             <div className="image-container" onClick={handleClick}>

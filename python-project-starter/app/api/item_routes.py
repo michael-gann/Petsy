@@ -10,7 +10,8 @@ item_routes = Blueprint('items', __name__)
 def items():
     items = db.session.query(Item).options(selectinload(Item.user)).all()
 
-    items_with_seller = [{**item.to_dict(), "user": item.user.to_dict()} for item in items]
+    items_with_seller = [{**item.to_dict(), "user": item.user.to_dict()}
+                         for item in items]
 
     return jsonify(items_with_seller)
 
@@ -24,8 +25,10 @@ def item(id):
 
 @item_routes.route("/<id>/reviews")
 def item_reviews(id):
-    reviews = Review.query.filter_by(itemId=id)
+    reviews = db.session.query(Review).options(
+        selectinload(Review.user)).filter_by(itemId=id).all()
 
-    reviews_by_item = [{**review.to_dict()} for review in reviews]
+    reviews_by_item = [{**review.to_dict(), "user": review.user.to_dict()}
+                       for review in reviews]
 
     return jsonify(reviews_by_item)
