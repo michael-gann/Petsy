@@ -1,3 +1,7 @@
 node_modules/
 package-lock.json
 .eslintcache
+.env
+__pycache__/
+*.py[cod]
+.venv
