@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
-import './NavBar.css';
+import React, { useState, useEffect } from "react";
+import { NavLink, useHistory } from "react-router-dom";
+import LogoutButton from "./auth/LogoutButton";
+import "./NavBar.css";
 
 const NavBar = ({ setAuthenticated, isAuthenticated, setResults }) => {
   const history = useHistory();
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchAll = async () => {
-      const itemRes = await fetch('/api/items');
+      const itemRes = await fetch("/api/items");
       const itemResData = await itemRes.json();
 
-      const petRes = await fetch('/api/pets');
+      const petRes = await fetch("/api/pets");
       const petResData = await petRes.json();
 
       let itemsAndPets = [];
@@ -21,20 +21,24 @@ const NavBar = ({ setAuthenticated, isAuthenticated, setResults }) => {
       itemsAndPets.push(petResData);
 
       setData(itemsAndPets);
-    }
+    };
     fetchAll();
   }, []);
 
   const handleSubmit = () => {
-    const itemFilteredResults = data[0].filter(item => item.name.includes(search));
-    const petFilteredResults = data[1].filter(pet => pet.name.includes(search));
+    const itemFilteredResults = data[0].filter((item) =>
+      item.name.includes(search)
+    );
+    const petFilteredResults = data[1].filter((pet) =>
+      pet.name.includes(search)
+    );
 
     let petsAndItemsFiltered = [];
     petsAndItemsFiltered.push(itemFilteredResults);
     petsAndItemsFiltered.push(petFilteredResults);
     setResults(petsAndItemsFiltered);
     setSearch("");
-    return history.push('/search');
+    return history.push("/search");
   };
 
   return (
@@ -43,52 +47,73 @@ const NavBar = ({ setAuthenticated, isAuthenticated, setResults }) => {
         <ul className="nav navbar-items">
           <li className="nav navbar-item">
             <NavLink to="/" exact={true} activeClassName="active">
-              Petsy
-          </NavLink>
+              <img
+                className="logo"
+                alt="petsy logo"
+                src="/images/petsy-logo.svg"
+              ></img>
+            </NavLink>
           </li>
-          <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} onKeyUp={
-            (e) => {
-              if (e.key === 'Enter') {
-                return handleSubmit()
+          <input
+            className="searchbar"
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            onKeyUp={(e) => {
+              if (e.key === "Enter") {
+                return handleSubmit();
               }
             }}
-            placeholder="Search for anything"></input>
-          {!isAuthenticated &&
+            placeholder="Search for anything"
+          ></input>
+          {isAuthenticated ? (
             <>
-              <li className="nav navbar-item">
+              <div className="cart-user-container">
+                <div className="dropdown">
+                  <button className="dropbtn">
+                    You
+                    <i className="fa fa-caret-down"></i>
+                  </button>
+                  <div className="dropdown-content">
+                    <LogoutButton setAuthenticated={setAuthenticated} />
+                  </div>
+                </div>
+
+                <div className="cart">
+                  <a rel="noopener noreferrer" href="/cart">
+                    <i class="fas fa-shopping-cart"></i>
+                  </a>
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="login-container">
+              <li className="nav login">
                 <NavLink to="/login" exact={true} activeClassName="active">
                   Login
-          </NavLink>
+                </NavLink>
               </li>
-              <li className="nav navbar-item">
+              <li className="nav sign-up">
                 <NavLink to="/sign-up" exact={true} activeClassName="active">
                   Sign Up
-          </NavLink>
+                </NavLink>
               </li>
-            </>}
-        </ul>
-        {isAuthenticated &&
-
-          <div className="dropdown">
-            <button className="dropbtn">You
-          <i className="fa fa-caret-down"></i>
-            </button>
-            <div className="dropdown-content">
-              <LogoutButton setAuthenticated={setAuthenticated} />
             </div>
-          </div>}
-      </div>
-      <div className="lower-section">
-        <div>
-          <NavLink to="/pets" exact={true}>Pets</NavLink>
+          )}
+        </ul>
+        <div className="lower-section">
+          <div>
+            <NavLink to="/pets" exact={true}>
+              Pets
+            </NavLink>
+          </div>
+          <div>
+            <NavLink to="/items" exact={true}>
+              Products
+            </NavLink>
+          </div>
         </div>
-        <div>
-          <NavLink to="/items" exact={true}>Products</NavLink>
-        </div>
       </div>
-      <a rel="noopener noreferrer" href="/cart">
-        <i className="fas fa-shopping-cart"></i>
-      </a>
     </nav>
   );
 };
