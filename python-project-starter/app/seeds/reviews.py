@@ -22,6 +22,8 @@ def seed_reviews():
                           review='''This climbing tree is the best! Foundation is strong, and my cat is scartching it nonstop! Great buy!''')
     demo_review10 = Review(userId=5, itemId=10, score=3,
                            review='''HIGHLY recommend this dog bed, its super soft and well made! Quality material and will keep your furry friends warm and cozy!''')
+    demo_review11 = Review(userId=2, itemId=1, score=3,
+                           review="I really hate to complain, but I will. This wooden dog house is mediocre at best. No mini-bar, no airconditioning, like is my dog some forest dwelling animal? No. He's a person, and his house should reflect that.")
     db.session.add(demo_review1)
     db.session.add(demo_review2)
     db.session.add(demo_review3)
@@ -32,6 +34,7 @@ def seed_reviews():
     db.session.add(demo_review8)
     db.session.add(demo_review9)
     db.session.add(demo_review10)
+    db.session.add(demo_review11)
     db.session.commit()
 
 
