@@ -5,11 +5,14 @@ import AddToCart from './ShoppingCart/AddToCart';
 import RemoveFromCart from './ShoppingCart/RemoveFromCart';
 import RenderReviews from './Reviews/RenderReviews'
 import ItemBySeller from "./MoreFromSeller/ItemBySeller"
+import PostReview from "./Reviews/PostReview"
 
-function ItemDetail() {
+function ItemDetail({ user, isAuthenticated }) {
+  const [reviews, setReviews] = useState([])
   const [item, setItem] = useState([]);
   const [seller, setSeller] = useState('');
   const { id } = useParams();
+  console.log(reviews)
 
   // console.log("ID:", id)
 
@@ -64,7 +67,10 @@ function ItemDetail() {
       <div>
         <AddToCart item={item} />
         <RemoveFromCart id={item.id} />
-        <RenderReviews />
+        <div className="reviews">
+          <RenderReviews reviews={reviews} setReviews={setReviews} />
+          {isAuthenticated && <PostReview user={user} reviews={reviews} setReviews={setReviews} />}
+        </div>
         <div>
           <ItemBySeller sellerId={item.sellerId} />
         </div>

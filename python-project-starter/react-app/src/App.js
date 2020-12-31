@@ -38,7 +38,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar setResults={setResults}  setAuthenticated={setAuthenticated} isAuthenticated={authenticated} />
+      <NavBar setResults={setResults} setAuthenticated={setAuthenticated} isAuthenticated={authenticated} />
       <Route path="/login" exact={true}>
         <LoginForm
           authenticated={authenticated}
@@ -51,15 +51,15 @@ function App() {
       <Route path="/search" exact={true}>
         <Search results={results}></Search>
       </Route>
-      <ProtectedRoute path="/items" exact={true} authenticated={authenticated}>
+      <Route path="/items" exact={true} authenticated={authenticated}>
         <ItemsList />
-      </ProtectedRoute>
-      <ProtectedRoute path="/pets" exact={true} authenticated={authenticated}>
+      </Route>
+      <Route path="/pets" exact={true} authenticated={authenticated}>
         <PetsList />
-      </ProtectedRoute>
-      <ProtectedRoute path="/items/:id" exact={true} authenticated={authenticated}>
-        <ItemDetail />
-      </ProtectedRoute>
+      </Route>
+      <Route path="/items/:id" exact={true} authenticated={authenticated}>
+        <ItemDetail user={sessionUser} isAuthenticated={authenticated} />
+      </Route>
       <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
         <User />
       </ProtectedRoute>
@@ -70,7 +70,7 @@ function App() {
         <Homepage />
       </Route>
       <Route path="/pets/:id" exact={true}>
-        <PetDetail user={sessionUser}/>
+        <PetDetail user={sessionUser} />
       </Route>
       <Footer />
     </BrowserRouter>
