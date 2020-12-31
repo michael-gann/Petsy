@@ -42,7 +42,7 @@ function RenderReviews() {
             <div>
                 <h2>
                     {reviews.length} {reviews.length > 1 ? "reviews" : "review"}
-                    <StarRatings
+                    {avgReview && <StarRatings
                         rating={avgReview}
                         starRatedColor="black"
                         starEmptyColor='grey'
@@ -50,7 +50,7 @@ function RenderReviews() {
                         starDimension="22px"
                         starSpacing="0px"
                         name="rating"
-                    />
+                    />}
                 </h2>
             </div>
             <div>
