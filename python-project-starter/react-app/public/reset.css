@@ -5,6 +5,7 @@ ol, li, dl, dt, dd, form, a, fieldset, input, th, td {
     border: 0;
     outline: none;
     box-sizing: border-box;
+    font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif
 }
 
 a {
