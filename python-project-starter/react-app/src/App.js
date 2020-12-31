@@ -10,6 +10,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import ItemsList from "./components/ItemsList";
 import ItemDetail from "./components/ItemDetail"
 import User from "./components/User";
+import Cart from "./components/ShoppingCart/Cart"
 import { authenticate } from "./services/auth";
 
 function App() {
@@ -50,6 +51,9 @@ function App() {
       </ProtectedRoute>
       <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
         <User />
+      </ProtectedRoute>
+      <ProtectedRoute path="/cart" exact={true} authenticated={authenticated}>
+        <Cart />
       </ProtectedRoute>
       <Route path="/" exact={true} authenticated={authenticated}>
         <Homepage />

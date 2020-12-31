@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import NumberFormat from 'react-number-format';
+import AddToCart from './ShoppingCart/AddToCart';
+import RemoveFromCart from './ShoppingCart/RemoveFromCart';
 
 function ItemDetail() {
   const [item, setItem] = useState([]);
@@ -57,6 +59,10 @@ function ItemDetail() {
           />
         </div>
       </section>
+      <div>
+        <AddToCart item={item} />
+        <RemoveFromCart id={item.id} />
+      </div>
     </>
   )
 }
