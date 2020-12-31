@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import ScoreAvg from "./Reviews/ScoreAvg"
 
 function Item({ item }) {
   const history = useHistory();
@@ -16,6 +17,7 @@ function Item({ item }) {
       <div className="item-details">
         {item.name}
         {item.price}
+        <ScoreAvg itemId={item.id} />
       </div>
     </div>
   );

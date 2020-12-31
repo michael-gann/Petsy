@@ -44,9 +44,9 @@ function App() {
   if (!loaded) {
     return null;
   }
-  
+
   return (
-    <ScoreContext.Provider score={scores}>
+    <ScoreContext.Provider value={scores}>
       <BrowserRouter>
         <NavBar setResults={setResults} setAuthenticated={setAuthenticated} isAuthenticated={authenticated} />
         <Route path="/login" exact={true}>
