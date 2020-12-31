@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { ScoreContext } from "../../App"
 import StarRatings from "react-star-ratings"
 
@@ -6,8 +6,8 @@ import StarRatings from "react-star-ratings"
 function ScoreAvg({ itemId }) {
     return (
         <ScoreContext.Consumer>
-            {value => {
-                return (<div>
+            {(value => {
+                if (value) return (<div>
                     <StarRatings
                         rating={value[`${itemId}`]["sumReviews"] / value[`${itemId}`]["countReviews"]}
                         starRatedColor="black"
@@ -19,7 +19,7 @@ function ScoreAvg({ itemId }) {
                     />
                     ({value[`${itemId}`]["countReviews"]})
                 </div>)
-            }}
+            })}
         </ScoreContext.Consumer>
     )
 }
