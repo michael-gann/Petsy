@@ -5,6 +5,7 @@ import BottomFooter from "./BottomFooter";
 import "./footer.css";
 
 function Footer() {
+
   return (
     <div className="footer">
       <div className="top-footer">
@@ -114,6 +115,7 @@ function Footer() {
               <i class="fab fa-github-alt"></i>
             </a>
           </h4>
+
         </div>
       </div>
       <div className="bottom-footer">
