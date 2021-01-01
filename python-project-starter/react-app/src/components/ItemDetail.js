@@ -8,6 +8,8 @@ import ItemBySeller from "./MoreFromSeller/ItemBySeller"
 import PostReview from "./Reviews/PostReview"
 import ScoreAvg from "./Reviews/ScoreAvg"
 
+import "./itemsList.css"
+
 
 function ItemDetail({ user, isAuthenticated }) {
   const [reviews, setReviews] = useState([])
@@ -40,11 +42,11 @@ function ItemDetail({ user, isAuthenticated }) {
   // console.log(seller)
 
   return (
-    <>
-      <div>
+    <div className="item-detail-container">
+      <div className="img-container">
         <img src={item.imgurl}></img>
       </div>
-      <section>
+      <section className="details-container">
         <div>
           <div>
             <h6>{seller.firstName} {seller.lastName}</h6>
@@ -59,7 +61,7 @@ function ItemDetail({ user, isAuthenticated }) {
         <div>
           <p>{item.description}</p>
         </div>
-        <div>
+        <div className="number-format">
           <NumberFormat
             value={item.price}
             displayType={'text'}
@@ -82,7 +84,7 @@ function ItemDetail({ user, isAuthenticated }) {
           <ItemBySeller sellerId={item.sellerId} />
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

@@ -1,0 +1,20 @@
+.item-detail-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 15px 100px;
+
+}
+
+.item-detail-container div {
+    padding: 3px;
+}
+
+.img-container {
+    object-fit: contain;
+    padding-top: 50px;
+}
+
+.details-container {
+    max-width: 800px;
+    padding: 50px;
+}
