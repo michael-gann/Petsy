@@ -47,7 +47,7 @@ function ItemDetail({ user, isAuthenticated }) {
           <img src={item.imgurl}></img>
         </div>
         <section className="details-container">
-          <div>
+          <div className="seller-first-last">
             <h6>
               {seller.firstName} {seller.lastName}
             </h6>
@@ -79,14 +79,20 @@ function ItemDetail({ user, isAuthenticated }) {
           </div>
         </section>
       </div>
-      <div>
-        <div className="reviews">
-          <RenderReviews reviews={reviews} setReviews={setReviews} />
-          {isAuthenticated && (
-            <PostReview user={user} reviews={reviews} setReviews={setReviews} />
-          )}
+      <div className="bottom-container">
+        <div className="reviews-container">
+          <div className="reviews">
+            <RenderReviews reviews={reviews} setReviews={setReviews} />
+            {isAuthenticated && (
+              <PostReview
+                user={user}
+                reviews={reviews}
+                setReviews={setReviews}
+              />
+            )}
+          </div>
         </div>
-        <div>
+        <div className="more-by-seller">
           <ItemBySeller sellerId={item.sellerId} />
         </div>
       </div>
