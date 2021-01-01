@@ -1,0 +1,100 @@
+.footer {
+bottom: 0;
+}
+
+.top-footer {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 315px;
+    min-width: 100%;
+    background-image: url("./petsy-footer-img.jpg");
+    background-size: cover;
+    color: white;
+}
+
+.top-footer a {
+    text-decoration: none;
+    color: white;
+}
+
+.top-footer a:hover {
+    cursor: pointer;
+}
+
+.shop {
+    display: flex;
+    flex-direction: column;
+    font-weight: 100;
+}
+
+.shop h4, .shop h2 {
+    padding: 5px 0px;
+}
+
+.shop h2 {
+    margin-bottom: 15px;
+}
+
+.shop h4 {
+    font-weight: 10;
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.about h2, .about h4 {
+    padding: 5px 0px;
+}
+
+.about h2 {
+    margin-bottom: 15px;
+}
+
+.about h4 {
+    font-weight: 10;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    font-weight: 100;
+    margin-top: 60px;
+}
+
+.team h2, .team h4 {
+    padding: 5px 0px;
+}
+
+.team h2 {
+    margin-bottom: 15px;
+}
+
+.team h4 {
+    font-weight: 10;
+}
+
+.team a {
+
+}
+
+.bottom-footer {
+    background-color: #232347;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    min-height: 75px;
+    align-items: center;
+}
+
+.country {
+    margin: 0 20px;
+}
+
+.copyright {
+    margin: 0 20px;
+}
