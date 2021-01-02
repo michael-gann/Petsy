@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Item from "./Item";
 
+import "./itemPage.css";
+
 function Items() {
   const [items, setItems] = useState([]);
 
