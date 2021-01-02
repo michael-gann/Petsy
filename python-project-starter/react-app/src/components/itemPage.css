@@ -12,7 +12,7 @@
     align-self: center;
 }
 
-.item-page-container .items .item-container .item-details {
+.item-page-container .item-container .item-details {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,31 +20,31 @@
     min-height: 75px;
     height: 100%;
     max-height: 100px;
-    max-width: 290px;
+    /* max-width: 290px; */
     width: 100%;
     font-size: 12px;
 }
 
-.item-page-container .item-components .items .item-container .item-details .item-name {
+.item-page-container .item-components .item-container .item-details .item-name {
     max-width: 250px;
     width: 100%;
     margin-bottom: 4px;
 }
 
-.item-page-container .item-components .items .item-container .item-details .item-inner-price {
+.item-page-container .item-components .item-container .item-details .item-inner-price {
     display: flex;
     align-self: flex-start;
     max-width: 290px;
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
-.item-page-container .item-components .items .item-container .item-details .item-inner-price div {
+.item-page-container .item-components .item-container .item-details .item-inner-price div {
     align-self: flex-start;
     width: 250px;
 }
-
-.item-page-container .item-components .items .item-container .item-details .score {
+.item-page-container .item-container .item-details .score {
     width: 250px;
-    background-color: red;
 }
 
 .item-page-container .item-components {
