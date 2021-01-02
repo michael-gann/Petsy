@@ -24,7 +24,7 @@ const PetBySeller = ({ user, sellerId }) => {
           <Pet key={pet.id} pet={pet}></Pet>)
         </div>)
       }
-    }
+      )}
     </>
   )
 };

@@ -35,10 +35,16 @@ img.image-pet {
     justify-content: center;
 }
 
-div.more-pets {
-    width: 250px;
-    height: 250px;
-    object-fit: cover;
+div.pet-detail-more > .more-pets > .pet-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+div.pet-detail-more > .more-pets > .pet-container > .image-container > img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
     border-radius: 3px;
     transition: box-shadow 250ms ease-in-out,
                   transform 150ms ease;
