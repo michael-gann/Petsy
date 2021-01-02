@@ -35,57 +35,48 @@ function RenderReviews({ reviews, setReviews }) {
     setAvgReview(sum / count);
   }, [reviews]);
 
-  //   console.log(avgReview);
   return (
     <>
-      <div>
+      <div className="total-reviews">
         <h2>
-          {reviews.length === 0 ? "No Reviews" : reviews.length}{" "}
-          {reviews.length === 0
-            ? ""
-            : "reviews" || reviews.length === 1
-            ? "review"
-            : "reviews"}
-          {avgReview
-            ? avgReview
-            : "" && (
-                <StarRatings
-                  rating={avgReview}
-                  starRatedColor="black"
-                  starEmptyColor="grey"
-                  numberOfStars={5}
-                  starDimension="22px"
-                  starSpacing="0px"
-                  name="rating"
-                />
-              )}
+          {reviews.length} {reviews.length > 1 ? "reviews  " : "review  "}
+          {avgReview && (
+            <StarRatings
+              rating={avgReview}
+              starRatedColor="black"
+              starEmptyColor="grey"
+              numberOfStars={5}
+              starDimension="22px"
+              starSpacing="0px"
+              name="rating"
+            />
+          )}
         </h2>
       </div>
       <div>
-        {reviews.length === 0
-          ? ""
-          : reviews.map((review) => {
-              return (
-                <div key={review.id}>
-                  <div className="user-and-date">
-                    {`${review.user.firstName} ${review.user.lastName}`}{" "}
-                    {dateStringManipulation(review)}
-                  </div>
-                  <div className="star-rating">
-                    <StarRatings
-                      rating={review.score}
-                      starRatedColor="black"
-                      starEmptyColor="grey"
-                      numberOfStars={5}
-                      starDimension="22px"
-                      starSpacing="0px"
-                      name="rating"
-                    />
-                  </div>
-                  <div className="review-description">{review.review}</div>
+        {reviews.length &&
+          reviews.map((review) => {
+            return (
+              <div key={review.id}>
+                <div className="user-and-date">
+                  {`${review.user.firstName} ${review.user.lastName}`}{" "}
+                  {dateStringManipulation(review)}
                 </div>
-              );
-            })}
+                <div className="star-rating">
+                  <StarRatings
+                    rating={review.score}
+                    starRatedColor="black"
+                    starEmptyColor="grey"
+                    numberOfStars={5}
+                    starDimension="22px"
+                    starSpacing="0px"
+                    name="rating"
+                  />
+                </div>
+                <div className="review-description">{review.review}</div>
+              </div>
+            );
+          })}
       </div>
     </>
   );
