@@ -21,7 +21,7 @@ const PetBySeller = ({ user, sellerId }) => {
       <h3>More from this seller:</h3>
       {pet.map(pet => {
         return (<div className="more-pets">
-          <Pet key={pet.id} pet={pet}></Pet>)
+          <Pet key={pet.id} pet={pet}></Pet>
         </div>)
       }
       )}
