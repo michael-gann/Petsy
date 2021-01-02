@@ -7,7 +7,7 @@ const PetBySeller = ({ user, sellerId }) => {
   const { id } = useParams()
 
   useEffect(() => {
-   const getPets =  async () => {
+    const getPets = async () => {
       const res = await fetch(`/api/users/${sellerId}/pets/${id}`);
       const json = await res.json();
       setPet(json);
@@ -18,8 +18,13 @@ const PetBySeller = ({ user, sellerId }) => {
 
   return (
     <>
-    <h3>More from this seller:</h3>
-    {pet.map(pet => <Pet key={pet.id} pet={pet}></Pet>)}
+      <h3>More from this seller:</h3>
+      {pet.map(pet => {
+        return (<div className="more-pets">
+          <Pet key={pet.id} pet={pet}></Pet>)
+        </div>)
+      }
+    }
     </>
   )
 };

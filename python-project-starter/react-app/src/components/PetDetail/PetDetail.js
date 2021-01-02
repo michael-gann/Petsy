@@ -3,6 +3,8 @@ import NumberFormat from "react-number-format";
 import { useParams } from 'react-router-dom'
 import PetBySeller from '../MoreFromSeller/PetBySeller'
 
+import "./PetDetail.css"
+
 function PetDetail({ user }) {
     const [pet, setPet] = useState([])
     const { id } = useParams()
@@ -19,36 +21,37 @@ function PetDetail({ user }) {
     }, [id])
 
     return (
-        <div>
-            <div className="image-container">
-                <img src={pet.imgurl} alt="Pet pic" />
-            </div>
-            <div className="details">
-                {/* {pet.user.firstName} {pet.user.lastName} */}
-                {/* add the ratings component here when finished */}
-                <h2>{pet.name}</h2>
-                <div>
-                    {pet.description}
+        <div className="pet-detail-container">
+            <div className="pet-detail-img-info">
+                <div className="pet-detail-image-container">
+                    <img className="image-pet" src={pet.imgurl} alt="Pet pic" />
                 </div>
-                <div>
-                    Breed: {pet.breed}
-                </div>
-                <div>
-                    Age: {`${pet.age} years old`}
-                </div>
-                <div>
-                    Weight: {`${pet.weight} lbs`}
-                </div>
-                <div>
-                    Gender: {pet.gender}
-                </div>
-                <div>
-                    Price: <NumberFormat value={pet.price} decimalScale={2} fixedDecimalScale={true} displayType={'text'} thousandSeparator={true} prefix={'$'} />
-                </div>
-                <div>
-                    <PetBySeller user={user} sellerId={pet.sellerId} />
+                <div className="details">
+                    <h2>{pet.name}</h2>
+                    <div>
+                        {pet.description}
+                    </div>
+                    <div>
+                        Breed: {pet.breed}
+                    </div>
+                    <div>
+                        Age: {`${pet.age} years old`}
+                    </div>
+                    <div>
+                        Weight: {`${pet.weight} lbs`}
+                    </div>
+                    <div>
+                        Gender: {pet.gender}
+                    </div>
+                    <div>
+                        Price: <NumberFormat value={pet.price} decimalScale={2} fixedDecimalScale={true} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                    </div>
                 </div>
             </div>
+            <div className="pet-detail-more">
+                <PetBySeller user={user} sellerId={pet.sellerId} />
+            </div>
+
         </div>
     )
 }
