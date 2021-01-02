@@ -11,7 +11,7 @@ import ItemsList from "./components/ItemsList";
 import ItemDetail from "./components/ItemDetail";
 import PetsList from "./components/Pets/PetsList";
 import User from "./components/User";
-import Cart from "./components/ShoppingCart/Cart"
+import Cart from "./components/ShoppingCart/Cart";
 import Search from "./components/Search/Search";
 import { authenticate } from "./services/auth";
 
@@ -22,7 +22,7 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const [sessionUser, setSessionUser] = useState(undefined);
   const [results, setResults] = useState([]);
-  const [scores, setScores] = useState({})
+  const [scores, setScores] = useState({});
 
   useEffect(() => {
     (async () => {
@@ -34,11 +34,12 @@ function App() {
       setLoaded(true);
     })();
     const fetchScores = async () => {
-      const res = await fetch("/api/reviews")
-      const scoresObj = await res.json()
-      setScores(scoresObj)
-    }
-    fetchScores()
+      const res = await fetch("/api/reviews");
+      const scoresObj = await res.json();
+      console.log("SCORES OBJECT", scoresObj);
+      setScores(scoresObj);
+    };
+    fetchScores();
   }, []);
 
   if (!loaded) {
@@ -48,7 +49,11 @@ function App() {
   return (
     <ScoreContext.Provider value={scores}>
       <BrowserRouter>
-        <NavBar setResults={setResults} setAuthenticated={setAuthenticated} isAuthenticated={authenticated} />
+        <NavBar
+          setResults={setResults}
+          setAuthenticated={setAuthenticated}
+          isAuthenticated={authenticated}
+        />
         <Route path="/login" exact={true}>
           <LoginForm
             authenticated={authenticated}
@@ -56,7 +61,10 @@ function App() {
           />
         </Route>
         <Route path="/sign-up" exact={true}>
-          <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+          <SignUpForm
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+          />
         </Route>
         <Route path="/search" exact={true}>
           <Search results={results}></Search>
@@ -70,7 +78,11 @@ function App() {
         <Route path="/items/:id" exact={true} authenticated={authenticated}>
           <ItemDetail user={sessionUser} isAuthenticated={authenticated} />
         </Route>
-        <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
+        <ProtectedRoute
+          path="/users/:userId"
+          exact={true}
+          authenticated={authenticated}
+        >
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/cart" exact={true} authenticated={authenticated}>

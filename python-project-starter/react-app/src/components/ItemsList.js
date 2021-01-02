@@ -22,12 +22,12 @@ function Items() {
   });
 
   return (
-    <>
+    <div className="item-page-container">
       <div className="header-text">
         <h1>ITEMS </h1>
       </div>
       <div className="item-components">{itemComponents}</div>
-    </>
+    </div>
   );
 }
 

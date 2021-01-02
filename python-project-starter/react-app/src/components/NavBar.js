@@ -27,10 +27,10 @@ const NavBar = ({ setAuthenticated, isAuthenticated, setResults }) => {
 
   const handleSubmit = () => {
     const itemFilteredResults = data[0].filter((item) =>
-      item.name.includes(search)
+      item.name.toLowerCase().includes(search.toLowerCase())
     );
     const petFilteredResults = data[1].filter((pet) =>
-      pet.name.includes(search)
+      pet.name.toLowerCase().includes(search.toLowerCase())
     );
 
     let petsAndItemsFiltered = [];
@@ -109,7 +109,7 @@ const NavBar = ({ setAuthenticated, isAuthenticated, setResults }) => {
           </div>
           <div>
             <NavLink to="/items" exact={true}>
-              Products
+              Items
             </NavLink>
           </div>
         </div>

@@ -24,6 +24,7 @@ def reviews():
     # return jsonify(reviews)
     reviews = Review.query.all()
     reviews_list = [review.to_dict() for review in reviews]
+    print("REVIEWS LIST", reviews_list)
     # Goal: {itemId1: {countReviews: 3, sumReviews: 12}}
 
     def buildScoreDic(reviews_list):
