@@ -1,20 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import NumberFormat from 'react-number-format';
-import AddToCart from './ShoppingCart/AddToCart';
-import RemoveFromCart from './ShoppingCart/RemoveFromCart';
-import RenderReviews from './Reviews/RenderReviews'
-import ItemBySeller from "./MoreFromSeller/ItemBySeller"
-import PostReview from "./Reviews/PostReview"
-import ScoreAvg from "./Reviews/ScoreAvg"
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import NumberFormat from "react-number-format";
+import AddToCart from "./ShoppingCart/AddToCart";
+import RemoveFromCart from "./ShoppingCart/RemoveFromCart";
+import RenderReviews from "./Reviews/RenderReviews";
+import ItemBySeller from "./MoreFromSeller/ItemBySeller";
+import PostReview from "./Reviews/PostReview";
+import ScoreAvg from "./Reviews/ScoreAvg";
 
+import "./itemsList.css";
 
 function ItemDetail({ user, isAuthenticated }) {
-  const [reviews, setReviews] = useState([])
+  const [reviews, setReviews] = useState([]);
   const [item, setItem] = useState([]);
-  const [seller, setSeller] = useState('');
+  const [seller, setSeller] = useState("");
   const { id } = useParams();
-  console.log(reviews)
+  console.log(reviews);
 
   // console.log("ID:", id)
 
@@ -22,17 +23,17 @@ function ItemDetail({ user, isAuthenticated }) {
     async function fetchData() {
       const response = await fetch(`/api/items/${id}`);
       const itemData = await response.json();
-      setItem(itemData)
+      setItem(itemData);
     }
     fetchData();
   }, [id]);
 
   useEffect(() => {
     async function fetchData() {
-      const sellerId = item.sellerId
+      const sellerId = item.sellerId;
       const response = await fetch(`/api/users/${sellerId}`);
       const sellerData = await response.json();
-      setSeller(sellerData)
+      setSeller(sellerData);
     }
     fetchData();
   }, [item]);
@@ -40,50 +41,63 @@ function ItemDetail({ user, isAuthenticated }) {
   // console.log(seller)
 
   return (
-    <>
-      <div>
-        <img src={item.imgurl}></img>
+    <div className="item-detail-container">
+      <div className="inner-item-detail-container">
+        <div className="img-container">
+          <img src={item.imgurl}></img>
+        </div>
+        <section className="details-container">
+          <div className="seller-first-last">
+            <h6>
+              {seller.firstName} {seller.lastName}
+            </h6>
+
+            <div className="score-average">
+              <ScoreAvg itemId={id} />
+            </div>
+          </div>
+          <div>
+            <h3>{item.name}</h3>
+          </div>
+          <div>
+            <p>{item.description}</p>
+          </div>
+          <div className="number-format">
+            <NumberFormat
+              value={item.price}
+              displayType={"text"}
+              thousandSeparator={true}
+              prefix={"$"}
+              renderText={(value) => <div>{value}</div>}
+              decimalScale={2}
+              fixedDecimalScale={true}
+            />
+          </div>
+          <div className="cart-button-container">
+            <AddToCart item={item} />
+            <RemoveFromCart id={item.id} />
+          </div>
+        </section>
       </div>
-      <section>
-        <div>
-          <div>
-            <h6>{seller.firstName} {seller.lastName}</h6>
+      <div className="bottom-container">
+        <div className="reviews-container">
+          <div className="reviews">
+            <RenderReviews reviews={reviews} setReviews={setReviews} />
+            {isAuthenticated && (
+              <PostReview
+                user={user}
+                reviews={reviews}
+                setReviews={setReviews}
+              />
+            )}
           </div>
-          <div>
-            <ScoreAvg itemId={id} />
-          </div>
         </div>
-        <div>
-          <h3>{item.name}</h3>
-        </div>
-        <div>
-          <p>{item.description}</p>
-        </div>
-        <div>
-          <NumberFormat
-            value={item.price}
-            displayType={'text'}
-            thousandSeparator={true}
-            prefix={'$'}
-            renderText={value => <div>{value}</div>}
-            decimalScale={2}
-            fixedDecimalScale={true}
-          />
-        </div>
-      </section>
-      <div>
-        <AddToCart item={item} />
-        <RemoveFromCart id={item.id} />
-        <div className="reviews">
-          <RenderReviews reviews={reviews} setReviews={setReviews} />
-          {isAuthenticated && <PostReview user={user} reviews={reviews} setReviews={setReviews} />}
-        </div>
-        <div>
+        <div className="more-by-seller">
           <ItemBySeller sellerId={item.sellerId} />
         </div>
       </div>
-    </>
-  )
+    </div>
+  );
 }
 
-export default ItemDetail
+export default ItemDetail;
