@@ -54,13 +54,14 @@ function App() {
           setAuthenticated={setAuthenticated}
           isAuthenticated={authenticated}
         />
-        <Route path="/login" exact={true}>
+        <Route path="/login">
           <LoginForm
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />
+          <Homepage />
         </Route>
-        <Route path="/sign-up" exact={true}>
+        <Route path="/sign-up">
           <SignUpForm
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
