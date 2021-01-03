@@ -31,10 +31,11 @@ function RenderReviews({ reviews, setReviews }) {
         return sum + parseFloat(review.score);
       }, 0);
     }
-    console.log(sum);
+    // console.log(sum);
     setAvgReview(sum / count);
   }, [reviews]);
 
+  console.log("REVIEWSSSSSSSS", reviews);
   return (
     <>
       <div className="total-reviews">

@@ -1,28 +1,32 @@
 import React, { useState } from "react";
 import { Redirect, useHistory, NavLink } from "react-router-dom";
 import { login } from "../../services/auth";
-import Modal from 'react-modal';
+import Modal from "react-modal";
+
+import "./loginForm.css";
 
 const customStyles = {
   content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)'
-  }
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    height: "480px",
+    width: "384px",
+    borderRadius: "20px",
+  },
 };
 
-Modal.setAppElement('#root')
+Modal.setAppElement("#root");
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
-  const history = useHistory()
+  const history = useHistory();
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showModal, setShowModal] = useState(false);
-
 
   //* Modal Functions
   function openModal() {
@@ -36,7 +40,6 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   function closeModal() {
     setShowModal(false);
   }
-
 
   //* Login functions
   const onLogin = async (e) => {
@@ -71,46 +74,52 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         style={customStyles}
         contentLabel="Login Modal"
       >
-        <div>
-          <h2>Sign in</h2>
+        <div className="modal-login-container">
+          <div className="sign-in-register">
+            <div>
+              <h2 className="sign-in-header-text">Sign in</h2>
+            </div>
+            <div className="link-to-sign-up">
+              <NavLink to="/sign-up" exact={true} activeClassName="active">
+                Register
+              </NavLink>
+            </div>
+          </div>
+          <form onSubmit={onLogin} className="modal-login-form">
+            <div>
+              {errors.map((error) => (
+                <div className="login-error-div">{error}</div>
+              ))}
+            </div>
+            <div className="email">
+              <label htmlFor="email">Email address</label>
+            </div>
+            <div>
+              <input
+                name="email"
+                type="text"
+                placeholder="Email"
+                value={email}
+                onChange={updateEmail}
+              />
+            </div>
+            <div className="password">
+              <label htmlFor="password">Password</label>
+            </div>
+            <div className="password-input-field">
+              <input
+                name="password"
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={updatePassword}
+              />
+              <button className="modal-login-button" type="submit">
+                Sign in
+              </button>
+            </div>
+          </form>
         </div>
-        <div>
-          <NavLink to="/sign-up" exact={true} activeClassName="active">
-            Register
-          </NavLink>
-        </div>
-        <form onSubmit={onLogin}>
-          <div>
-            {errors.map((error) => (
-              <div>{error}</div>
-            ))}
-          </div>
-          <div>
-            <label htmlFor="email">Email</label>
-          </div>
-          <div>
-            <input
-              name="email"
-              type="text"
-              placeholder="Email"
-              value={email}
-              onChange={updateEmail}
-            />
-          </div>
-          <div>
-            <label htmlFor="password">Password</label>
-          </div>
-          <div>
-            <input
-              name="password"
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={updatePassword}
-            />
-            <button type="submit">Sign in</button>
-          </div>
-        </form>
       </Modal>
     </>
   );
