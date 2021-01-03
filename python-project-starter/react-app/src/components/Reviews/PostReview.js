@@ -6,7 +6,7 @@ import _ from "lodash";
 function PostReview({ user, setReviews, reviews }) {
   const [score, setScore] = useState(0);
   const [review, setReview] = useState("");
-  const userId = user.id;
+  const userId = user.id || undefined;
   const params = useParams();
   const itemId = params.id;
 
@@ -25,7 +25,7 @@ function PostReview({ user, setReviews, reviews }) {
       }),
     });
     const reviewData = await reviewFetch.json();
-    console.log(reviewData);
+    console.log("REVIEW DATA", reviewData);
     if (!reviewData.errors) {
       let reviewsDupe = _.cloneDeep(reviews);
       console.log(reviewsDupe);

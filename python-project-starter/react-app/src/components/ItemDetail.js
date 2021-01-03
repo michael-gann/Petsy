@@ -32,12 +32,14 @@ function ItemDetail({ user, isAuthenticated }) {
       const sellerId = item.sellerId;
       const response = await fetch(`/api/users/${sellerId}`);
       const sellerData = await response.json();
+      console.log("SELLER DATA", sellerData);
       setSeller(sellerData);
     }
     fetchData();
   }, [item]);
 
-  // console.log(seller)
+  console.log(seller);
+  console.log("ITEM>SELLERID", item.sellerId);
 
   return (
     <div className="item-detail-container">
@@ -72,10 +74,12 @@ function ItemDetail({ user, isAuthenticated }) {
               fixedDecimalScale={true}
             />
           </div>
-          {isAuthenticated && <div className="cart-button-container">
-            <AddToCart item={item} />
-            <RemoveFromCart id={item.id} />
-          </div>}
+          {isAuthenticated && (
+            <div className="cart-button-container">
+              <AddToCart item={item} />
+              <RemoveFromCart id={item.id} />
+            </div>
+          )}
         </section>
       </div>
       <div className="bottom-container">

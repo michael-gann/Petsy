@@ -35,6 +35,7 @@ function RenderReviews({ reviews, setReviews }) {
     setAvgReview(sum / count);
   }, [reviews]);
 
+  console.log("REVIEWSSSSSSSS", reviews);
   return (
     <>
       <div className="total-reviews">
