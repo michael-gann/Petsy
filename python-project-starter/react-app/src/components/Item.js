@@ -2,6 +2,8 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import NumberFormat from "react-number-format";
 import ScoreAvg from "./Reviews/ScoreAvg";
+import { areas } from "../common/areas";
+import Spinner from "./Spinner";
 
 function Item({ item }) {
   const history = useHistory();

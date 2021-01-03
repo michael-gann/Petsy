@@ -1,7 +1,8 @@
-from flask import Blueprint, jsonify, session, request
+from flask import Blueprint, request
 from app.models import Review, db
 from sqlalchemy.orm import selectinload
 from app.forms import ReviewForm
+from sqlalchemy import desc
 
 
 review_routes = Blueprint('reviews', __name__)
@@ -20,7 +21,8 @@ def validation_errors_to_error_messages(validation_errors):
 
 @review_routes.route("/")
 def reviews():
-    # reviews = db.session.query(Review).options(selectinload(Review.review)).all()
+    # reviews = db.session.query(Review).options(selectinload
+    # (Review.review)).all()
     # return jsonify(reviews)
     reviews = Review.query.all()
     reviews_list = [review.to_dict() for review in reviews]
@@ -47,6 +49,7 @@ def post_reviews():
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        # print(form.data['userId'])
         review = Review(
             userId=form.data['userId'],
             itemId=form.data['itemId'],
@@ -55,5 +58,9 @@ def post_reviews():
         )
         db.session.add(review)
         db.session.commit()
-        return user.to_dict()
+
+        reviews = db.session.query(Review).options(
+            selectinload(Review.user)).filter_by(userId=form.data['userId']).order_by(
+            desc(Review.createdAt)).limit(1).first()
+        return {**reviews.to_dict(), "user": review.user.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}

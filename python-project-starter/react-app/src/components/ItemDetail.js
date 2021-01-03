@@ -15,7 +15,6 @@ function ItemDetail({ user, isAuthenticated }) {
   const [item, setItem] = useState([]);
   const [seller, setSeller] = useState("");
   const { id } = useParams();
-  console.log(reviews);
 
   // console.log("ID:", id)
 
@@ -33,12 +32,14 @@ function ItemDetail({ user, isAuthenticated }) {
       const sellerId = item.sellerId;
       const response = await fetch(`/api/users/${sellerId}`);
       const sellerData = await response.json();
+      console.log("SELLER DATA", sellerData);
       setSeller(sellerData);
     }
     fetchData();
   }, [item]);
 
-  // console.log(seller)
+  console.log(seller);
+  console.log("ITEM>SELLERID", item.sellerId);
 
   return (
     <div className="item-detail-container">
@@ -73,10 +74,12 @@ function ItemDetail({ user, isAuthenticated }) {
               fixedDecimalScale={true}
             />
           </div>
-          {isAuthenticated && <div className="cart-button-container">
-            <AddToCart item={item} />
-            <RemoveFromCart id={item.id} />
-          </div>}
+          {isAuthenticated && (
+            <div className="cart-button-container">
+              <AddToCart item={item} />
+              <RemoveFromCart id={item.id} />
+            </div>
+          )}
         </section>
       </div>
       <div className="bottom-container">
@@ -94,6 +97,14 @@ function ItemDetail({ user, isAuthenticated }) {
         </div>
         <div className="more-by-seller">
           <ItemBySeller sellerId={item.sellerId} />
+        </div>
+        <div>
+          <AddToCart item={item} />
+          <RemoveItemFromCart id={item.id} />
+          <RenderReviews />
+          <div>
+            <ItemBySeller sellerId={item.sellerId} />
+          </div>
         </div>
       </div>
     </div>

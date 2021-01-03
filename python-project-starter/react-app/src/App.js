@@ -37,7 +37,7 @@ function App() {
     const fetchScores = async () => {
       const res = await fetch("/api/reviews");
       const scoresObj = await res.json();
-      console.log("SCORES OBJECT", scoresObj);
+      // console.log("SCORES OBJECT", scoresObj);
       setScores(scoresObj);
     };
     fetchScores();
@@ -75,7 +75,11 @@ function App() {
           >
             <User />
           </ProtectedRoute>
-          <ProtectedRoute path="/cart" exact={true} authenticated={authenticated}>
+          <ProtectedRoute
+            path="/cart"
+            exact={true}
+            authenticated={authenticated}
+          >
             <Cart />
           </ProtectedRoute>
           <Route path="/" exact={true} authenticated={authenticated}>
