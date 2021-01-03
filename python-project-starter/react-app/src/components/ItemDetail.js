@@ -94,6 +94,14 @@ function ItemDetail({ user, isAuthenticated }) {
         <div className="more-by-seller">
           <ItemBySeller sellerId={item.sellerId} />
         </div>
+        <div>
+          <AddToCart item={item} />
+          <RemoveItemFromCart id={item.id} />
+          <RenderReviews />
+          <div>
+            <ItemBySeller sellerId={item.sellerId} />
+          </div>
+        </div>
       </div>
     </div>
   );
