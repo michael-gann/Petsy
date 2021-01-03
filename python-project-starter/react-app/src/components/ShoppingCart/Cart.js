@@ -51,7 +51,7 @@ function Cart() {
             <div key={pets.id}>
               <img src={pets.imgurl} />
               <div>
-                <NavLink to={`/petss/${pets.id}`}>{pets.name}</NavLink>
+                <NavLink to={`/pets/${pets.id}`}>{pets.name}</NavLink>
                 <p>{`$${pets.price}`}</p>
               </div>
               <div>
