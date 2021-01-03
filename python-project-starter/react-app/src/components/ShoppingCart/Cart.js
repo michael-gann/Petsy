@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 function Cart() {
   let localItemsCart = JSON.parse(localStorage.getItem('cart'))
   let localPetsCart = JSON.parse(localStorage.getItem('petCart'))
-  let [cartItems, setCartItems] = useState([...localItemsCart])
+  let [cartItems, setCartItems] = useState(localItemsCart || [])
   let [cart, setCart] = useState([])
   let [petsCart, setPetsCart] = useState([])
   const history = useHistory();
