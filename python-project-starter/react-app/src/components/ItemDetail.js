@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import NumberFormat from "react-number-format";
 import AddToCart from "./ShoppingCart/AddToCart";
-import RemoveFromCart from "./ShoppingCart/RemoveItemFromCart";
+import RemoveItemFromCart from "./ShoppingCart/RemoveItemFromCart";
 import RenderReviews from "./Reviews/RenderReviews";
 import ItemBySeller from "./MoreFromSeller/ItemBySeller";
 import PostReview from "./Reviews/PostReview";
@@ -77,7 +77,7 @@ function ItemDetail({ user, isAuthenticated }) {
           {isAuthenticated && (
             <div className="cart-button-container">
               <AddToCart item={item} />
-              <RemoveFromCart id={item.id} />
+              <RemoveItemFromCart id={item.id} />
             </div>
           )}
         </section>
@@ -97,14 +97,6 @@ function ItemDetail({ user, isAuthenticated }) {
         </div>
         <div className="more-by-seller">
           <ItemBySeller sellerId={item.sellerId} />
-        </div>
-        <div>
-          <AddToCart item={item} />
-          <RemoveItemFromCart id={item.id} />
-          <RenderReviews />
-          <div>
-            <ItemBySeller sellerId={item.sellerId} />
-          </div>
         </div>
       </div>
     </div>
