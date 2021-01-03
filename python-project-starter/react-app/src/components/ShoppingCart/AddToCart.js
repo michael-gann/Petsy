@@ -9,15 +9,18 @@ function AddToCart({ item }) {
 
   const addItem = () => {
     let cartCopy = [...cart];
-    let itemToAdd = item.id;
-    let { id } = itemToAdd;
-    let existingItem = cartCopy.find((cartItem) => cartItem == id);
+    let itemToAdd = item.id
+
+    let existingItem = cartCopy.find(cartItem => {
+      return Object.keys(cartItem) == itemToAdd.toString()
+    });
 
     if (existingItem) {
-      existingItem.quantity += item.quantity; //update item
+      existingItem[itemToAdd] += 1
     } else {
-      //if item doesn't exist, simply add it
-      cartCopy.push(itemToAdd);
+      const obj = {};
+      obj[itemToAdd] = 1
+      cartCopy.push(obj)
     }
 
     setCart(cartCopy);
