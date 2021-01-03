@@ -1,6 +1,7 @@
 import React from "react";
 import NumberFormat from "react-number-format";
 import { useHistory } from "react-router-dom";
+import AddPetToCart from '../ShoppingCart/AddPetToCart';
 
 function Pet({ pet }) {
   const history = useHistory();
@@ -29,6 +30,7 @@ function Pet({ pet }) {
           thousandSeparator={true}
           prefix={"$"}
         />
+        <AddPetToCart pet={pet} />
       </div>
     </div>
   );
