@@ -16,9 +16,12 @@ function Pet({ pet }) {
         <img src={pet.imgurl} alt="Pet pic" />
       </div>
       <div className="pet-details" onClick={handleClick}>
-        {pet.user.firstName} {pet.user.lastName}
-        {pet.name}
-        {pet.breed}
+        <div className="pet-name">
+          {pet.name}
+        </div>
+        <div>
+          {pet.breed}
+        </div>
         <NumberFormat
           value={pet.price}
           decimalScale={2}

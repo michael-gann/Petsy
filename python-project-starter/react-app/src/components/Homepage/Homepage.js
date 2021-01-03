@@ -6,14 +6,18 @@ import "./homepage.css";
 
 function Homepage() {
   return (
-    <div className="page-container">
-      <div className="pets">
-        <Pets />
-      </div>
-      <div className="items">
-        <Items />
-      </div>
-    </div>
+    <>
+      {
+        <div className="page-container">
+          <div className="pets">
+            <Pets />
+          </div>
+          <div className="items">
+            <Items />
+          </div>
+        </div>
+      }
+    </>
   );
 }
 
