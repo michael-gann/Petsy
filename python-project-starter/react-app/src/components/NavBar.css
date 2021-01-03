@@ -296,6 +296,11 @@ textarea:focus, input:focus{
   width: 55px;
 }
 
+.fa.fa-caret-down {
+  padding-top: 3px;
+  padding-left: 4px;
+}
+
 .navbar a:hover, .dropdown:hover .dropbtn {
   background-color:lightgray;
 }

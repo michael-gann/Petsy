@@ -2,13 +2,13 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import NumberFormat from "react-number-format";
 import ScoreAvg from "./Reviews/ScoreAvg";
-import { areas } from "../common/areas";
-import Spinner from "./Spinner";
+import AddToCart from "./ShoppingCart/AddToCart"
 
 function Item({ item }) {
   const history = useHistory();
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    if (e.target.className === "addToCartBtn") return history.push('/cart')
     return history.push(`/items/${item.id}`);
   };
 
@@ -17,7 +17,7 @@ function Item({ item }) {
       <div className="image-container" onClick={handleClick}>
         <img src={item.imgurl}></img>
       </div>
-      <div className="item-details">
+      <div className="item-details" onClick={handleClick}>
         <div className="item-name">{item.name}</div>
         <div>
           <div className="item-inner-price">
@@ -32,8 +32,13 @@ function Item({ item }) {
             />
           </div>
         </div>
-        <div className="score">
-          <ScoreAvg itemId={item.id} />
+        <div className="score-add-cart">
+          <div className="score">
+            <ScoreAvg itemId={item.id} />
+          </div>
+          <div className="add-item-cart-btn">
+            <AddToCart item={item} />
+          </div>
         </div>
       </div>
     </div>

@@ -66,18 +66,16 @@ function Cart() {
   const updateQty = (e) => {
     let cartCopy = [...cartItems]
 
-    console.log("cartCopy", cartCopy)
-
     let targetItem = cartCopy.find(cartItem => {
-      return Object.keys(cartItem) == e.target.name
+      return cartItem.id == e.target.value
     });
 
-    targetItem[e.target.name.toString()] = e.target.value
+    // targetItem[e.target.name.toString()] = e.target.value
 
-    setCart(cartCopy);
+    // setCart(cartCopy);
 
-    let cartString = JSON.stringify(cartCopy);
-    localStorage.setItem('cart', cartString);
+    // let cartString = JSON.stringify(cartCopy);
+    // localStorage.setItem('cart', cartString);
   }
 
   useEffect(() => {
