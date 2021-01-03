@@ -184,7 +184,7 @@ textarea:focus, input:focus{
   flex-shrink: initial;
 }
 
-.login-container a {
+.login-container button {
   color: black;
   text-decoration: none;
 }
