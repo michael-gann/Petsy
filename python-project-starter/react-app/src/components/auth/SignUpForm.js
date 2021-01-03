@@ -14,6 +14,8 @@ const customStyles = {
   }
 };
 
+Modal.setAppElement('#root')
+
 const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const history = useHistory()
   const [firstName, setFirstName] = useState("");
@@ -21,13 +23,20 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
-  const [modalIsOpen, setIsOpen] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   //* Modal Functions
+  function openModal() {
+    setShowModal(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+  }
+
   function closeModal() {
-    setIsOpen(false);
-    return history.push('/')
-  };
+    setShowModal(false);
+  }
 
   //* Signup functions
   const onSignUp = async (e) => {
@@ -65,74 +74,78 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   }
 
   return (
-    <Modal
-      isOpen={modalIsOpen}
-      onRequestClose={closeModal}
-      style={customStyles}
-      contentLabel="Example Modal"
-    >
-      <h2>Create your account</h2>
-      <h3>Registration is easy.</h3>
-      <form onSubmit={onSignUp}>
-        <div>
-          <label>First Name</label>
-        </div>
-        <div>
-          <input
-            type="text"
-            name="firstName"
-            onChange={updateFirstName}
-            value={firstName}
-          ></input>
-        </div>
-        <div>
-          <label>Last Name</label>
-        </div>
-        <div>
-          <input
-            type="text"
-            name="lastName"
-            onChange={updateLastName}
-            value={lastName}
-          ></input>
-        </div>
-        <div>
-          <label>Email</label>
-        </div>
-        <div>
-          <input
-            type="text"
-            name="email"
-            onChange={updateEmail}
-            value={email}
-          ></input>
-        </div>
-        <div>
-          <label>Password</label>
-        </div>
-        <div>
-          <input
-            type="password"
-            name="password"
-            onChange={updatePassword}
-            value={password}
-          ></input>
-        </div>
-        <div>
-          <label>Confirm Password</label>
-        </div>
-        <div>
-          <input
-            type="password"
-            name="repeat_password"
-            onChange={updateRepeatPassword}
-            value={repeatPassword}
-            required={true}
-          ></input>
-        </div>
-        <button type="submit">Register</button>
-      </form>
-    </Modal>
+    <>
+      <button onClick={openModal}>Sign up</button>
+      <Modal
+        isOpen={showModal}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Sign up Modal"
+      >
+        <h2>Create your account</h2>
+        <h3>Registration is easy.</h3>
+        <form onSubmit={onSignUp}>
+          <div>
+            <label>First Name</label>
+          </div>
+          <div>
+            <input
+              type="text"
+              name="firstName"
+              onChange={updateFirstName}
+              value={firstName}
+            ></input>
+          </div>
+          <div>
+            <label>Last Name</label>
+          </div>
+          <div>
+            <input
+              type="text"
+              name="lastName"
+              onChange={updateLastName}
+              value={lastName}
+            ></input>
+          </div>
+          <div>
+            <label>Email</label>
+          </div>
+          <div>
+            <input
+              type="text"
+              name="email"
+              onChange={updateEmail}
+              value={email}
+            ></input>
+          </div>
+          <div>
+            <label>Password</label>
+          </div>
+          <div>
+            <input
+              type="password"
+              name="password"
+              onChange={updatePassword}
+              value={password}
+            ></input>
+          </div>
+          <div>
+            <label>Confirm Password</label>
+          </div>
+          <div>
+            <input
+              type="password"
+              name="repeat_password"
+              onChange={updateRepeatPassword}
+              value={repeatPassword}
+              required={true}
+            ></input>
+          </div>
+          <button type="submit">Register</button>
+        </form>
+      </Modal>
+    </>
   );
 };
 

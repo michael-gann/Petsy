@@ -9,6 +9,10 @@
   border-bottom: 1px solid rgba(5, 4, 4, 0.068);
 }
 
+ul.nav.navbar-items {
+  padding: 0px;
+}
+
 .nav {
   display: flex;
 }
@@ -33,7 +37,7 @@
 .cart-user-container {
   display: flex;
   justify-content: space-between;
-  width: 100px;
+  width: 150px;
   align-items: center;
   margin-right: 50px
 }
@@ -41,7 +45,6 @@
 .cart a {
   text-decoration: none;
   color: black;
-  font-size: 1.5rem;
 }
 
 .cart a:hover {
@@ -76,6 +79,11 @@
   border: 1px solid grey;
 }
 
+textarea:focus, input:focus{
+  outline: none;
+  background-color: white;
+}
+
 .dropdown {
   float: right;
   overflow: hidden;
@@ -83,9 +91,12 @@
 }
 
 .dropdown .dropbtn {
-  font-size: 14px;
-  padding: 2px 4px;
-  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  width: 60px;
+  font-size: 17px;
+  padding: 6px 8px;
+  border: none;
   outline: none;
   color: black;
   border-radius: 10px;
@@ -95,7 +106,7 @@
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn {
-  background-color:gray;
+  background-color:lightgray;
 }
 
 .dropdown-content {
@@ -103,7 +114,7 @@
   position: absolute;
   background-color: transparent;
   min-width: 20px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
   z-index: 1;
 }
 
@@ -120,8 +131,19 @@
   background-color: #ddd;
 }
 
+.dropdown-content > button {
+  font-size: 15px;
+  padding: 6px 8px;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
 .dropdown:hover .dropdown-content {
+  font-size: 15px;
+  padding: 4px;
+  background-color: white;
   display: block;
 }
 
@@ -155,12 +177,17 @@
 
 .login-container {
   display: flex;
-  justify-content: space-between;
-  width: 100px;
-  margin-right: 50px;
+  justify-content: space-around;
+  min-width: 130px;
+  max-width: 150px;
+  margin: 0px 20px;
+  flex-shrink: initial;
 }
 
-.login-container a {
+.login-container button {
   color: black;
   text-decoration: none;
+  background-color: transparent;
+  font-size: 16px;
+  border: none;
 }
