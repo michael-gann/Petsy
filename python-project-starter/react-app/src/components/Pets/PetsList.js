@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Pet from "./Pet";
+import { areas } from "../../common/areas";
+import { trackPromise } from "react-promise-tracker";
+import Spinner from "../Spinner";
 
 import "./petsList.css";
 
@@ -12,12 +15,13 @@ const PetsList = () => {
       const petData = await response.json();
       setPets(petData);
     }
-    fetchData();
+    trackPromise(fetchData(), areas.pet2);
   }, []);
 
   return (
     <div className="petslist-main-container">
       <h1 className="pets-header">PETS</h1>
+      <Spinner area={areas.pet2} />
       <div className="petslist-inner-container">
         {pets.map((pet) => (
           <Pet key={pet.id} pet={pet}></Pet>
