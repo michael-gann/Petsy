@@ -5,6 +5,7 @@ div.pet-detail-container {
     align-items: center;
     max-width: 100vw;
     display: flex;
+    flex-direction: column;
 }
 
 div.pet-detail-img-info {
@@ -14,8 +15,8 @@ div.pet-detail-img-info {
     justify-content: center;
     max-width: 1050px;
     min-width: 200px;
-    height: 550px;
-    margin-bottom: 100px;
+    height: 100%;
+    margin: 20px 0px 100px 0px;
 }
 
 div.pet-detail-image-container {
@@ -64,20 +65,24 @@ img.image-pet {
     justify-content: center;
 }
 
-div.pet-detail-more > .more-pets {
+.pet-detail-more-container {
     display: flex;
-    height: 500px;
-    width: 100%;
+    flex-wrap: wrap;
 }
 
 div.pet-detail-more {
-    width: 80%;
+    width: 80vw;
     height: 500px;
     object-fit: cover;
     border-radius: 3px;
     transition: box-shadow 250ms ease-in-out, transform 150ms ease;
 }
 
+div.pet-detail-more > .more-pets {
+    display: flex;
+    height: 500px;
+    width: 100%;
+}
 div.pet-detail-more .more-pets {
     margin: 10px;
 }

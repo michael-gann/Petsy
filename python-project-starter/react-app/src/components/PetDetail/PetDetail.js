@@ -63,8 +63,10 @@ function PetDetail({ user, isAuthenticated }) {
                     </div>}
                 </div>
             </div>
-            <div className="pet-detail-more">
-                <PetBySeller user={user} sellerId={pet.sellerId} />
+            <div className="pet-detail-more-container">
+                <div className="pet-detail-more">
+                    <PetBySeller user={user} sellerId={pet.sellerId} />
+                </div>
             </div>
 
         </div>

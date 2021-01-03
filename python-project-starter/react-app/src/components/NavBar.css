@@ -178,7 +178,7 @@ textarea:focus, input:focus{
 .login-container {
   display: flex;
   justify-content: space-around;
-  min-width: 120px;
+  min-width: 130px;
   max-width: 150px;
   margin: 0px 20px;
   flex-shrink: initial;
@@ -187,4 +187,7 @@ textarea:focus, input:focus{
 .login-container button {
   color: black;
   text-decoration: none;
+  background-color: transparent;
+  font-size: 16px;
+  border: none;
 }
