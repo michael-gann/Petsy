@@ -6,6 +6,8 @@ import Spinner from "./Spinner";
 
 import "./itemPage.css";
 
+import "./itemPage.css";
+
 function Items() {
   const [items, setItems] = useState([]);
 
