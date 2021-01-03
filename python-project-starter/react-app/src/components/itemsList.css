@@ -13,6 +13,7 @@
     align-items: center;
     justify-content: center;
     max-width: 1050px;
+    min-height: 550px;
 }
 
 .inner-item-detail-container .img-container {
@@ -21,7 +22,6 @@
     height: 450px;
     margin-bottom: 50px;
     align-self: center;
-    /* overflow: hidden; */
 }
 
 .inner-item-detail-container .img-container img {
@@ -35,6 +35,7 @@
     max-width: 550px;
     padding: 20px;
     min-width: 500px;
+    min-height: 420px;
 }
 
 .details-container h3 {
@@ -117,7 +118,7 @@ align-items: center;
 
 .total-reviews {
     border-bottom: 1px solid gray;
-    margin-bottom: 8px;
+    margin-bottom: 20px;
 }
 
 .reviews {
@@ -128,6 +129,12 @@ align-items: center;
 
 .reviews .user-and-date {
 margin-bottom: 20px;
+font-weight: bold;
+font-size: 12px;
+}
+
+.reviews .review-description {
+    margin-bottom: 50px;
 }
 
 .bottom-container {
