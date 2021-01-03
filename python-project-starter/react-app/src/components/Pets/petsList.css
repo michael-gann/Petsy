@@ -75,6 +75,15 @@
     font-weight: bold;
 }
 
+.price-and-add-pet {
+    display: flex;
+    justify-content: space-between;
+}
+
+.price-and-add-pet .add-pet-cart-btn button {
+    cursor: pointer;
+}
+
 .spinner {
     display: flex;
     flex-direction: column;
