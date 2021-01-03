@@ -2,8 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import NumberFormat from "react-number-format";
 import ScoreAvg from "./Reviews/ScoreAvg";
-import { areas } from "../common/areas";
-import Spinner from "./Spinner";
+import AddToCart from "./ShoppingCart/AddToCart"
 
 function Item({ item }) {
   const history = useHistory();
@@ -32,8 +31,13 @@ function Item({ item }) {
             />
           </div>
         </div>
-        <div className="score">
-          <ScoreAvg itemId={item.id} />
+        <div className="score-add-cart">
+          <div className="score">
+            <ScoreAvg itemId={item.id} />
+          </div>
+          <div className="add-item-cart-btn">
+            <AddToCart item={item} />
+          </div>
         </div>
       </div>
     </div>
