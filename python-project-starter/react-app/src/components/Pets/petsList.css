@@ -74,3 +74,13 @@
     font-size: 1.2em;
     font-weight: bold;
 }
+
+.spinner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 350px;
+    min-width:350px;
+    margin-bottom: 400px;
+}

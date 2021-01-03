@@ -28,8 +28,8 @@ const ItemBySeller = ({ user, sellerId }) => {
         <HorizontalScroll reverseScroll={true}>
           {item.map((item) => {
             return (
-              <div key={item.id} className="more-items">
-                <Item item={item} style={child}></Item>;
+              <div key={item.id} style={child} className="more-items">
+                <Item item={item}></Item>;
               </div>
             );
           })}
