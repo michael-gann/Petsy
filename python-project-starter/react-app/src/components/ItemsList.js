@@ -10,6 +10,7 @@ function Items() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
+    // 3 second delay fetch for testing
     // const fetchWithDelay = () => {
     //   const promise = new Promise((resolve, reject) => {
     //     setTimeout(() => {
@@ -24,33 +25,6 @@ function Items() {
     // };
 
     // const fetchItems = () => fetchWithDelay();
-
-    // trackPromise(
-    //   fetchItems().then((items) => {
-    //     setItems(items);
-    //   }),
-    //   areas.item
-    // );
-    //   const fetchApiData = fetch("/api/items")
-    //     .then((res) => res.json())
-    //     .then((data) => setItems(data));
-    //   console.log("FETCHAPIDATA", fetchApiData);
-    //   trackPromise(fetchApiData);
-
-    // trackPromise(
-    //   console.log(fetch("/api/items")
-    //     .then((res) => {
-    //       const itemData = res.json();
-    //       console.log("ITEMDATA", itemData);
-    //       return itemData;
-    //     })
-    //     .then((itemData) => {
-    //       setItems(itemData);
-    //     }),
-    //   areas.item
-    // );
-
-    console.log("ITEMS STATE", items);
     async function fetchData() {
       const response = await fetch("/api/items");
       const itemData = await response.json();
@@ -58,8 +32,6 @@ function Items() {
     }
     trackPromise(fetchData(), areas.item);
   }, []);
-
-  console.log("items", items);
 
   const itemComponents = items.map((item) => {
     return (

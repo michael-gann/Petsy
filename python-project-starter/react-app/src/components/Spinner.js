@@ -14,7 +14,7 @@ export const Spinner = (props) => {
     <>
       {promiseInProgress && (
         <div className="spinner">
-          <Circle />
+          <Circle size={100} />
         </div>
       )}
     </>
