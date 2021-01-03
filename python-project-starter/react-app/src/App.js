@@ -14,6 +14,7 @@ import User from "./components/User";
 import Cart from "./components/ShoppingCart/Cart";
 import Search from "./components/Search/Search";
 import { authenticate } from "./services/auth";
+import ScrollToTop from "./components/ScrollToTop";
 
 export const ScoreContext = createContext();
 
@@ -54,47 +55,40 @@ function App() {
           setAuthenticated={setAuthenticated}
           isAuthenticated={authenticated}
         />
-        <Route path="/login">
-          <LoginForm
+        <ScrollToTop>
+          <Route path="/search" exact={true}>
+            <Search results={results}></Search>
+          </Route>
+          <Route path="/items" exact={true} authenticated={authenticated}>
+            <ItemsList />
+          </Route>
+          <Route path="/pets" exact={true} authenticated={authenticated}>
+            <PetsList />
+          </Route>
+          <Route path="/items/:id" exact={true} authenticated={authenticated}>
+            <ItemDetail user={sessionUser} isAuthenticated={authenticated} />
+          </Route>
+          <ProtectedRoute
+            path="/users/:userId"
+            exact={true}
             authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
-          <Homepage />
-        </Route>
-        <Route path="/sign-up">
-          <SignUpForm
+          >
+            <User />
+          </ProtectedRoute>
+          <ProtectedRoute
+            path="/cart"
+            exact={true}
             authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
-        </Route>
-        <Route path="/search" exact={true}>
-          <Search results={results}></Search>
-        </Route>
-        <Route path="/items" exact={true} authenticated={authenticated}>
-          <ItemsList />
-        </Route>
-        <Route path="/pets" exact={true} authenticated={authenticated}>
-          <PetsList />
-        </Route>
-        <Route path="/items/:id" exact={true} authenticated={authenticated}>
-          <ItemDetail user={sessionUser} isAuthenticated={authenticated} />
-        </Route>
-        <ProtectedRoute
-          path="/users/:userId"
-          exact={true}
-          authenticated={authenticated}
-        >
-          <User />
-        </ProtectedRoute>
-        <ProtectedRoute path="/cart" exact={true} authenticated={authenticated}>
-          <Cart />
-        </ProtectedRoute>
-        <Route path="/" exact={true} authenticated={authenticated}>
-          <Homepage />
-        </Route>
-        <Route path="/pets/:id" exact={true}>
-          <PetDetail user={sessionUser} />
-        </Route>
+          >
+            <Cart />
+          </ProtectedRoute>
+          <Route path="/" exact={true} authenticated={authenticated}>
+            <Homepage />
+          </Route>
+          <Route path="/pets/:id" exact={true}>
+            <PetDetail user={sessionUser} isAuthenticated={authenticated} />
+          </Route>
+        </ScrollToTop>
         <Footer />
       </BrowserRouter>
     </ScoreContext.Provider>
