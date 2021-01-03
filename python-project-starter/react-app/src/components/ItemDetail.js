@@ -95,8 +95,22 @@ function ItemDetail({ user, isAuthenticated }) {
             )}
           </div>
         </div>
+<<<<<<< HEAD
         <div className="more-by-seller"></div>
         <ItemBySeller sellerId={item.sellerId} />
+=======
+        <div className="more-by-seller">
+          <ItemBySeller sellerId={item.sellerId} />
+        </div>
+        <div>
+          <AddToCart item={item} />
+          <RemoveItemFromCart id={item.id} />
+          <RenderReviews />
+          <div>
+            <ItemBySeller sellerId={item.sellerId} />
+          </div>
+        </div>
+>>>>>>> master
       </div>
     </div>
   );

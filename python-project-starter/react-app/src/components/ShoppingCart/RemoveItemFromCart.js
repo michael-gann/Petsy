@@ -1,27 +1,28 @@
 import React, { useState, useEffect } from "react";
 
-function RemoveFromCart(id) {
+function RemoveItemFromCart({ item, setCartItems }) {
   let [cart, setCart] = useState([])
-
   let localCart = localStorage.getItem("cart");
 
   const removeItem = () => {
     let cartCopy = [...cart]
-    let itemID = id
+    let itemToRemove = item.id.toString()
 
-    console.log("itemID", itemID)
 
-    cartCopy = cartCopy.filter(item => item != itemID.id);
+    let newCartCopy = cartCopy.filter(cartItem => {
+      return Object.keys(cartItem)[0] !== itemToRemove
+    });
 
-    setCart(cartCopy);
+    setCartItems(newCartCopy);
 
-    let cartString = JSON.stringify(cartCopy)
+    let cartString = JSON.stringify(newCartCopy)
     localStorage.setItem('cart', cartString)
+    window.location.reload(false);
   }
 
   useEffect(() => {
     localCart = JSON.parse(localCart);
-    if (localCart) setCart(localCart)
+    if (localCart) setCart(localCart);
   }, [])
 
   return (
@@ -35,4 +36,4 @@ function RemoveFromCart(id) {
   );
 }
 
-export default RemoveFromCart;
+export default RemoveItemFromCart;
