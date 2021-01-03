@@ -39,8 +39,8 @@ function RenderReviews({ reviews, setReviews }) {
     <>
       <div className="total-reviews">
         <h2>
-          {reviews.length} {reviews.length > 1 ? "reviews  " : "review  "}
-          {avgReview && (
+          {reviews.length} {reviews.length === 0 ? "reviews  " : "review  "}
+          {avgReview ? (
             <StarRatings
               rating={avgReview}
               starRatedColor="black"
@@ -50,33 +50,37 @@ function RenderReviews({ reviews, setReviews }) {
               starSpacing="0px"
               name="rating"
             />
+          ) : (
+            ""
           )}
         </h2>
       </div>
       <div>
-        {reviews.length &&
-          reviews.map((review) => {
-            return (
-              <div key={review.id}>
-                <div className="user-and-date">
-                  {`${review.user.firstName} ${review.user.lastName}`}{" "}
-                  {dateStringManipulation(review)}
+        {reviews.length === 0
+          ? ""
+          : reviews.length &&
+            reviews.map((review) => {
+              return (
+                <div key={review.id}>
+                  <div className="user-and-date">
+                    {`${review.user.firstName} ${review.user.lastName}`}{" "}
+                    {dateStringManipulation(review)}
+                  </div>
+                  <div className="star-rating">
+                    <StarRatings
+                      rating={review.score}
+                      starRatedColor="black"
+                      starEmptyColor="grey"
+                      numberOfStars={5}
+                      starDimension="22px"
+                      starSpacing="0px"
+                      name="rating"
+                    />
+                  </div>
+                  <div className="review-description">{review.review}</div>
                 </div>
-                <div className="star-rating">
-                  <StarRatings
-                    rating={review.score}
-                    starRatedColor="black"
-                    starEmptyColor="grey"
-                    numberOfStars={5}
-                    starDimension="22px"
-                    starSpacing="0px"
-                    name="rating"
-                  />
-                </div>
-                <div className="review-description">{review.review}</div>
-              </div>
-            );
-          })}
+              );
+            })}
       </div>
     </>
   );
