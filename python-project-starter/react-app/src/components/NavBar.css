@@ -174,6 +174,14 @@
     text-decoration: none;
     margin-top: 3px;
   }
+
+  .login-container button {
+    color: black;
+    text-decoration: none;
+    background-color: transparent;
+    font-size: 16px;
+    border: none;
+  }
 }
 
 @media screen and (min-width: 470px) {
@@ -360,16 +368,16 @@ textarea:focus, input:focus{
 
 .login-container {
   display: flex;
-  /* justify-content: space-between;
-  min-width: 90px;
+  justify-content: space-between;
+  min-width: 100px;
   font-size: 13px;
   margin-right: 50px;
-  margin-left: 15px; */
-  justify-content: space-around;
+  margin-left: 15px;
+  /* justify-content: space-around;
   min-width: 130px;
   max-width: 150px;
   margin: 0px 20px;
-  flex-shrink: initial;
+  flex-shrink: initial; */
 }
 
 .login-container button {
@@ -381,11 +389,3 @@ textarea:focus, input:focus{
 }
 
 }
-
-/* @media screen and (max-width: 500px) {
-  .upper-section .searchBar {
-    padding-left: 5px;
-    background-color: red;
-    font-size: 100px;
-  }
-} */
