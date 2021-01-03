@@ -1,0 +1,116 @@
+.modal-login-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-login-container .sign-in-register {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    min-height: 35px;
+    max-width: 345px;
+}
+
+.modal-login-container .sign-in-header-text {
+    font-size: 1.4rem;
+    margin-right: 30px;
+}
+
+.modal-login-container .link-to-sign-up {
+    text-decoration: none;
+    margin-left: 30px;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 5px 10px;
+    transition: border 150ms ease-in-out,
+    transform 150ms ease;
+}
+
+.modal-login-container .link-to-sign-up:hover {
+    border: 2px solid black;
+}
+
+.modal-login-container .link-to-sign-up a {
+    color: black;
+}
+
+.modal-login-container .link-to-sign-up:hover {
+    cursor: pointer;
+}
+
+.modal-login-container .moda-login-form {
+display: flex;
+align-items: center;
+flex-direction: column;
+justify-content: center;;
+}
+
+.modal-login-container .login-error-div {
+
+}
+
+.modal-login-container .email label,
+.modal-login-container .password label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.modal-login-container .modal-login-form input,
+.modal-login-container .modal-login-form input {
+    border: 1px solid white;
+    border-radius: 5px;
+    height: 48px;
+    width: 100%;
+    margin: 10px 0;
+    padding-left: 8px;
+    font-size: 16px;
+    box-shadow: inset 0px 0px 1px 1px rgba(175, 174, 174, 0.3);
+    transition: border 300ms ease-in-out,
+                transform 300ms ease;
+}
+
+.modal-login-container .modal-login-form input:hover,
+.modal-login-container .modal-login-form input:hover {
+    border: 1px solid rgba(88, 82, 82, 0.363)
+}
+
+.modal-login-container .modal-login-form input:focus,
+.modal-login-container .modal-login-form input:focus {
+    border: 1px solid black;
+}
+
+.modal-login-container .email {
+
+}
+
+.modal-login-container .password {
+
+}
+
+.modal-login-container form button {
+    margin: 10px 10px;
+    min-width: 100px;
+    max-width: 400px;
+    border-radius: 20px;
+    min-height: 45px;;
+    max-height: auto;
+    width: 100%;
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    transition: background 150ms ease-in-out,
+}
+
+
+.modal-login-container form  button:hover {
+    background-color: rgb(58, 55, 55);
+    cursor: pointer;
+}
+
+.modal-login-container form .password-input-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
