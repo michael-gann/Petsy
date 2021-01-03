@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import Review, User, db
+from app.models import Review, db
 from sqlalchemy.orm import selectinload
 from app.forms import ReviewForm
 from sqlalchemy import desc
