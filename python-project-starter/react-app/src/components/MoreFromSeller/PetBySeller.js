@@ -15,11 +15,11 @@ const PetBySeller = ({ user, sellerId }) => {
 
   useEffect(() => {
     const getPets = async () => {
-      const res = await fetch(`/api/users/${user.id}/pets/${id}`);
+      const res = await fetch(`/api/users/${sellerId}/pets/${id}`);
       const json = await res.json();
       setPet(json);
     };
-    getPets();
+    if (sellerId) getPets();
   }, [id, sellerId]);
 
   const child = { width: `300em`, height: `100%` };

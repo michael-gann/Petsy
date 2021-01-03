@@ -75,9 +75,13 @@
     font-weight: bold;
 }
 
-.petslist-main-container .pet-details .price-and-add-pet {
+.price-and-add-pet {
     display: flex;
     justify-content: space-between;
+}
+
+.price-and-add-pet .add-pet-cart-btn button {
+    cursor: pointer;
 }
 
 .spinner {

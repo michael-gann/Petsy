@@ -141,8 +141,21 @@ margin-bottom: 20px;
     align-items: center;
 }
 
-.bottom-container .more-by-seller {
-    margin-bottom: 80px;
+.bottom-container .item-more-by-seller {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item-more-by-seller .more-by-seller {
+    width: 80vw;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 3px;
+    transition: box-shadow 250ms ease-in-out, transform 150ms ease;
+}
+
+.more-by-seller .more-items {
+
 }
 
 .more-by-seller .item-container {
@@ -167,12 +180,8 @@ margin-bottom: 20px;
     cursor: pointer;
 }
 
-.seller {
-    display: flex;
-    flex-direction: column;
-}
 
-.seller h3 {
+.more-by-seller h3 {
     font-size: 1.6rem;
 }
 
@@ -182,7 +191,7 @@ margin-bottom: 20px;
     align-items: center;
     flex-wrap: wrap;
 }
-
+ 
 .review textarea {
     min-width: 100%
 }
