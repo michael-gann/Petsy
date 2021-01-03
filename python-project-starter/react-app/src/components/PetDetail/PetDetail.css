@@ -1,0 +1,145 @@
+div.pet-detail-container {
+    flex-wrap: wrap;
+    margin: 0px 20px;
+    justify-content: center;
+    align-items: center;
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+div.pet-detail-img-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    max-width: 1050px;
+    min-width: 200px;
+    height: 100%;
+    margin: 20px 0px 100px 0px;
+}
+
+div.pet-detail-image-container {
+    width: 450px;
+    height: 500px;
+    align-self: center;
+}
+
+div.pet-detail-img-info > .details {
+    max-width: 550px;
+    min-width: 500px;
+    padding-left: 20px;
+    font-size: 16px;
+}
+
+.details > .pet-specifics {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 10px 0px;
+}
+
+.pet-detail-field-value {
+    display: flex;
+    flex-direction: row;
+}
+
+.pet-detail-field-value > .pet-detail-field {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.pet-detail-field-value > .pet-price {
+    font-size: 1.8rem;
+    margin: 10px;
+}
+
+div.details > h3 {
+    margin-bottom: 8px;
+    font-size: 1.6rem;
+}
+
+.pet-detail-more > h3 {
+    font-size: 1.8rem;
+}
+
+img.image-pet {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    justify-content: center;
+}
+
+.pet-detail-more-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div.pet-detail-more {
+    width: 80vw;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 3px;
+    transition: box-shadow 250ms ease-in-out, transform 150ms ease;
+}
+
+div.pet-detail-more > .more-pets {
+    display: flex;
+    height: 500px;
+    width: 100%;
+}
+div.pet-detail-more .more-pets {
+    margin: 10px;
+}
+
+div.pet-detail-more .more-pets > .pet-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    height: 350px;
+}
+
+div.pet-detail-more .more-pets > .pet-container:hover,
+div.pet-detail-more .more-pets > .pet-container:focus {
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+/* div.pet-detail-more .more-pets > .pet-container > .image-container {
+    display: flex;
+    align-content: center;
+    height: 100%;
+    width: 100%;
+    border: .1px solid rgba(134, 126, 126, 0.226);
+    border-radius: 3px;
+} */
+
+div.pet-detail-more .more-pets > .pet-container > .image-container > img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 3px;
+    transition: box-shadow 250ms ease-in-out,
+                  transform 150ms ease;
+    
+}
+
+div.pet-detail-more .more-pets > .pet-container > .image-container > img:hover,
+div.pet-detail-more .more-pets > .pet-container > .image-container > img:focus {
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.more-pets > .pet-container > .pet-details {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 250px;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.more-pets > .pet-container > .pet-details > .pet-name {
+    font-weight: bold;
+    font-size: 18px;
+}

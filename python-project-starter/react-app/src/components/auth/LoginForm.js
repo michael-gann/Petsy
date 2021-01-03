@@ -14,19 +14,28 @@ const customStyles = {
   }
 };
 
+Modal.setAppElement('#root')
+
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const history = useHistory()
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [modalIsOpen, setIsOpen] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
 
   //* Modal Functions
+  function openModal() {
+    setShowModal(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+  }
+
   function closeModal() {
-    setIsOpen(false);
-    return history.push('/')
-  };
+    setShowModal(false);
+  }
 
 
   //* Login functions
@@ -53,53 +62,57 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   }
 
   return (
-    <Modal
-      isOpen={modalIsOpen}
-      onRequestClose={closeModal}
-      style={customStyles}
-      contentLabel="Example Modal"
-    >
-      <div>
-        <h2>Sign in</h2>
-      </div>
-      <div>
-        <NavLink to="/sign-up" exact={true} activeClassName="active">
-          Register
+    <>
+      <button onClick={openModal}>Login</button>
+      <Modal
+        isOpen={showModal}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Login Modal"
+      >
+        <div>
+          <h2>Sign in</h2>
+        </div>
+        <div>
+          <NavLink to="/sign-up" exact={true} activeClassName="active">
+            Register
           </NavLink>
-      </div>
-      <form onSubmit={onLogin}>
-        <div>
-          {errors.map((error) => (
-            <div>{error}</div>
-          ))}
         </div>
-        <div>
-          <label htmlFor="email">Email</label>
-        </div>
-        <div>
-          <input
-            name="email"
-            type="text"
-            placeholder="Email"
-            value={email}
-            onChange={updateEmail}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-        </div>
-        <div>
-          <input
-            name="password"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={updatePassword}
-          />
-          <button type="submit">Sign in</button>
-        </div>
-      </form>
-    </Modal>
+        <form onSubmit={onLogin}>
+          <div>
+            {errors.map((error) => (
+              <div>{error}</div>
+            ))}
+          </div>
+          <div>
+            <label htmlFor="email">Email</label>
+          </div>
+          <div>
+            <input
+              name="email"
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={updateEmail}
+            />
+          </div>
+          <div>
+            <label htmlFor="password">Password</label>
+          </div>
+          <div>
+            <input
+              name="password"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={updatePassword}
+            />
+            <button type="submit">Sign in</button>
+          </div>
+        </form>
+      </Modal>
+    </>
   );
 };
 
