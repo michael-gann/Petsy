@@ -92,7 +92,7 @@ function App() {
           <Homepage />
         </Route>
         <Route path="/pets/:id" exact={true}>
-          <PetDetail user={sessionUser} />
+          <PetDetail user={sessionUser} isAuthenticated={authenticated} />
         </Route>
         <Footer />
       </BrowserRouter>

@@ -73,10 +73,10 @@ function ItemDetail({ user, isAuthenticated }) {
               fixedDecimalScale={true}
             />
           </div>
-          <div className="cart-button-container">
+          {isAuthenticated && <div className="cart-button-container">
             <AddToCart item={item} />
             <RemoveFromCart id={item.id} />
-          </div>
+          </div>}
         </section>
       </div>
       <div className="bottom-container">
