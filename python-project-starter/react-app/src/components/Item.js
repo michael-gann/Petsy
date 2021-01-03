@@ -37,7 +37,7 @@ function Item({ item }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default Item;
