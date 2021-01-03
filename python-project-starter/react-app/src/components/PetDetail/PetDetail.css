@@ -58,6 +58,10 @@ div.details > h3 {
     font-size: 1.6rem;
 }
 
+.pet-detail-more > h3 {
+    font-size: 1.8rem;
+}
+
 img.image-pet {
     width: 100%;
     height: 100%;
@@ -95,6 +99,11 @@ div.pet-detail-more .more-pets > .pet-container {
     align-items: center;
     margin: 0px;
     height: 350px;
+}
+
+div.pet-detail-more .more-pets > .pet-container:hover,
+div.pet-detail-more .more-pets > .pet-container:focus {
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 /* div.pet-detail-more .more-pets > .pet-container > .image-container {
