@@ -7,7 +7,8 @@ import AddToCart from "./ShoppingCart/AddToCart"
 function Item({ item }) {
   const history = useHistory();
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    if (e.target.className === "addToCartBtn") return history.push('/cart')
     return history.push(`/items/${item.id}`);
   };
 
@@ -16,7 +17,7 @@ function Item({ item }) {
       <div className="image-container" onClick={handleClick}>
         <img src={item.imgurl}></img>
       </div>
-      <div className="item-details">
+      <div className="item-details" onClick={handleClick}>
         <div className="item-name">{item.name}</div>
         <div>
           <div className="item-inner-price">
