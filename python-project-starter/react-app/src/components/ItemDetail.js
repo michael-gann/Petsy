@@ -99,7 +99,7 @@ function ItemDetail({ user, isAuthenticated }) {
           <ItemBySeller sellerId={item.sellerId} />
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 

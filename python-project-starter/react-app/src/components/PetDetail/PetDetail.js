@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import NumberFormat from "react-number-format";
 import { useParams } from "react-router-dom";
 import PetBySeller from "../MoreFromSeller/PetBySeller";
-import AddToCart from "../ShoppingCart/AddToCart";
+import AddPetToCart from "../ShoppingCart/AddPetToCart";
 import RemoveFromCart from "../ShoppingCart/RemovePetFromCart";
 
 import "./PetDetail.css";
@@ -62,7 +62,7 @@ function PetDetail({ user, isAuthenticated }) {
           </div>
           {isAuthenticated && (
             <div className="cart-button-container">
-              <AddToCart item={pet} />
+              <AddPetToCart pet={pet} />
               <RemoveFromCart id={pet.id} />
             </div>
           )}
