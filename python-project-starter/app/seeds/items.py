@@ -149,10 +149,10 @@ L 55 45 30 21 8 30
 ''', price=15.00, imgurl='https://img.chewy.com/is/image/catalog/71427_MAIN._AC_SL400_V1534452176_.jpg', categoryId=2)
 
     demo14 = Item(sellerId=3, name='''Squeaking Colorful Tennis Ball Dog Toy, 3-Pack''', description='''Whether you’re playing singles or doubles, these squeaking tennis balls are sure to turn up the fun. They provide the bouncing action and loud squeaking dogs love—in fun color combinations! Unlike regular tennis balls though, these are covered with non-abrasive felt that’s gentle on dogs’ teeth and gums when they catch them. Get your pup chasing after them for daily play and exercise.''',
-                  price=20.00, imgurl='https://img.chewy.com/is/image/catalog/152846_Main._AC_SS55_V1549655069_.jpg', categoryId=2)
+                  price=20.00, imgurl='https://images-na.ssl-images-amazon.com/images/I/81k2i0vdo6L._AC_SX466_.jpg', categoryId=2)
 
     demo15 = Item(sellerId=4, name='''Rope with 5 Knots Dog Toy''', description='''
-Let the games begin with this knotty, twisty, brightly colored fetch toy. This rope toy is made from a cotton/poly blend and is perfect for everyday play, at home or at the park. The knots add the fun variety dogs love, and make it easy to grip, too. Bring out the big dogs—this oversized rope toy is specially sized for larger breeds.''', price=25.00, imgurl='https://img.chewy.com/is/image/catalog/152836_Main._AC_SS55_V1549654978_.jpg', categoryId=2)
+Let the games begin with this knotty, twisty, brightly colored fetch toy. This rope toy is made from a cotton/poly blend and is perfect for everyday play, at home or at the park. The knots add the fun variety dogs love, and make it easy to grip, too. Bring out the big dogs—this oversized rope toy is specially sized for larger breeds.''', price=25.00, imgurl='https://cdn.agradiservices.net/products/555x555/hofman-48219.01ed99.jpg', categoryId=2)
 
     demo16 = Item(sellerId=4, name='''Cactus Cat Scratching Post''', description='''
 There’s nothing prickly about this cool Frisco Cactus Cat Scratching Post! This sisal scratching post is designed to stand up to the power of playtime, and the stable baseboard allows your cactus kitty to stretch, paw, scratch, and climb all day with total support. The top and bottom of the cactus feature a moppy fabric plush material that feels great for cats to nuzzle. This fun cactus shape adds a cute design element to your home, plus it’s super easy to assemble.''', price=95.20, imgurl='https://img.chewy.com/is/image/catalog/214357_MAIN._AC_SL400_V1606832412_.jpg', categoryId=2)
