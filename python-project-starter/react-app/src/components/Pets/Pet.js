@@ -7,7 +7,6 @@ function Pet({ pet }) {
   const history = useHistory();
 
   const handleClick = (e) => {
-    console.log(e.target.className)
     if (history.location.pathname === "/pets" && e.target.className === "addToCartBtn") return history.push('/cart')
     return history.push(`/pets/${pet.id}`);
   };

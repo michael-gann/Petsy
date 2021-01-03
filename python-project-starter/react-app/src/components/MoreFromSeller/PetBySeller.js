@@ -31,9 +31,9 @@ const PetBySeller = ({ user, sellerId }) => {
         <HorizontalScroll reverseScroll={true}>
           {pet.map((pet) => {
             return (
-              <div className="more-pets">
+              <div className="more-pets"
+                key={pet.id}>
                 <Pet
-                  key={pet.id}
                   pet={pet}
                   style={child}
                   onClick={handleClick}
