@@ -24,3 +24,7 @@ ul, ol
 {
 list-style: none;
 }
+
+.root {
+    padding-bottom: 315px;
+}
