@@ -1,28 +1,29 @@
 import React, { useState } from "react";
 import { Redirect, useHistory, NavLink } from "react-router-dom";
 import { login } from "../../services/auth";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 
 const customStyles = {
   content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)'
-  }
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    height: "400px",
+    width: "300px",
+  },
 };
 
-Modal.setAppElement('#root')
+Modal.setAppElement("#root");
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
-  const history = useHistory()
+  const history = useHistory();
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showModal, setShowModal] = useState(false);
-
 
   //* Modal Functions
   function openModal() {
@@ -36,7 +37,6 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   function closeModal() {
     setShowModal(false);
   }
-
 
   //* Login functions
   const onLogin = async (e) => {
@@ -85,7 +85,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
               <div>{error}</div>
             ))}
           </div>
-          <div>
+          <div className="email">
             <label htmlFor="email">Email</label>
           </div>
           <div>

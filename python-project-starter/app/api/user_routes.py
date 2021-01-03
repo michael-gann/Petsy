@@ -14,23 +14,26 @@ def users():
 
 
 @user_routes.route('/<int:id>')
-@login_required
+# @login_required
 def user(id):
-    user = User.query.get(id)
+    user = User.query.get(int(id))
     return user.to_dict()
 
 
 @user_routes.route("/<userId>/items/<itemId>")
 def user_items(userId, itemId):
-    items = db.session.query(Item).filter_by(sellerId=userId).filter(Item.id!=itemId).all()
+    items = db.session.query(Item).filter_by(
+        sellerId=userId).filter(Item.id != itemId).all()
 
     user_items = [item.to_dict() for item in items]
 
     return jsonify(user_items)
 
+
 @user_routes.route("/<userId>/pets/<petId>")
-def user_pets(userId,petId):
-    pets = db.session.query(Pet).filter_by(sellerId=userId).filter(Pet.id!=petId).options(selectinload(Pet.user)).all()
+def user_pets(userId, petId):
+    pets = db.session.query(Pet).filter_by(sellerId=userId).filter(
+        Pet.id != petId).options(selectinload(Pet.user)).all()
 
     user_pets = [{**pet.to_dict(), "user": pet.user.to_dict()} for pet in pets]
 

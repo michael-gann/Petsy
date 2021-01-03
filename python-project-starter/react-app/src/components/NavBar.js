@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
-import LoginForm from "./auth/LoginForm"
+import LoginForm from "./auth/LoginForm";
 import SignUpForm from "./auth/SignUpForm";
 import "./NavBar.css";
 
@@ -83,27 +83,27 @@ const NavBar = ({ setAuthenticated, isAuthenticated, setResults }) => {
 
                 <div className="cart">
                   <a rel="noopener noreferrer" href="/cart">
-                    <i class="fas fa-shopping-cart fa-lg"></i>
+                    <i className="fas fa-shopping-cart fa-lg"></i>
                   </a>
                 </div>
               </div>
             </>
           ) : (
-              <div className="login-container">
-                <li className="nav login">
-                  <LoginForm
-                    authenticated={isAuthenticated}
-                    setAuthenticated={setAuthenticated}
-                  />
-                </li>
-                <li className="nav sign-up">
-                  <SignUpForm
-                    authenticated={isAuthenticated}
-                    setAuthenticated={setAuthenticated}
-                  />
-                </li>
-              </div>
-            )}
+            <div className="login-container">
+              <li className="nav login">
+                <LoginForm
+                  authenticated={isAuthenticated}
+                  setAuthenticated={setAuthenticated}
+                />
+              </li>
+              <li className="nav sign-up">
+                <SignUpForm
+                  authenticated={isAuthenticated}
+                  setAuthenticated={setAuthenticated}
+                />
+              </li>
+            </div>
+          )}
         </ul>
         <div className="lower-section">
           <div>
