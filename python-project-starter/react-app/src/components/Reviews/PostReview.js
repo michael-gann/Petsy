@@ -31,6 +31,7 @@ function PostReview({ user, setReviews, reviews }) {
       console.log(reviewsDupe);
       reviewsDupe.push(reviewData);
       setReviews(reviewsDupe);
+      setReview('')
     }
   };
 
@@ -66,7 +67,6 @@ function PostReview({ user, setReviews, reviews }) {
           rows="10"
           onChange={updateReview}
           value={review}
-          required={true}
         ></textarea>
       </div>
       <button type="submit">SUBMIT</button>
