@@ -35,7 +35,6 @@ function RenderReviews({ reviews, setReviews }) {
     setAvgReview(sum / count);
   }, [reviews]);
 
-  console.log("REVIEWSSSSSSSS", reviews);
   return (
     <>
       <div className="total-reviews">
@@ -64,7 +63,8 @@ function RenderReviews({ reviews, setReviews }) {
               return (
                 <div key={review.id}>
                   <div className="user-and-date">
-                    {`${review.user.firstName} ${review.user.lastName}`}{" "}
+                    {`${review.user.firstName} ${review.user.lastName}`}
+                    {" - "}
                     {dateStringManipulation(review)}
                   </div>
                   <div className="star-rating">
