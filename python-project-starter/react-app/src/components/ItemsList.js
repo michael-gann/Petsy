@@ -4,6 +4,8 @@ import { areas } from "../common/areas";
 import { trackPromise } from "react-promise-tracker";
 import Spinner from "./Spinner";
 
+import "./itemPage.css";
+
 function Items() {
   const [items, setItems] = useState([]);
 
