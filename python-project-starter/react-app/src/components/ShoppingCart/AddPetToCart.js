@@ -5,12 +5,12 @@ function AddPetToCart({ pet }) {
 
   let localCart = localStorage.getItem("petCart");
 
-  console.log("localcart:", localCart)
+  console.log("petCart:", petCart)
 
   const addPet = () => {
     let cartCopy = [...petCart];
     let petToAdd = pet.id
-    console.log(petToAdd)
+
     let existingPet = cartCopy.find(cartPet => {
       return Object.keys(cartPet) == petToAdd.toString()
     });
