@@ -3,7 +3,6 @@ import { ScoreContext } from "../../App";
 import StarRatings from "react-star-ratings";
 
 function ScoreAvg({ itemId }) {
-  console.log("ITEM ID MOTHAFUCKER", itemId);
   return (
     <ScoreContext.Consumer>
       {(value) => {
