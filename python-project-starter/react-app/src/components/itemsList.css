@@ -161,8 +161,7 @@ font-size: 12px;
     transition: box-shadow 250ms ease-in-out, transform 150ms ease;
 }
 
-.more-by-seller .more-items {
-
+.more-by-seller {
 }
 
 .more-by-seller .item-container {
@@ -198,7 +197,7 @@ font-size: 12px;
     align-items: center;
     flex-wrap: wrap;
 }
- 
+
 .review textarea {
     min-width: 100%
 }
@@ -229,4 +228,8 @@ form > button {
 form button:hover {
     background-color: rgb(58, 55, 55);
     cursor: pointer;
+}
+
+.item-scroll {
+    width: calc(100% - 300px);
 }

@@ -21,7 +21,7 @@ const ItemBySeller = ({ user, sellerId }) => {
     getItems();
   }, [id, sellerId]);
 
-  const child = { width: `300em`, height: `100%` };
+  const child = { width: `30em`, height: `100%` };
   const parent = { height: `100%` };
 
   return (
@@ -32,10 +32,7 @@ const ItemBySeller = ({ user, sellerId }) => {
           {items.map((item) => {
             return (
               <div key={item.id} className="more-items">
-                <Item item={item}
-                  style={child}
-                  onClick={handleClick}
-                ></Item>
+                <Item item={item} style={child} onClick={handleClick}></Item>
               </div>
             );
           })}
