@@ -15,7 +15,6 @@ function ItemDetail({ user, isAuthenticated }) {
   const [item, setItem] = useState([]);
   const [seller, setSeller] = useState("");
   const { id } = useParams();
-  console.log(reviews);
 
   // console.log("ID:", id)
 

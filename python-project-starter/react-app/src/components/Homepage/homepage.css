@@ -127,3 +127,14 @@
 .item-components .image-container img:focus {
     box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, .3);
 }
+
+.page-container .pets .spinner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 350px;
+    min-width:350px;
+    margin-bottom: 400px;
+    margin-top: 30px;
+}
