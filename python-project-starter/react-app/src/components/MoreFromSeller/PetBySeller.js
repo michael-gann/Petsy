@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useHistory, useParams } from 'react-router-dom'
+import { useHistory, useParams, Redirect } from 'react-router-dom'
 import HorizontalScroll from 'react-scroll-horizontal'
 import Pet from "../Pets/Pet"
 
@@ -9,7 +9,8 @@ const PetBySeller = ({ user, sellerId }) => {
   const { id } = useParams()
 
   const handleClick = (e) => {
-    history.push(`/pets/${id}`)
+    // history.push(`/pets/${id}`)
+    return <Redirect to={`/pets/${id}`} />
   }
 
   useEffect(() => {

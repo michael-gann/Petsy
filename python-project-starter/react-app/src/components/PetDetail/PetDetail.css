@@ -119,3 +119,8 @@ div.pet-detail-more .more-pets > .pet-container > .image-container > img {
     font-size: 16px;
     margin-bottom: 5px;
 }
+
+.more-pets > .pet-container > .pet-details > .pet-name {
+    font-weight: bold;
+    font-size: 18px;
+}

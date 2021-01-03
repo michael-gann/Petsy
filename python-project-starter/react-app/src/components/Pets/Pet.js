@@ -15,7 +15,7 @@ function Pet({ pet }) {
         <img src={pet.imgurl} alt="Pet pic" />
       </div>
       <div className="pet-details" onClick={handleClick}>
-        <div>
+        <div className="pet-name">
           {pet.name}
         </div>
         <div>
