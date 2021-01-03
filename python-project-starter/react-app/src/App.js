@@ -56,18 +56,6 @@ function App() {
           isAuthenticated={authenticated}
         />
         <ScrollToTop>
-          <Route path="/login" exact={true}>
-            <LoginForm
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
-            />
-          </Route>
-          <Route path="/sign-up" exact={true}>
-            <SignUpForm
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
-            />
-          </Route>
           <Route path="/search" exact={true}>
             <Search results={results}></Search>
           </Route>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
+import LoginForm from "./auth/LoginForm"
+import SignUpForm from "./auth/SignUpForm";
 import "./NavBar.css";
 
 const NavBar = ({ setAuthenticated, isAuthenticated, setResults }) => {
@@ -89,14 +91,16 @@ const NavBar = ({ setAuthenticated, isAuthenticated, setResults }) => {
           ) : (
               <div className="login-container">
                 <li className="nav login">
-                  <NavLink to="/login" exact={true} activeClassName="active">
-                    Login
-                </NavLink>
+                  <LoginForm
+                    authenticated={isAuthenticated}
+                    setAuthenticated={setAuthenticated}
+                  />
                 </li>
                 <li className="nav sign-up">
-                  <NavLink to="/sign-up" exact={true} activeClassName="active">
-                    Sign Up
-                </NavLink>
+                  <SignUpForm
+                    authenticated={isAuthenticated}
+                    setAuthenticated={setAuthenticated}
+                  />
                 </li>
               </div>
             )}
