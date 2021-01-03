@@ -7,7 +7,10 @@ const ItemBySeller = ({ user, sellerId }) => {
   const [items, setItems] = useState([]);
   const { id } = useParams();
 
-  console.log("ITEM IN SELLER COMPONENT", items);
+  const handleClick = (e) => {
+    // history.push(`/pets/${id}`)
+    return <Redirect to={`/items/${id}`} />;
+  };
 
   useEffect(() => {
     const getItems = async () => {
@@ -29,7 +32,10 @@ const ItemBySeller = ({ user, sellerId }) => {
           {items.map((item) => {
             return (
               <div key={item.id} className="more-items">
-                <Item item={item} style={child}></Item>;
+                <Item item={item}
+                  style={child}
+                  onClick={handleClick}
+                ></Item>
               </div>
             );
           })}
