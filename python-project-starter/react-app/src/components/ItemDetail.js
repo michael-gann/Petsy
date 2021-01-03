@@ -95,10 +95,6 @@ function ItemDetail({ user, isAuthenticated }) {
             )}
           </div>
         </div>
-<<<<<<< HEAD
-        <div className="more-by-seller"></div>
-        <ItemBySeller sellerId={item.sellerId} />
-=======
         <div className="more-by-seller">
           <ItemBySeller sellerId={item.sellerId} />
         </div>
@@ -110,7 +106,6 @@ function ItemDetail({ user, isAuthenticated }) {
             <ItemBySeller sellerId={item.sellerId} />
           </div>
         </div>
->>>>>>> master
       </div>
     </div>
   );
