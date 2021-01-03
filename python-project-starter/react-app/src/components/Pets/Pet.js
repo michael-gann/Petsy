@@ -6,7 +6,9 @@ import AddPetToCart from '../ShoppingCart/AddPetToCart';
 function Pet({ pet }) {
   const history = useHistory();
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    console.log(e.target.className)
+    if (history.location.pathname === "/pets" && e.target.className === "addToCartBtn") return history.push('/cart')
     return history.push(`/pets/${pet.id}`);
   };
 
@@ -22,15 +24,19 @@ function Pet({ pet }) {
         <div>
           {pet.breed}
         </div>
-        <NumberFormat
-          value={pet.price}
-          decimalScale={2}
-          fixedDecimalScale={true}
-          displayType={"text"}
-          thousandSeparator={true}
-          prefix={"$"}
-        />
-        <AddPetToCart pet={pet} />
+        <div className="price-and-add-pet">
+          <NumberFormat
+            value={pet.price}
+            decimalScale={2}
+            fixedDecimalScale={true}
+            displayType={"text"}
+            thousandSeparator={true}
+            prefix={"$"}
+          />
+          <div className="add-pet-cart-btn">
+            <AddPetToCart pet={pet} />
+          </div>
+        </div>
       </div>
     </div>
   );
