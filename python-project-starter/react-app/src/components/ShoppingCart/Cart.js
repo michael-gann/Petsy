@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom'
 import RemoveItemFromCart from './RemoveItemFromCart';
 import RemovePetFromCart from './RemovePetFromCart';
-import { useHistory } from "react-router-dom";
+import ProceedToCheckout from './ProceedToCheckout';
+
+import './Cart.css';
 
 function Cart() {
   let localItemsCart = JSON.parse(localStorage.getItem('cart'))
@@ -44,29 +46,32 @@ function Cart() {
             <div>
               <RemoveItemFromCart item={item} setCartItems={setCartItems} />
             </div>
-          </div>
-        )}
-      </ul>
+          )}
+        </ul>
+      </div>
     )
   }
 
   const fetchPets = () => {
     return (
-      <ul>
-        {localPetsCart !== null &&
-          petsCart.map((pets) =>
-            <div key={pets.id}>
-              <img src={pets.imgurl} />
-              <div>
-                <NavLink to={`/pets/${pets.id}`}>{pets.name}</NavLink>
-                <p>{`$${pets.price}`}</p>
+      <div className="items-container">
+        <ul>
+          {localPetsCart !== null &&
+            petsCart.map((pets) =>
+              <div className="items-container__item" key={pets.id}>
+                <img src={pets.imgurl} />
+                <div className="item-info-container">
+                  <NavLink to={`/pets/${pets.id}`}><h1>{pets.name}</h1></NavLink>
+                  <p>{pets.description}</p>
+                  <div>
+                    <RemovePetFromCart item={pets} setPetsCart={setPetsCart} />
+                  </div>
+                </div>
+                <h6>{`$${pets.price}`}</h6>
               </div>
-              <div>
-                <RemovePetFromCart item={pets} setPetsCart={setPetsCart} />
-              </div>
-            </div>
-          )}
-      </ul>
+            )}
+        </ul>
+      </div>
     )
   }
 
@@ -134,20 +139,25 @@ function Cart() {
 
 
   return (
-    <>
+    <div className="cart-components">
       <div>
-        <h1>{localItemsCart ?
-          localItemsCart.length :
-          "0"} items in your cart</h1>
+        <div className="num-cart-items">
+          <h1>{localItemsCart ?
+            localItemsCart.length :
+            "0"} items in your cart</h1>
+        </div>
+        {fetchItems()}
+        <div className="num-cart-pets">
+          <h1>{localPetsCart ?
+            localPetsCart.length :
+            "0"} pets in your cart</h1>
+        </div>
+        {fetchPets()}
       </div>
-      {fetchItems()}
       <div>
-        <h1>{localPetsCart ?
-          localPetsCart.length :
-          "0"} pets in your cart</h1>
+        <ProceedToCheckout />
       </div>
-      {fetchPets()}
-    </>
+    </div>
   )
 }
 
