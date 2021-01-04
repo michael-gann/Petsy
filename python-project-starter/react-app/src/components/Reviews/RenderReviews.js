@@ -39,7 +39,10 @@ function RenderReviews({ reviews, setReviews }) {
     <>
       <div className="total-reviews">
         <h2>
-          {reviews.length} {reviews.length === 0 ? "reviews  " : "review  "}
+          {reviews.length}{" "}
+          {reviews.length === 0 || reviews.length > 1
+            ? "reviews  "
+            : "review  "}
           {avgReview ? (
             <StarRatings
               rating={avgReview}

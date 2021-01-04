@@ -25,6 +25,9 @@ ul, ol
 list-style: none;
 }
 
-.root {
+body {
     padding-bottom: 315px;
+    position: relative;
+    min-height: 100vh;
+    min-width: 100vw;
 }
