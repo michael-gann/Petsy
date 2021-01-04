@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 
 
 function AddToCart({ item }) {
@@ -31,7 +31,7 @@ function AddToCart({ item }) {
     let stringCart = JSON.stringify(cartCopy);
     localStorage.setItem("cart", stringCart);
     console.log("here")
-    return history.push('/cart')
+    return history.push("/cart")
   };
 
   useEffect(() => {

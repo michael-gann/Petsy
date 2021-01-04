@@ -87,7 +87,7 @@ function App() {
             <PetsList />
           </Route>
           <Route path="/items/:id" exact={true} authenticated={authenticated}>
-            <ItemDetail user={sessionUser} isAuthenticated={authenticated} setNumCartItems={setNumCartItems} />
+            <ItemDetail user={sessionUser} isAuthenticated={authenticated} />
           </Route>
           <ProtectedRoute
             path="/users/:userId"
@@ -107,7 +107,7 @@ function App() {
             <Homepage />
           </Route>
           <Route path="/pets/:id" exact={true}>
-            <PetDetail user={sessionUser} isAuthenticated={authenticated} setNumCartItems={setNumCartItems} />
+            <PetDetail user={sessionUser} isAuthenticated={authenticated}/>
           </Route>
         </ScrollToTop>
         <Footer />

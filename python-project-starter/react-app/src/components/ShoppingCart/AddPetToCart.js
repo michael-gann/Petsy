@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Redirect, useHistory } from "react-router-dom";
 
 function AddPetToCart({ pet }) {
   let [petCart, setPetCart] = useState([])
+  const history = useHistory()
 
   let localCart = localStorage.getItem("petCart");
 
@@ -25,6 +27,7 @@ function AddPetToCart({ pet }) {
 
     let stringCart = JSON.stringify(cartCopy);
     localStorage.setItem("petCart", stringCart)
+    return history.push("/cart")
   }
 
   useEffect(() => {

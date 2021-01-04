@@ -92,7 +92,6 @@ const NavBar = ({ setAuthenticated, isAuthenticated, setResults }) => {
                         }
                         }
                       </NumCartContext.Consumer>
-                      {/* <span class="cart-basket d-flex align-items-center justify-content-center">0</span> */}
                     </i>
 
                   </a>
