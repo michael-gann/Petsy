@@ -5,11 +5,14 @@ import RemovePetFromCart from './RemovePetFromCart';
 import ProceedToCheckout from './ProceedToCheckout';
 import NumberFormat from "react-number-format";
 
+
 import "./Cart.css";
+import NumberFormat from "react-number-format";
 
 function Cart({ setNumCartItems }) {
   let localItemsCart = JSON.parse(localStorage.getItem("cart"));
   let localPetsCart = JSON.parse(localStorage.getItem("petCart"));
+  const [total, setTotal] = useState(0)
   let [cartItems, setCartItems] = useState(
     localItemsCart ? [...localItemsCart] : []
   );
@@ -25,8 +28,9 @@ function Cart({ setNumCartItems }) {
   const fetchItems = () => {
     return (
       <ul className="items-container">
-        {cartItems.map((item) =>
-          <div className="items-container__item" key={item.id}>
+        {cartItems.map((item) => {
+          // { setTotal(total + item.price * itemCarObj[item.id]) }
+          return (<div className="items-container__item" key={item.id}>
             <img className="item-image" src={item.imgurl} />
             <div className="item-info-container">
               <div className="navlink">
@@ -63,21 +67,22 @@ function Cart({ setNumCartItems }) {
     return (
       <div className="items-container">
         <ul>
-          {localPetsCart !== null &&
-            petsCart.map((pets) => (
-              <div className="items-container__item" key={pets.id}>
-                <img className="item-image" src={pets.imgurl} />
-                <div className="item-info-container">
+          {localPetsCart &&
+            petsCart.map((pets) => {
+              // { setTotal(total + pets.price) }
+              return (
+                <div className="items-container__item" key={pets.id}>
+                  <img className="item-image" src={pets.imgurl} />
+                  <div className="item-info-container">
 
-                  <NavLink to={`/pets/${pets.id}`}>
-                    <h1>{pets.name}</h1>
-                  </NavLink>
-                  <p>{pets.description}</p>
-                  <div>
-                    <RemovePetFromCart item={pets} setPetsCart={setPetsCart} />
+                    <NavLink to={`/pets/${pets.id}`}>
+                      <h1>{pets.name}</h1>
+                    </NavLink>
+                    <p>{pets.description}</p>
+                    <div>
+                      <RemovePetFromCart item={pets} setPetsCart={setPetsCart} />
+                    </div>
                   </div>
-                </div>
-                <div className="number-format">
                   <NumberFormat
                     value={pets.price}
                     displayType={"text"}
@@ -88,8 +93,8 @@ function Cart({ setNumCartItems }) {
                     fixedDecimalScale={true}
                   />
                 </div>
-              </div>
-            ))}
+              )
+            })}
         </ul>
       </div>
     );
@@ -161,7 +166,7 @@ function Cart({ setNumCartItems }) {
 
     const buildItemCartObj = () => {
       let cartObj = {};
-      localItemsCart.map((item) => {
+      if (localItemsCart) localItemsCart.map((item) => {
         cartObj[Object.keys(item)[0]] = Object.values(item)[0];
       });
       setItemCartObj(cartObj);
@@ -174,10 +179,10 @@ function Cart({ setNumCartItems }) {
       let localItemsCart = JSON.parse(localStorage.getItem('cart'))
       let localPetsCart = JSON.parse(localStorage.getItem('petCart'))
       let count = 0
-      localItemsCart.forEach(item => {
+      if (localItemsCart) localItemsCart.forEach(item => {
         count += item[Object.keys(item)]
       })
-      localPetsCart.forEach(item => {
+      if (localPetsCart ) localPetsCart.forEach(item => {
         count += item[Object.keys(item)]
       })
       setNumCartItems(count)
@@ -188,20 +193,20 @@ function Cart({ setNumCartItems }) {
     <div className="cart-components">
       <div>
         <div className="num-cart-items">
-          <h1>
-            {localItemsCart ? localItemsCart.length : "0"} {localItemsCart.length > 1 ? "items" : "item"} in your cart
-          </h1>
+          <h1>{localItemsCart ?
+            localItemsCart.length :
+            "0"} item(s) in your cart</h1>
         </div>
         {fetchItems()}
         <div className="num-cart-pets">
-          <h1>
-            {localPetsCart ? localPetsCart.length : "0"} {localPetsCart.length > 1 ? "pets" : "pet"} in your cart
-          </h1>
+          <h1>{localPetsCart ?
+            localPetsCart.length :
+            "0"} pet(s) in your cart</h1>
         </div>
         {fetchPets()}
       </div>
       <div>
-        <ProceedToCheckout total={total} />
+        <ProceedToCheckout total={total} cartItems={cartItems} petsCart={petsCart} itemCarObj={itemCarObj} setNumCartItems={setNumCartItems} />
       </div>
     </div>
   );

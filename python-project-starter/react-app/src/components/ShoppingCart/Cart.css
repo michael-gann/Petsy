@@ -167,3 +167,121 @@ label.payments {
   display: flex;
   align-items: center;
 }
+
+.cart-items-container__item {
+  display: flex;
+  padding: 20px;
+  margin: 10px;
+  width: 60rem;
+}
+
+
+.cart-items-container {
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+}
+
+.cart-items-container__item img {
+  max-width: 100px;
+}
+
+.cart-item-info-container h2 {
+  margin-bottom: 30px;
+}
+
+.cart-item-info-container button {
+  margin: 10px 10px;
+  min-width: 80px;
+  max-width: 300px;
+  border-radius: 20px;
+  min-height: 45px;;
+  max-height: auto;
+  width: 100%;
+  background-color: black;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  transition: background 150ms ease-in-out;
+}
+
+.cart-item-info-container button:hover {
+  background-color: grey;
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+
+.cart-items-container__item p {
+  margin-left: 15px;
+  margin-bottom: 30px;
+}
+
+.cart-items-container__item h6 {
+  margin-left: 15px;
+  font-weight: bold;
+  font-size: large;
+}
+
+.dropdown {
+  padding: 0;
+  margin-left: 10px;
+  max-height: 30px;
+}
+
+.cart-item-image img {
+  border-radius: 3px;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+.cart-items-container__item img {
+  max-width: 300px;
+}
+
+.cart-items-container__item {
+  display: flex;
+  flex-direction: row;
+}
+
+.cart-items-container__item img {
+  border-radius: 3px;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+.ReactModalPortal .cart-checkout-h1 {
+  font-size: 30px;
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+}
+
+div.cart-quant-price {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  margin-left: 30px;
+}
+
+.ReactModalPortal .cart-checkout {
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+}
+
+button.removeFromCartBtn {
+  justify-self: center;
+  margin: 10px 10px;
+    min-width: 100px;
+    max-width: 400px;
+    border-radius: 20px;
+    min-height: 45px;;
+    max-height: auto;
+    width: 100%;
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    transition: background 150ms ease-in-out;
+    cursor: pointer;
+}
