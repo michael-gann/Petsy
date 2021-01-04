@@ -46,8 +46,8 @@ function App() {
     fetchScores();
 
     const fetchCartNum = () => {
-      let localItemsCart = JSON.parse(localStorage.getItem('cart'))
-      let localPetsCart = JSON.parse(localStorage.getItem('petCart'))
+      let localItemsCart = JSON.parse(localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem('cart')) : [{ "1": 0 }]
+      let localPetsCart = JSON.parse(localStorage.getItem('petCart')) ? JSON.parse(localStorage.getItem('petCart')) : [{ "1": 0 }]
       let count = 0
       localItemsCart.forEach(item => {
         count += item[Object.keys(item)]
@@ -107,7 +107,7 @@ function App() {
             <Homepage />
           </Route>
           <Route path="/pets/:id" exact={true}>
-            <PetDetail user={sessionUser} isAuthenticated={authenticated}/>
+            <PetDetail user={sessionUser} isAuthenticated={authenticated} />
           </Route>
         </ScrollToTop>
         <Footer />
