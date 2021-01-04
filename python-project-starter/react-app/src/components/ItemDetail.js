@@ -32,14 +32,14 @@ function ItemDetail({ user, isAuthenticated }) {
       const sellerId = item.sellerId;
       const response = await fetch(`/api/users/${sellerId}`);
       const sellerData = await response.json();
-      console.log("SELLER DATA", sellerData);
+      // console.log("SELLER DATA", sellerData);
       setSeller(sellerData);
     }
     fetchData();
   }, [item]);
 
-  console.log(seller);
-  console.log("ITEM>SELLERID", item.sellerId);
+  // console.log(seller);
+  // console.log("ITEM>SELLERID", item.sellerId);
 
   return (
     <div className="item-detail-container">
@@ -77,6 +77,7 @@ function ItemDetail({ user, isAuthenticated }) {
           {isAuthenticated && (
             <div className="cart-button-container">
               <AddToCart item={item} />
+              <RemoveItemFromCart id={item.id} />
             </div>
           )}
         </section>
@@ -100,7 +101,7 @@ function ItemDetail({ user, isAuthenticated }) {
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 }
 

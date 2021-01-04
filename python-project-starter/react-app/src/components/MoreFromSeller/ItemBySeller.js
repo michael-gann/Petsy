@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-// import Slider from "react-slick";
 import Item from "../Item";
+import HorizontalScroll from "react-scroll-horizontal";
 import Carousel from "react-material-ui-carousel";
 
 const ItemBySeller = ({ user, sellerId }) => {
@@ -9,7 +9,6 @@ const ItemBySeller = ({ user, sellerId }) => {
   const { id } = useParams();
 
   const handleClick = (e) => {
-    // history.push(`/pets/${id}`)
     return <Redirect to={`/items/${id}`} />;
   };
 
@@ -22,17 +21,34 @@ const ItemBySeller = ({ user, sellerId }) => {
     getItems();
   }, [id, sellerId]);
 
-  const itemArray = items.map((item) => <div key={item.id}>{item.id}</div>);
+  const child = { width: `300em`, height: `100%` };
+  const parent = { height: `100%` };
 
   return (
-    <div className="more-by-sellers">
-      <h3>More from this seller:</h3>
-      <Carousel autoPlay={false}>
-        {items.map((item, index) => (
-          <Item item={item} key={index}></Item>
-        ))}
-      </Carousel>
-    </div>
+    <>
+      <h3>More from this seller: </h3>
+      {items.length > 3 ? (
+        <div style={parent} className="items-scroll">
+          <HorizontalScroll reverseScroll={true}>
+            {items.map((item) => {
+              return (
+                <div className="more-items" key={item.id}>
+                  <Item item={item} style={child} onClick={handleClick}></Item>
+                </div>
+              );
+            })}
+          </HorizontalScroll>
+        </div>
+      ) : (
+        <div className="more-by-sellers">
+          <Carousel autoPlay={false}>
+            {items.map((item, index) => (
+              <Item item={item} key={index}></Item>
+            ))}
+          </Carousel>
+        </div>
+      )}
+    </>
   );
 };
 
