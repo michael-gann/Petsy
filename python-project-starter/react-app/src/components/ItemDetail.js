@@ -77,7 +77,6 @@ function ItemDetail({ user, isAuthenticated }) {
           {isAuthenticated && (
             <div className="cart-button-container">
               <AddToCart item={item} />
-              <RemoveItemFromCart id={item.id} />
             </div>
           )}
         </section>
@@ -95,8 +94,10 @@ function ItemDetail({ user, isAuthenticated }) {
             )}
           </div>
         </div>
-        <div className="more-by-seller">
-          <ItemBySeller sellerId={item.sellerId} />
+        <div className="item-more-by-seller">
+          <div className="more-by-seller">
+            <ItemBySeller user={user} sellerId={item.sellerId} />
+          </div>
         </div>
       </div>
     </div >

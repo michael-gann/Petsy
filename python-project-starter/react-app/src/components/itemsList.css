@@ -13,6 +13,7 @@
     align-items: center;
     justify-content: center;
     max-width: 1050px;
+    min-height: 550px;
 }
 
 .inner-item-detail-container .img-container {
@@ -21,7 +22,6 @@
     height: 450px;
     margin-bottom: 50px;
     align-self: center;
-    /* overflow: hidden; */
 }
 
 .inner-item-detail-container .img-container img {
@@ -35,6 +35,7 @@
     max-width: 550px;
     padding: 20px;
     min-width: 500px;
+    min-height: 420px;
 }
 
 .details-container h3 {
@@ -117,7 +118,7 @@ align-items: center;
 
 .total-reviews {
     border-bottom: 1px solid gray;
-    margin-bottom: 8px;
+    margin-bottom: 20px;
 }
 
 .reviews {
@@ -127,7 +128,13 @@ align-items: center;
 }
 
 .reviews .user-and-date {
-margin-bottom: 20px;
+margin-bottom: 4px;
+font-weight: bold;
+font-size: 12px;
+}
+
+.reviews .review-description {
+    margin-bottom: 50px;
 }
 
 .bottom-container {
@@ -141,8 +148,21 @@ margin-bottom: 20px;
     align-items: center;
 }
 
-.bottom-container .more-by-seller {
-    margin-bottom: 80px;
+.bottom-container .item-more-by-seller {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item-more-by-seller .more-by-seller {
+    width: 80vw;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 3px;
+    transition: box-shadow 250ms ease-in-out, transform 150ms ease;
+}
+
+.more-by-seller .more-items {
+
 }
 
 .more-by-seller .item-container {
@@ -167,12 +187,8 @@ margin-bottom: 20px;
     cursor: pointer;
 }
 
-.seller {
-    display: flex;
-    flex-direction: column;
-}
 
-.seller h3 {
+.more-by-seller h3 {
     font-size: 1.6rem;
 }
 
@@ -182,7 +198,7 @@ margin-bottom: 20px;
     align-items: center;
     flex-wrap: wrap;
 }
-
+ 
 .review textarea {
     min-width: 100%
 }

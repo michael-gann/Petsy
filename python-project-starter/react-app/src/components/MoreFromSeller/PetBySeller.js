@@ -19,7 +19,7 @@ const PetBySeller = ({ user, sellerId }) => {
       const json = await res.json();
       setPet(json);
     };
-    getPets();
+    if (sellerId) getPets();
   }, [id, sellerId]);
 
   const child = { width: `300em`, height: `100%` };
@@ -31,9 +31,9 @@ const PetBySeller = ({ user, sellerId }) => {
         <HorizontalScroll reverseScroll={true}>
           {pet.map((pet) => {
             return (
-              <div className="more-pets">
+              <div className="more-pets"
+                key={pet.id}>
                 <Pet
-                  key={pet.id}
                   pet={pet}
                   style={child}
                   onClick={handleClick}

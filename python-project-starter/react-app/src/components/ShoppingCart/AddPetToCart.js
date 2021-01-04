@@ -39,7 +39,7 @@ function AddPetToCart({ pet }) {
       <button
         className="addToCartBtn"
         onClick={addPet}>
-        Add To Basket
+        Add To Cart
       </button>
     </>
   );

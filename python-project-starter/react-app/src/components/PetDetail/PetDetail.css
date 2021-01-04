@@ -82,11 +82,6 @@ div.pet-detail-more {
     transition: box-shadow 250ms ease-in-out, transform 150ms ease;
 }
 
-div.pet-detail-more > .more-pets {
-    display: flex;
-    height: 500px;
-    width: 100%;
-}
 div.pet-detail-more .more-pets {
     margin: 10px;
 }
@@ -104,6 +99,7 @@ div.pet-detail-more .more-pets > .pet-container {
 div.pet-detail-more .more-pets > .pet-container:hover,
 div.pet-detail-more .more-pets > .pet-container:focus {
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    border-radius: 3px;
 }
 
 /* div.pet-detail-more .more-pets > .pet-container > .image-container {
@@ -125,12 +121,7 @@ div.pet-detail-more .more-pets > .pet-container > .image-container > img {
     
 }
 
-div.pet-detail-more .more-pets > .pet-container > .image-container > img:hover,
-div.pet-detail-more .more-pets > .pet-container > .image-container > img:focus {
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-}
-
-.more-pets > .pet-container > .pet-details {
+.more-pets > .pet-container .pet-details {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
@@ -139,7 +130,7 @@ div.pet-detail-more .more-pets > .pet-container > .image-container > img:focus {
     margin-bottom: 5px;
 }
 
-.more-pets > .pet-container > .pet-details > .pet-name {
+.more-pets > .pet-container .pet-details > .pet-name {
     font-weight: bold;
     font-size: 18px;
 }

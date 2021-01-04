@@ -60,7 +60,6 @@
 
 .petslist-main-container .pet-details {
     font-size: 12px;
-    max-width: 250px;
     width: 250px;
     align-self: center;
 }
@@ -74,6 +73,22 @@
     font-size: 1.2em;
     font-weight: bold;
 }
+
+.price-and-add-pet {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .price-and-add-pet .add-pet-cart-btn button {
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: black;
+    padding: 5px 0px;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    transition: background 150ms ease-in-out,
+} */
 
 .spinner {
     display: flex;

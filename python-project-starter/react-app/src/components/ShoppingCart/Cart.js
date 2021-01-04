@@ -9,44 +9,42 @@ import './Cart.css';
 function Cart() {
   let localItemsCart = JSON.parse(localStorage.getItem('cart'))
   let localPetsCart = JSON.parse(localStorage.getItem('petCart'))
-  let [cartItems, setCartItems] = useState(localItemsCart || [])
-  let [cart, setCart] = useState([])
+  let [cartItems, setCartItems] = useState(localItemsCart ? [...localItemsCart] : [])
   let [petsCart, setPetsCart] = useState([])
+  let [itemCarObj, setItemCartObj] = useState({})
+  const loopArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-  useEffect(() => {
-    console.log(cartItems)
-  }, [])
 
-  console.log(localItemsCart)
+
 
   const fetchItems = () => {
     return (
-      <div className="items-container">
-        <ul>
-          {cartItems.map((item) =>
-            <div className="items-container__item" key={item.id}>
-              <div className="item-image">
-                <img src={item.imgurl} />
-              </div>
-              <div className="item-info-container">
-                <NavLink to={`/items/${item.id}`}><h2>{item.name}</h2></NavLink>
-                <div>
-                  <RemoveItemFromCart item={item} setCartItems={setCartItems} />
-                </div>
-              </div>
-              <select className="dropdown" key={item.id} onChange={e => updateQty(e)}>
-                <option value="1">Qty: 1</option>
-                <option value="2">Qty: 2</option>
-                <option value="3">Qty: 3</option>
-                <option value="4">Qty: 4</option>
-                <option value="5">Qty: 5</option>
-                <option value="6">Qty: 6</option>
-                <option value="7">Qty: 7</option>
-                <option value="8">Qty: 8</option>
-                <option value="9">Qty: 9</option>
-                <option value="10">Qty: 10</option>
-              </select>
-              <h6>{`$${item.price}`}</h6>
+      <ul>
+        {cartItems.map((item) =>
+          <div key={item.id}>
+            <img src={item.imgurl} />
+            <div>
+              <NavLink to={`/items/${item.id}`}>{item.name}</NavLink>
+              <p>{`$${item.price}`}</p>
+            </div>
+            <select key={item.id} onChange={e => updateQty(e)}>
+              {loopArr.map(num => {
+                if (itemCarObj[item.id] == num) return <option id={`${item.id}|${num}`} selected='selected' value={`${item.id}|${num}`}>Qty: {num}</option>
+                else return <option id={`${item.id}|${num}`} value={`${item.id}|${num}`}>Qty: {num}</option>
+              })}
+              {/* <option id={`${item.id}|1`} value={`${item.id}|1`}>Qty: 1</option> */}
+              {/* <option id={`${item.id}|2`} value={`${item.id}|2`}>Qty: 2</option>
+              <option id={`${item.id}|3`} value={`${item.id}|3`}>Qty: 3</option>
+              <option id={`${item.id}|4`} value={`${item.id}|4`}>Qty: 4</option>
+              <option id={`${item.id}|5`} value={`${item.id}|5`}>Qty: 5</option>
+              <option id={`${item.id}|6`} value={`${item.id}|6`}>Qty: 6</option>
+              <option id={`${item.id}|7`} value={`${item.id}|7`}>Qty: 7</option>
+              <option id={`${item.id}|8`} value={`${item.id}|8`}>Qty: 8</option>
+              <option id={`${item.id}|9`} value={`${item.id}|9`}>Qty: 9</option>
+              <option id={`${item.id}|10`} value={`${item.id}|10`}>Qty: 10</option> */}
+            </select>
+            <div>
+              <RemoveItemFromCart item={item} setCartItems={setCartItems} />
             </div>
           )}
         </ul>
@@ -78,18 +76,31 @@ function Cart() {
   }
 
   const updateQty = (e) => {
+    let value = e.target.value.split("|")[1]
+    let itemId = e.target.value.split("|")[0]
+    // console.log("Value:", value)
+    // console.log("Item ID:", itemId)
+
     let cartCopy = [...cartItems]
 
     let targetItem = cartCopy.find(cartItem => {
-      return cartItem.id == e.target.value
+      return cartItem.id == itemId
     });
 
-    // targetItem[e.target.name.toString()] = e.target.value
+    let localItemCart = JSON.parse(localStorage.getItem('cart'))
+    let itemIdString = targetItem.id.toString()
 
-    // setCart(cartCopy);
+    localItemCart.forEach(item => {
+      if (Object.keys(item)[0] == itemIdString) {
+        item[itemIdString] = parseInt(value)
+        let cartObj = itemCarObj
+        cartObj[itemIdString] = parseInt(value)
+        setItemCartObj(cartObj)
+      }
+    })
 
-    // let cartString = JSON.stringify(cartCopy);
-    // localStorage.setItem('cart', cartString);
+    let newCart = JSON.stringify(localItemCart)
+    localStorage.setItem('cart', newCart)
   }
 
   useEffect(() => {
@@ -114,6 +125,15 @@ function Cart() {
       }
     }
     fetchData();
+
+    const buildItemCartObj = () => {
+      let cartObj = {}
+      localItemsCart.map(item => {
+        cartObj[Object.keys(item)[0]] = Object.values(item)[0]
+      })
+      setItemCartObj(cartObj)
+    }
+    buildItemCartObj()
   }, []);
 
 
