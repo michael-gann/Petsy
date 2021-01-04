@@ -8,7 +8,7 @@
     align-items: center;
     justify-content: space-around;
     min-height: 35px;
-    max-width: 345px;
+    min-width: 345px;
 }
 
 .modal-login-container .sign-in-header-text {
@@ -38,15 +38,33 @@
     cursor: pointer;
 }
 
-.modal-login-container .moda-login-form {
-display: flex;
-align-items: center;
-flex-direction: column;
-justify-content: center;;
+/* .modal-login-container .modal-login-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;;
+    width: 342px;
+    max-width: 342px;
+
+} */
+
+.modal-login-container .modal-login-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-top: 5px;
+    min-width: 300px;
+    width: 100%;
 }
 
-.modal-login-container .login-error-div {
-
+.errors-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 40px;
+    color: red;
+    margin-bottom: 10px;
 }
 
 .modal-login-container .email label,
@@ -114,3 +132,21 @@ justify-content: center;;
     align-items: center;
     justify-content: center;
 }
+
+.ReactModal__Content,
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 500ms ease-in,
+                transform 500ms ease;
+}
+
+.ReactModal__Content--after-open,
+.ReactModal__Overlay--after-open {
+    opacity: 1;
+
+}
+
+.ReactModal__Content--before-close,
+.ReactModal__Overlay--before-close {
+    opacity: 0;
+  }
