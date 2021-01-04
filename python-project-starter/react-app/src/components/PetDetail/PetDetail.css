@@ -93,7 +93,7 @@ div.pet-detail-more .more-pets > .pet-container {
     justify-content: center;
     align-items: center;
     margin: 0px;
-    height: 350px;
+    height: 390px;
 }
 
 div.pet-detail-more .more-pets > .pet-container:hover,
@@ -118,7 +118,13 @@ div.pet-detail-more .more-pets > .pet-container > .image-container > img {
     border-radius: 3px;
     transition: box-shadow 250ms ease-in-out,
                   transform 150ms ease;
-    
+
+}
+
+div.pet-detail-more .more-pets > .pet-container > .image-container > img:hover,
+div.pet-detail-more .more-pets > .pet-container > .image-container > img:focus {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
 }
 
 .more-pets > .pet-container .pet-details {
@@ -133,4 +139,62 @@ div.pet-detail-more .more-pets > .pet-container > .image-container > img {
 .more-pets > .pet-container .pet-details > .pet-name {
     font-weight: bold;
     font-size: 18px;
+}
+
+/* these styles mess up the scroll bar but fix the carousel..... */
+
+.pet-detail-container .pet-detail-more-container .pet-detail-more .pets-scroll {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ height: 400px;
+}
+
+.pet-detail-container .pet-detail-more-container .pet-detail-more .pets-carousel {
+    margin-right: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 300px;
+    margin: 10px 20px;
+    min-height: 415px;
+}
+
+.pets-carousel .pet-container img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 3px;
+    transition: box-shadow 250ms ease-in-out,
+    transform 150ms ease;
+    border: .1px solid rgba(134, 126, 126, 0.226);
+}
+
+.pets-carousel .pet-container img:hover,
+.pets-carousel .pet-container img:focus {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+}
+
+.pets-carousel .pet-details {
+    font-size: 12px;
+    width: 250px;
+    height: 60px;
+    align-self: first baseline;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.pets-carousel .pet-container {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    margin-bottom: 12px;
+    width: 300px;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    object-fit: cover;
 }

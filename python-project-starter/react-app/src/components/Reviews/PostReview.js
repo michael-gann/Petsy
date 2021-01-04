@@ -6,7 +6,7 @@ import _ from "lodash";
 function PostReview({ user, setReviews, reviews }) {
   const [score, setScore] = useState(0);
   const [review, setReview] = useState("");
-  const [unReviewed, setUnReviewed] = useState(true)
+  const [unReviewed, setUnReviewed] = useState(true);
   const userId = user.id || undefined;
   const params = useParams();
   const itemId = params.id;
@@ -26,14 +26,14 @@ function PostReview({ user, setReviews, reviews }) {
       }),
     });
     const reviewData = await reviewFetch.json();
-    console.log("REVIEW DATA", reviewData);
+    // console.log("REVIEW DATA", reviewData);
     if (!reviewData.errors) {
       let reviewsDupe = _.cloneDeep(reviews);
-      console.log(reviewsDupe);
+      // console.log(reviewsDupe);
       reviewsDupe.push(reviewData);
       setReviews(reviewsDupe);
-      setReview('')
-      setUnReviewed(false)
+      setReview("");
+      setUnReviewed(false);
     }
   };
 
@@ -46,40 +46,42 @@ function PostReview({ user, setReviews, reviews }) {
   };
 
   useEffect(() => {
-    reviews.forEach(review => {
-      if (review.user.id) return setUnReviewed(false)
-    })
-  }, [])
+    reviews.forEach((review) => {
+      if (review.user.id) return setUnReviewed(false);
+    });
+  }, []);
   return (
     <>
-      {unReviewed && <form onSubmit={submitReview}>
-        <h3>Write Your Review</h3>
-        <StarRatings
-          rating={score}
-          changeRating={changeScore}
-          starRatedColor="black"
-          starEmptyColor="grey"
-          starHoverColor="black"
-          numberOfStars={5}
-          starDimension="22px"
-          starSpacing="0px"
-          name="rating"
-        />
-        <div>
-          <label htmlFor="review"></label>
-        </div>
-        <div className="review">
-          <textarea
-            name="review"
-            id="review"
-            cols="30"
-            rows="10"
-            onChange={updateReview}
-            value={review}
-          ></textarea>
-        </div>
-        <button type="submit">SUBMIT</button>
-      </form>}
+      {unReviewed && (
+        <form onSubmit={submitReview}>
+          <h3>Write Your Review</h3>
+          <StarRatings
+            rating={score}
+            changeRating={changeScore}
+            starRatedColor="black"
+            starEmptyColor="grey"
+            starHoverColor="black"
+            numberOfStars={5}
+            starDimension="22px"
+            starSpacing="0px"
+            name="rating"
+          />
+          <div>
+            <label htmlFor="review"></label>
+          </div>
+          <div className="review">
+            <textarea
+              name="review"
+              id="review"
+              cols="30"
+              rows="10"
+              onChange={updateReview}
+              value={review}
+            ></textarea>
+          </div>
+          <button type="submit">SUBMIT</button>
+        </form>
+      )}
     </>
   );
 }

@@ -379,22 +379,14 @@ textarea:focus, input:focus{
   text-decoration: none;
   margin: 0px 40px;
   min-width: 75px;
+  transition: border-bottom 70ms ease-in,
+              transform 70ms ease-in;
 }
 
-.lower-section a::after {
-  content:"_______";
-  position: relative;
-  opacity: 0;
-  bottom: -3px;
-  right: 44px;
-  transition: all 150ms;
+.lower-section a:hover {
+  border-bottom: 1px solid black;
 }
 
-.lower-section a:hover::after {
-  opacity: 1;
-  transition: all 1.5s;
-
-}
 
 .login-container {
   display: flex;

@@ -95,7 +95,7 @@ def seed_pets():
                name='Lola',
                description="High-energy, with heavy tail wags. Anything you do, ever, will be a source of joy for her. If you think you like coming home after a long day now, wait till you can do it with Lola.",
                price=477.00,
-               imgurl="https://pixabay.com/photos/dog-face-concentration-cute-canine-1209250/",
+               imgurl="https://cdn.pixabay.com/photo/2016/05/23/21/04/dog-1411236_960_720.jpg",
                categoryId=1,
                breed='Mutt',
                age=1,
