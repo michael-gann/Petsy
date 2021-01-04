@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import HorizontalScroll from "react-scroll-horizontal";
+// import Slider from "react-slick";
 import Item from "../Item";
+import Carousel from "react-material-ui-carousel";
 
 const ItemBySeller = ({ user, sellerId }) => {
   const [items, setItems] = useState([]);
@@ -21,24 +22,17 @@ const ItemBySeller = ({ user, sellerId }) => {
     getItems();
   }, [id, sellerId]);
 
-  const child = { width: `30em`, height: `100%` };
-  const parent = { height: `100%` };
+  const itemArray = items.map((item) => <div key={item.id}>{item.id}</div>);
 
   return (
-    <>
+    <div className="more-by-sellers">
       <h3>More from this seller:</h3>
-      <div style={parent} className="item-scroll">
-        <HorizontalScroll reverseScroll={true}>
-          {items.map((item) => {
-            return (
-              <div key={item.id} className="more-items">
-                <Item item={item} style={child} onClick={handleClick}></Item>
-              </div>
-            );
-          })}
-        </HorizontalScroll>
-      </div>
-    </>
+      <Carousel autoPlay={false}>
+        {items.map((item, index) => (
+          <Item item={item} key={index}></Item>
+        ))}
+      </Carousel>
+    </div>
   );
 };
 
