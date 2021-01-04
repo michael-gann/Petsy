@@ -7,15 +7,15 @@ function ProceedToCheckout(total) {
   const paymentMethod = () => {
     return (
       <div className="payment-methods">
-        <label>
+        <label className="payments">
           <input type="radio" name="radio" />
           <span class="checkmark"></span>
           <img src={PaymentMethodsCard} />
         </label>
-        <label>
+        <label className="payments">
           <input type="radio" name="radio" />
           <span class="checkmark"></span>
-          <img src={PaymentMethodsPaypal} />
+          <img src={PaymentMethodsPaypal} className="payment" />
         </label>
       </div>
     )

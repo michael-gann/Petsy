@@ -6,7 +6,7 @@ import ProceedToCheckout from "./ProceedToCheckout";
 
 import "./Cart.css";
 
-function Cart() {
+function Cart({ setNumCartItems }) {
   let localItemsCart = JSON.parse(localStorage.getItem("cart"));
   let localPetsCart = JSON.parse(localStorage.getItem("petCart"));
   let [cartItems, setCartItems] = useState(
@@ -95,6 +95,19 @@ function Cart() {
 
     let newCart = JSON.stringify(localItemCart);
     localStorage.setItem("cart", newCart);
+
+    (() => {
+      let localItemsCart = JSON.parse(localStorage.getItem('cart'))
+      let localPetsCart = JSON.parse(localStorage.getItem('petCart'))
+      let count = 0
+      localItemsCart.forEach(item => {
+        count += item[Object.keys(item)]
+      })
+      localPetsCart.forEach(item => {
+        count += item[Object.keys(item)]
+      })
+      setNumCartItems(count)
+    })()
   };
 
   useEffect(() => {
@@ -129,6 +142,21 @@ function Cart() {
     };
     buildItemCartObj();
   }, []);
+
+  useEffect(() => {
+    (() => {
+      let localItemsCart = JSON.parse(localStorage.getItem('cart'))
+      let localPetsCart = JSON.parse(localStorage.getItem('petCart'))
+      let count = 0
+      localItemsCart.forEach(item => {
+        count += item[Object.keys(item)]
+      })
+      localPetsCart.forEach(item => {
+        count += item[Object.keys(item)]
+      })
+      setNumCartItems(count)
+    })()
+  }, [cartItems, petsCart])
 
   return (
     <div className="cart-components">

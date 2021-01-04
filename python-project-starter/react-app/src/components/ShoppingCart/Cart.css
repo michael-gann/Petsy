@@ -120,6 +120,7 @@
   margin-top: 50px;
   margin-left: 30px;
   position: fixed;
+  right: 50px;
 }
 
 .proceed-to-checkout h4 {
@@ -155,4 +156,14 @@
   background-color: grey;
   transition-duration: 0.2s;
   cursor: pointer;
+}
+
+
+img.payment {
+  width: 50px;
+}
+
+label.payments {
+  display: flex;
+  align-items: center;
 }
