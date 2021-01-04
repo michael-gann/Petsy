@@ -7,7 +7,7 @@ function ScoreAvg({ itemId }) {
     <ScoreContext.Consumer>
       {(value) => {
         if (value[itemId] === undefined) {
-          return null;
+          return <div>No Reviews Yet</div>;
         } else {
           if (value)
             return (
@@ -16,7 +16,7 @@ function ScoreAvg({ itemId }) {
                   rating={
                     value[itemId] !== undefined
                       ? value[`${itemId}`]["sumReviews"] /
-                        value[`${itemId}`]["countReviews"]
+                      value[`${itemId}`]["countReviews"]
                       : ""
                   }
                   starRatedColor="black"
@@ -37,7 +37,7 @@ function ScoreAvg({ itemId }) {
                 rating={
                   value[itemId] !== undefined
                     ? value[`${itemId}`]["sumReviews"] /
-                      value[`${itemId}`]["countReviews"]
+                    value[`${itemId}`]["countReviews"]
                     : 0
                 }
                 starRatedColor="black"
