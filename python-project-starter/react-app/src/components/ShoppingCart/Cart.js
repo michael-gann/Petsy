@@ -135,13 +135,13 @@ function Cart() {
       <div>
         <div className="num-cart-items">
           <h1>
-            {localItemsCart ? localItemsCart.length : "0"} items in your cart
+            {localItemsCart ? localItemsCart.length : "0"} {localItemsCart.length > 1 ? "items" : "item"} in your cart
           </h1>
         </div>
         {fetchItems()}
         <div className="num-cart-pets">
           <h1>
-            {localPetsCart ? localPetsCart.length : "0"} pets in your cart
+            {localPetsCart ? localPetsCart.length : "0"} {localPetsCart.length > 1 ? "pets" : "pet"} in your cart
           </h1>
         </div>
         {fetchPets()}
