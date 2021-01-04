@@ -44,9 +44,16 @@ function ProceedToCheckout(total) {
         <h4>How you'll pay</h4>
         {paymentMethod()}
         <div className="totals">
-          <p>
-            Item(s) total:
-          </p>
+          <div className="items-total">
+            <p>
+              Item(s) total:
+            </p>
+          </div>
+          <div className="shipping">
+            <p>
+              Shipping:
+            </p>
+          </div>
           <p>
             Total:
           </p>

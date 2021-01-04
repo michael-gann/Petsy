@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import RemoveItemFromCart from "./RemoveItemFromCart";
-import RemovePetFromCart from "./RemovePetFromCart";
-import ProceedToCheckout from "./ProceedToCheckout";
+import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom'
+import RemoveItemFromCart from './RemoveItemFromCart';
+import RemovePetFromCart from './RemovePetFromCart';
+import ProceedToCheckout from './ProceedToCheckout';
+import NumberFormat from "react-number-format";
 
 import "./Cart.css";
 
@@ -15,6 +16,11 @@ function Cart({ setNumCartItems }) {
   let [petsCart, setPetsCart] = useState([]);
   let [itemCarObj, setItemCartObj] = useState({});
   const loopArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  
+  const handleClick = (e) => {
+    updateQty(e)
+    window.location.reload(false);
+  }
 
   const fetchItems = () => {
     return (
@@ -30,13 +36,23 @@ function Cart({ setNumCartItems }) {
                 <RemoveItemFromCart item={item} setCartItems={setCartItems} />
               </div>
             </div>
-            <select className="dropdown" key={item.id} onChange={e => updateQty(e)}>
+            <select className="dropdown" key={item.id} onChange={e => handleClick(e)}>
               {loopArr.map(num => {
                 if (itemCarObj[item.id] == num) return <option id={`${item.id}|${num}`} selected='selected' value={`${item.id}|${num}`}>Qty: {num}</option>
                 else return <option id={`${item.id}|${num}`} value={`${item.id}|${num}`}>Qty: {num}</option>
               })}
             </select>
-            <p>{`$${item.price}`}</p>
+            <div className="number-format">
+              <NumberFormat
+                value={item.price * itemCarObj[item.id]}
+                displayType={"text"}
+                thousandSeparator={true}
+                prefix={"$"}
+                renderText={(value) => <div>{value}</div>}
+                decimalScale={2}
+                fixedDecimalScale={true}
+              />
+            </div>
           </div>
         )}
       </ul>
@@ -61,7 +77,17 @@ function Cart({ setNumCartItems }) {
                     <RemovePetFromCart item={pets} setPetsCart={setPetsCart} />
                   </div>
                 </div>
-                <p>{`$${pets.price}`}</p>
+                <div className="number-format">
+                  <NumberFormat
+                    value={pets.price}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    prefix={"$"}
+                    renderText={(value) => <div>{value}</div>}
+                    decimalScale={2}
+                    fixedDecimalScale={true}
+                  />
+                </div>
               </div>
             ))}
         </ul>
@@ -175,7 +201,7 @@ function Cart({ setNumCartItems }) {
         {fetchPets()}
       </div>
       <div>
-        <ProceedToCheckout />
+        <ProceedToCheckout total={total} />
       </div>
     </div>
   );
