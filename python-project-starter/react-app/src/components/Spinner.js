@@ -8,8 +8,6 @@ export const Spinner = (props) => {
     delay: 0,
   });
 
-  console.log("PROMISE IN PROGRESS VALUE FROM SPINNER", promiseInProgress);
-
   return (
     <>
       {promiseInProgress && (

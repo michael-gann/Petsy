@@ -7,7 +7,7 @@ import NumberFormat from "react-number-format";
 
 import "./Cart.css";
 
-function Cart() {
+function Cart({ setNumCartItems }) {
   let localItemsCart = JSON.parse(localStorage.getItem("cart"));
   let localPetsCart = JSON.parse(localStorage.getItem("petCart"));
   let [cartItems, setCartItems] = useState(
@@ -121,6 +121,19 @@ function Cart() {
 
     let newCart = JSON.stringify(localItemCart);
     localStorage.setItem("cart", newCart);
+
+    (() => {
+      let localItemsCart = JSON.parse(localStorage.getItem('cart'))
+      let localPetsCart = JSON.parse(localStorage.getItem('petCart'))
+      let count = 0
+      localItemsCart.forEach(item => {
+        count += item[Object.keys(item)]
+      })
+      localPetsCart.forEach(item => {
+        count += item[Object.keys(item)]
+      })
+      setNumCartItems(count)
+    })()
   };
 
   useEffect(() => {
@@ -156,18 +169,33 @@ function Cart() {
     buildItemCartObj();
   }, []);
 
+  useEffect(() => {
+    (() => {
+      let localItemsCart = JSON.parse(localStorage.getItem('cart'))
+      let localPetsCart = JSON.parse(localStorage.getItem('petCart'))
+      let count = 0
+      localItemsCart.forEach(item => {
+        count += item[Object.keys(item)]
+      })
+      localPetsCart.forEach(item => {
+        count += item[Object.keys(item)]
+      })
+      setNumCartItems(count)
+    })()
+  }, [cartItems, petsCart])
+
   return (
     <div className="cart-components">
       <div>
         <div className="num-cart-items">
           <h1>
-            {localItemsCart ? localItemsCart.length : "0"} items in your cart
+            {localItemsCart ? localItemsCart.length : "0"} {localItemsCart.length > 1 ? "items" : "item"} in your cart
           </h1>
         </div>
         {fetchItems()}
         <div className="num-cart-pets">
           <h1>
-            {localPetsCart ? localPetsCart.length : "0"} pets in your cart
+            {localPetsCart ? localPetsCart.length : "0"} {localPetsCart.length > 1 ? "pets" : "pet"} in your cart
           </h1>
         </div>
         {fetchPets()}

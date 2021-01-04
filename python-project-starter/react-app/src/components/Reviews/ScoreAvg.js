@@ -7,7 +7,7 @@ function ScoreAvg({ itemId }) {
     <ScoreContext.Consumer>
       {(value) => {
         if (value[itemId] === undefined) {
-          return <div>No Reviews Yet</div>;
+          return null
         } else {
           if (value)
             return (
