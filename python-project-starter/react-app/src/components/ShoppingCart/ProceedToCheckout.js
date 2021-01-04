@@ -1,6 +1,23 @@
 import React from 'react'
 import PaymentMethodsCard from './images/PaymentMethodsCard.jpg';
 import PaymentMethodsPaypal from './images/PaymentMethodsPaypal.jpg';
+import Modal from "react-modal";
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    height: "480px",
+    width: "384px",
+    borderRadius: "20px",
+  },
+};
+
+Modal.setAppElement("#root");
 
 function ProceedToCheckout(total) {
 
