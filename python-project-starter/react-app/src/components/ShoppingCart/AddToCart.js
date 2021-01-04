@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+
 
 function AddToCart({ item }) {
   let [cart, setCart] = useState([]);
+  const history = useHistory()
 
   let localCart = localStorage.getItem("cart");
 
@@ -27,6 +30,8 @@ function AddToCart({ item }) {
 
     let stringCart = JSON.stringify(cartCopy);
     localStorage.setItem("cart", stringCart);
+    console.log("here")
+    return history.push('/cart')
   };
 
   useEffect(() => {

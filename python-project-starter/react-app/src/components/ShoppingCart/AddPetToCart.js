@@ -5,8 +5,6 @@ function AddPetToCart({ pet }) {
 
   let localCart = localStorage.getItem("petCart");
 
-  console.log("petCart:", petCart)
-
   const addPet = () => {
     let cartCopy = [...petCart];
     let petToAdd = pet.id

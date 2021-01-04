@@ -184,6 +184,23 @@
   }
 }
 
+span.cart-basket {
+  font-size: .8rem;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 34px;
+  right: 39px;
+  width: 15px;
+  height: 15px;
+
+  /* padding-left: 5px; */
+  color: #fff;
+  background-color: #F1641E;
+  border-radius: 50%;
+}
+
 @media screen and (min-width: 470px) {
 
 
@@ -294,11 +311,6 @@ textarea:focus, input:focus{
   font-family: inherit;
   margin: 0;
   width: 55px;
-}
-
-.fa.fa-caret-down {
-  padding-top: 3px;
-  padding-left: 4px;
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn {

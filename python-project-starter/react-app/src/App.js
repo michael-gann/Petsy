@@ -17,7 +17,7 @@ import { authenticate } from "./services/auth";
 import ScrollToTop from "./components/ScrollToTop";
 
 export const ScoreContext = createContext();
-export const CartContext = createContext();
+export const NumCartContext = createContext();
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -25,6 +25,7 @@ function App() {
   const [sessionUser, setSessionUser] = useState(undefined);
   const [results, setResults] = useState([]);
   const [scores, setScores] = useState({});
+  const [numCartItems, setNumCartItems] = useState(0)
 
   useEffect(() => {
     (async () => {
@@ -44,8 +45,23 @@ function App() {
     };
     fetchScores();
 
+    const fetchCartNum = () => {
+      let localItemsCart = JSON.parse(localStorage.getItem('cart'))
+      let localPetsCart = JSON.parse(localStorage.getItem('petCart'))
+      let count = 0
+      localItemsCart.forEach(item => {
+        count += item[Object.keys(item)]
+      })
+      localPetsCart.forEach(item => {
+        count += item[Object.keys(item)]
+      })
+      setNumCartItems(count)
+    }
+    fetchCartNum()
+
   }, []);
 
+  console.log(numCartItems)
   if (!loaded) {
     return null;
   }
@@ -53,11 +69,13 @@ function App() {
   return (
     <ScoreContext.Provider value={scores}>
       <BrowserRouter>
-        <NavBar
-          setResults={setResults}
-          setAuthenticated={setAuthenticated}
-          isAuthenticated={authenticated}
-        />
+        <NumCartContext.Provider value={numCartItems}>
+          <NavBar
+            setResults={setResults}
+            setAuthenticated={setAuthenticated}
+            isAuthenticated={authenticated}
+          />
+        </NumCartContext.Provider>
         <ScrollToTop>
           <Route path="/search" exact={true}>
             <Search results={results}></Search>
@@ -69,7 +87,7 @@ function App() {
             <PetsList />
           </Route>
           <Route path="/items/:id" exact={true} authenticated={authenticated}>
-            <ItemDetail user={sessionUser} isAuthenticated={authenticated} />
+            <ItemDetail user={sessionUser} isAuthenticated={authenticated} setNumCartItems={setNumCartItems} />
           </Route>
           <ProtectedRoute
             path="/users/:userId"
@@ -83,13 +101,13 @@ function App() {
             exact={true}
             authenticated={authenticated}
           >
-            <Cart />
+            <Cart setNumCartItems={setNumCartItems} />
           </ProtectedRoute>
           <Route path="/" exact={true} authenticated={authenticated}>
             <Homepage />
           </Route>
           <Route path="/pets/:id" exact={true}>
-            <PetDetail user={sessionUser} isAuthenticated={authenticated} />
+            <PetDetail user={sessionUser} isAuthenticated={authenticated} setNumCartItems={setNumCartItems} />
           </Route>
         </ScrollToTop>
         <Footer />
