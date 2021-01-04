@@ -17,6 +17,7 @@ import { authenticate } from "./services/auth";
 import ScrollToTop from "./components/ScrollToTop";
 
 export const ScoreContext = createContext();
+export const CartContext = createContext();
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -34,6 +35,7 @@ function App() {
       }
       setLoaded(true);
     })();
+
     const fetchScores = async () => {
       const res = await fetch("/api/reviews");
       const scoresObj = await res.json();
@@ -41,6 +43,7 @@ function App() {
       setScores(scoresObj);
     };
     fetchScores();
+
   }, []);
 
   if (!loaded) {

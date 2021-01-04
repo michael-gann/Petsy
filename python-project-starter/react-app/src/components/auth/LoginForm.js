@@ -68,6 +68,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     <>
       <button onClick={openModal}>Login</button>
       <Modal
+        closeTimeoutMS={500}
         isOpen={showModal}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
@@ -86,7 +87,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
             </div>
           </div>
           <form onSubmit={onLogin} className="modal-login-form">
-            <div>
+            <div className="errors-container">
               {errors.map((error) => (
                 <div className="login-error-div">{error}</div>
               ))}
