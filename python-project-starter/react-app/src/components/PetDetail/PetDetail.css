@@ -121,7 +121,7 @@ div.pet-detail-more .more-pets > .pet-container > .image-container > img {
     
 }
 
-.more-pets > .pet-container > .pet-details {
+.more-pets > .pet-container .pet-details {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
@@ -130,7 +130,7 @@ div.pet-detail-more .more-pets > .pet-container > .image-container > img {
     margin-bottom: 5px;
 }
 
-.more-pets > .pet-container > .pet-details > .pet-name {
+.more-pets > .pet-container .pet-details > .pet-name {
     font-weight: bold;
     font-size: 18px;
 }

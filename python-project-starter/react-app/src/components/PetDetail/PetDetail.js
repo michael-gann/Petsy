@@ -63,7 +63,6 @@ function PetDetail({ user, isAuthenticated }) {
           {isAuthenticated && (
             <div className="cart-button-container">
               <AddPetToCart pet={pet} />
-              <RemoveFromCart id={pet.id} />
             </div>
           )}
         </div>

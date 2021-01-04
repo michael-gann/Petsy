@@ -77,7 +77,6 @@ function ItemDetail({ user, isAuthenticated }) {
           {isAuthenticated && (
             <div className="cart-button-container">
               <AddToCart item={item} />
-              <RemoveItemFromCart id={item.id} />
             </div>
           )}
         </section>
