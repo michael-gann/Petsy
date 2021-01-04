@@ -97,6 +97,10 @@
     width: 55px;
   }
 
+  .dropbtn i {
+    margin-top: 10px;
+  }
+
   .navbar a:hover, .dropdown:hover .dropbtn {
     background-color:gray;
   }
@@ -104,6 +108,7 @@
   .dropdown-content {
     display: none;
     position: absolute;
+    top: -15px;
     background-color: transparent;
     min-width: 20px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -182,6 +187,23 @@
     font-size: 16px;
     border: none;
   }
+}
+
+span.cart-basket {
+  font-size: .8rem;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 34px;
+  right: 39px;
+  width: 15px;
+  height: 15px;
+
+  /* padding-left: 5px; */
+  color: #fff;
+  background-color: #F1641E;
+  border-radius: 50%;
 }
 
 @media screen and (min-width: 470px) {
@@ -274,6 +296,11 @@ textarea:focus, input:focus{
   background-color: white;
 }
 
+.fa.fa-caret-down {
+  padding-top: 2px;
+  padding-left: 4px;
+}
+
 .dropdown {
   float: right;
   overflow: hidden;
@@ -285,24 +312,21 @@ textarea:focus, input:focus{
   justify-content: space-between;
   width: 60px;
   font-size: 17px;
-  padding: 6px 8px;
+  padding: 5px 6px;
   border: none;
   outline: none;
   color: black;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: inherit;
   font-family: inherit;
   margin: 0;
   width: 55px;
 }
 
-.fa.fa-caret-down {
-  padding-top: 3px;
-  padding-left: 4px;
-}
 
 .navbar a:hover, .dropdown:hover .dropbtn {
   background-color:lightgray;
+  /* border: 1px solid grey; */
 }
 
 .dropdown-content {
@@ -339,6 +363,7 @@ textarea:focus, input:focus{
 .dropdown:hover .dropdown-content {
   font-size: 15px;
   padding: 4px;
+  padding-top: 0px;
   background-color: white;
   display: block;
 }

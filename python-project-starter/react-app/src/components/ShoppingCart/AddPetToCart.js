@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { Redirect, useHistory } from "react-router-dom";
 
 function AddPetToCart({ pet }) {
-  let [petCart, setPetCart] = useState([]);
+  let [petCart, setPetCart] = useState([])
+  const history = useHistory()
 
   let localCart = localStorage.getItem("petCart");
-
-  // console.log("petCart:", petCart)
-
+  
   const addPet = () => {
     let cartCopy = [...petCart];
     let petToAdd = pet.id;
@@ -26,8 +26,11 @@ function AddPetToCart({ pet }) {
     setPetCart(cartCopy);
 
     let stringCart = JSON.stringify(cartCopy);
-    localStorage.setItem("petCart", stringCart);
-  };
+
+    localStorage.setItem("petCart", stringCart)
+    return history.push("/cart")
+  }
+
 
   useEffect(() => {
     localCart = JSON.parse(localCart);
