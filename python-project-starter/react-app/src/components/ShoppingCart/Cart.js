@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom'
 import RemoveItemFromCart from './RemoveItemFromCart';
 import RemovePetFromCart from './RemovePetFromCart';
-import { useHistory } from "react-router-dom";
+import ProceedToCheckout from './ProceedToCheckout';
+
+import './Cart.css';
 
 function Cart() {
   let localItemsCart = JSON.parse(localStorage.getItem('cart'))
@@ -10,74 +12,84 @@ function Cart() {
   let [cartItems, setCartItems] = useState(localItemsCart || [])
   let [cart, setCart] = useState([])
   let [petsCart, setPetsCart] = useState([])
-  const history = useHistory();
+
+  useEffect(() => {
+    console.log(cartItems)
+  }, [])
+
+  console.log(localItemsCart)
 
   const fetchItems = () => {
     return (
-      <ul>
-        {cartItems.map((item) =>
-          <div key={item.id}>
-            <img src={item.imgurl} />
-            <div>
-              <NavLink to={`/items/${item.id}`}>{item.name}</NavLink>
-              <p>{`$${item.price}`}</p>
+      <div className="items-container">
+        <ul>
+          {cartItems.map((item) =>
+            <div className="items-container__item" key={item.id}>
+              <div className="item-image">
+                <img src={item.imgurl} />
+              </div>
+              <div className="item-info-container">
+                <NavLink to={`/items/${item.id}`}><h2>{item.name}</h2></NavLink>
+                <div>
+                  <RemoveItemFromCart item={item} setCartItems={setCartItems} />
+                </div>
+              </div>
+              <select className="dropdown" key={item.id} onChange={e => updateQty(e)}>
+                <option value="1">Qty: 1</option>
+                <option value="2">Qty: 2</option>
+                <option value="3">Qty: 3</option>
+                <option value="4">Qty: 4</option>
+                <option value="5">Qty: 5</option>
+                <option value="6">Qty: 6</option>
+                <option value="7">Qty: 7</option>
+                <option value="8">Qty: 8</option>
+                <option value="9">Qty: 9</option>
+                <option value="10">Qty: 10</option>
+              </select>
+              <h6>{`$${item.price}`}</h6>
             </div>
-            <select key={item.id} onChange={e => updateQty(e)}>
-              <option value="1">Qty: 1</option>
-              <option value="2">Qty: 2</option>
-              <option value="3">Qty: 3</option>
-              <option value="4">Qty: 4</option>
-              <option value="5">Qty: 5</option>
-              <option value="6">Qty: 6</option>
-              <option value="7">Qty: 7</option>
-              <option value="8">Qty: 8</option>
-              <option value="9">Qty: 9</option>
-              <option value="10">Qty: 10</option>
-            </select>
-            <div>
-              <RemoveItemFromCart item={item} setCartItems={setCartItems} />
-            </div>
-          </div>
-        )}
-      </ul>
+          )}
+        </ul>
+      </div>
     )
   }
 
   const fetchPets = () => {
     return (
-      <ul>
-        {localPetsCart !== null &&
-          petsCart.map((pets) =>
-            <div key={pets.id}>
-              <img src={pets.imgurl} />
-              <div>
-                <NavLink to={`/petss/${pets.id}`}>{pets.name}</NavLink>
-                <p>{`$${pets.price}`}</p>
+      <div className="items-container">
+        <ul>
+          {localPetsCart !== null &&
+            petsCart.map((pets) =>
+              <div className="items-container__item" key={pets.id}>
+                <img src={pets.imgurl} />
+                <div className="item-info-container">
+                  <NavLink to={`/pets/${pets.id}`}><h1>{pets.name}</h1></NavLink>
+                  <p>{pets.description}</p>
+                  <div>
+                    <RemovePetFromCart item={pets} setPetsCart={setPetsCart} />
+                  </div>
+                </div>
+                <h6>{`$${pets.price}`}</h6>
               </div>
-              <div>
-                <RemovePetFromCart item={pets} setPetsCart={setPetsCart} />
-              </div>
-            </div>
-          )}
-      </ul>
+            )}
+        </ul>
+      </div>
     )
   }
 
   const updateQty = (e) => {
     let cartCopy = [...cartItems]
 
-    console.log("cartCopy", cartCopy)
-
     let targetItem = cartCopy.find(cartItem => {
-      return Object.keys(cartItem) == e.target.name
+      return cartItem.id == e.target.value
     });
 
-    targetItem[e.target.name.toString()] = e.target.value
+    // targetItem[e.target.name.toString()] = e.target.value
 
-    setCart(cartCopy);
+    // setCart(cartCopy);
 
-    let cartString = JSON.stringify(cartCopy);
-    localStorage.setItem('cart', cartString);
+    // let cartString = JSON.stringify(cartCopy);
+    // localStorage.setItem('cart', cartString);
   }
 
   useEffect(() => {
@@ -107,20 +119,25 @@ function Cart() {
 
 
   return (
-    <>
+    <div className="cart-components">
       <div>
-        <h1>{localItemsCart ?
-          localItemsCart.length :
-          "0"} items in your cart</h1>
+        <div className="num-cart-items">
+          <h1>{localItemsCart ?
+            localItemsCart.length :
+            "0"} items in your cart</h1>
+        </div>
+        {fetchItems()}
+        <div className="num-cart-pets">
+          <h1>{localPetsCart ?
+            localPetsCart.length :
+            "0"} pets in your cart</h1>
+        </div>
+        {fetchPets()}
       </div>
-      {fetchItems()}
       <div>
-        <h1>{localPetsCart ?
-          localPetsCart.length :
-          "0"} pets in your cart</h1>
+        <ProceedToCheckout />
       </div>
-      {fetchPets()}
-    </>
+    </div>
   )
 }
 
