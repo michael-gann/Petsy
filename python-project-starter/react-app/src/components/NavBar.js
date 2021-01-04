@@ -3,6 +3,7 @@ import { NavLink, useHistory } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
 import LoginForm from "./auth/LoginForm";
 import SignUpForm from "./auth/SignUpForm";
+import { NumCartContext } from "../App"
 import "./NavBar.css";
 
 const NavBar = ({ setAuthenticated, isAuthenticated, setResults }) => {
@@ -83,27 +84,36 @@ const NavBar = ({ setAuthenticated, isAuthenticated, setResults }) => {
 
                 <div className="cart">
                   <a rel="noopener noreferrer" href="/cart">
-                    <i className="fas fa-shopping-cart fa-lg"></i>
+                    <i className="fas fa-shopping-cart fa-2x">
+                      <NumCartContext.Consumer>
+                        {value => {
+                          if (value) return <span class="cart-basket d-flex align-items-center justify-content-center">{value}</span>
+                          else return <span class="cart-basket d-flex align-items-center justify-content-center">0</span>
+                        }
+                        }
+                      </NumCartContext.Consumer>
+                    </i>
+
                   </a>
                 </div>
               </div>
             </>
           ) : (
-            <div className="login-container">
-              <li className="nav login">
-                <LoginForm
-                  authenticated={isAuthenticated}
-                  setAuthenticated={setAuthenticated}
-                />
-              </li>
-              <li className="nav sign-up">
-                <SignUpForm
-                  authenticated={isAuthenticated}
-                  setAuthenticated={setAuthenticated}
-                />
-              </li>
-            </div>
-          )}
+              <div className="login-container">
+                <li className="nav login">
+                  <LoginForm
+                    authenticated={isAuthenticated}
+                    setAuthenticated={setAuthenticated}
+                  />
+                </li>
+                <li className="nav sign-up">
+                  <SignUpForm
+                    authenticated={isAuthenticated}
+                    setAuthenticated={setAuthenticated}
+                  />
+                </li>
+              </div>
+            )}
         </ul>
         <div className="lower-section">
           <div>
