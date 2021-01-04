@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useParams, Redirect } from "react-router-dom";
 import HorizontalScroll from "react-scroll-horizontal";
 import Pet from "../Pets/Pet";
+import Carousel from "react-material-ui-carousel";
 
 const PetBySeller = ({ user, sellerId }) => {
   const history = useHistory();
@@ -27,22 +28,27 @@ const PetBySeller = ({ user, sellerId }) => {
   return (
     <>
       <h3>More from this seller:</h3>
-      <div style={parent} className="pets-scroll">
-        <HorizontalScroll reverseScroll={true}>
-          {pet.map((pet) => {
-            return (
-              <div className="more-pets"
-                key={pet.id}>
-                <Pet
-                  pet={pet}
-                  style={child}
-                  onClick={handleClick}
-                ></Pet>
-              </div>
-            );
-          })}
-        </HorizontalScroll>
-      </div>
+      {pet.length > 3 ? (
+        <div style={parent} className="pets-scroll">
+          <HorizontalScroll reverseScroll={true}>
+            {pet.map((pet) => {
+              return (
+                <div className="more-pets" key={pet.id}>
+                  <Pet pet={pet} style={child} onClick={handleClick}></Pet>
+                </div>
+              );
+            })}
+          </HorizontalScroll>
+        </div>
+      ) : (
+        <div className="pets-carousel">
+          <Carousel autoPlay={false}>
+            {pet.map((pet, index) => (
+              <Pet pet={pet} key={index} onClick={handleClick}></Pet>
+            ))}
+          </Carousel>
+        </div>
+      )}
     </>
   );
 };
