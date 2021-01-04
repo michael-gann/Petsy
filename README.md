@@ -15,7 +15,7 @@ Users can add items to their cart that they are interested in purchasing or want
 Users can see and leave reviews for items they want to or have purchased. Users can also rate an item between 1 and 5 stars to give other users an idea of the quality of the item they are looking at.
 
 ### Application Architecture && Technologies Used:
-React / CSS / Flask / JS / Python
+React / JS / CSS / Flask / SQLAlchemy / Python
 
 ### Example Feature:
 

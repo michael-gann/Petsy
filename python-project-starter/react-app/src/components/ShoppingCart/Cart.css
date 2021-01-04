@@ -1,10 +1,12 @@
 .cart-components {
   display: flex;
+  /* flex-direction: column; */
 }
 
 .items-container {
   display: flex;
   justify-content: left;
+  flex-direction: column;
 }
 
 .items-container__item {
@@ -27,6 +29,10 @@
 
 .item-info-container {
   max-width: 350px;
+}
+
+.navlink {
+  margin-bottom: 25px;
 }
 
 .item-info-container h2 {

@@ -18,57 +18,30 @@ function Cart() {
 
   const fetchItems = () => {
     return (
-      <ul>
-        {cartItems.map((item) => (
-          <>
-            <div key={item.id}>
-              <img src={item.imgurl} />
-              <div>
-                <NavLink to={`/items/${item.id}`}>{item.name}</NavLink>
-                <p>{`$${item.price}`}</p>
+      <ul className="items-container">
+        {cartItems.map((item) =>
+          <div className="items-container__item" key={item.id}>
+            <img className="item-image" src={item.imgurl} />
+            <div className="item-info-container">
+              <div className="navlink">
+                <NavLink to={`/items/${item.id}`}><h1>{item.name}</h1></NavLink>
               </div>
-              <select key={item.id} onChange={(e) => updateQty(e)}>
-                {loopArr.map((num) => {
-                  if (itemCarObj[item.id] == num)
-                    return (
-                      <option
-                        id={`${item.id}|${num}`}
-                        selected="selected"
-                        value={`${item.id}|${num}`}
-                      >
-                        Qty: {num}
-                      </option>
-                    );
-                  else
-                    return (
-                      <option
-                        id={`${item.id}|${num}`}
-                        value={`${item.id}|${num}`}
-                      >
-                        Qty: {num}
-                      </option>
-                    );
-                })}
-                {/* <option id={`${item.id}|1`} value={`${item.id}|1`}>Qty: 1</option> */}
-                {/* <option id={`${item.id}|2`} value={`${item.id}|2`}>Qty: 2</option>
-              <option id={`${item.id}|3`} value={`${item.id}|3`}>Qty: 3</option>
-              <option id={`${item.id}|4`} value={`${item.id}|4`}>Qty: 4</option>
-              <option id={`${item.id}|5`} value={`${item.id}|5`}>Qty: 5</option>
-              <option id={`${item.id}|6`} value={`${item.id}|6`}>Qty: 6</option>
-              <option id={`${item.id}|7`} value={`${item.id}|7`}>Qty: 7</option>
-              <option id={`${item.id}|8`} value={`${item.id}|8`}>Qty: 8</option>
-              <option id={`${item.id}|9`} value={`${item.id}|9`}>Qty: 9</option>
-              <option id={`${item.id}|10`} value={`${item.id}|10`}>Qty: 10</option> */}
-              </select>
-              <div>
+              <div className="cart-page-button-container">
                 <RemoveItemFromCart item={item} setCartItems={setCartItems} />
               </div>
             </div>
-          </>
-        ))}
+            <select className="dropdown" key={item.id} onChange={e => updateQty(e)}>
+              {loopArr.map(num => {
+                if (itemCarObj[item.id] == num) return <option id={`${item.id}|${num}`} selected='selected' value={`${item.id}|${num}`}>Qty: {num}</option>
+                else return <option id={`${item.id}|${num}`} value={`${item.id}|${num}`}>Qty: {num}</option>
+              })}
+            </select>
+            <p>{`$${item.price}`}</p>
+          </div>
+        )}
       </ul>
-    );
-  };
+    )
+  }
 
   const fetchPets = () => {
     return (
@@ -77,8 +50,9 @@ function Cart() {
           {localPetsCart !== null &&
             petsCart.map((pets) => (
               <div className="items-container__item" key={pets.id}>
-                <img src={pets.imgurl} />
+                <img className="item-image" src={pets.imgurl} />
                 <div className="item-info-container">
+
                   <NavLink to={`/pets/${pets.id}`}>
                     <h1>{pets.name}</h1>
                   </NavLink>
@@ -87,7 +61,7 @@ function Cart() {
                     <RemovePetFromCart item={pets} setPetsCart={setPetsCart} />
                   </div>
                 </div>
-                <h6>{`$${pets.price}`}</h6>
+                <p>{`$${pets.price}`}</p>
               </div>
             ))}
         </ul>
