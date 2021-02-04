@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import NumberFormat from "react-number-format";
 import ScoreAvg from "./Reviews/ScoreAvg";
-import AddToCart from "./ShoppingCart/AddToCart"
+import AddToCart from "./ShoppingCart/AddToCart";
 
 function Item({ item }) {
   const history = useHistory();
+  const user = localStorage.getItem("user");
 
   const handleClick = (e) => {
-    if (e.target.className === "addToCartBtn") return history.push('/cart')
+    e.preventDefault();
+    if (e.target.className === "addToCartBtn") return history.push("/cart");
     return history.push(`/items/${item.id}`);
   };
 
@@ -36,13 +38,15 @@ function Item({ item }) {
           <div className="score">
             <ScoreAvg itemId={item.id} />
           </div>
-          <div className="add-item-cart-btn">
-            <AddToCart item={item} />
-          </div>
+          {user ? (
+            <div className="add-item-cart-btn">
+              <AddToCart item={item} />
+            </div>
+          ) : null}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Item;

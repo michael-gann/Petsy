@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Redirect, useHistory, NavLink } from "react-router-dom";
 import { login } from "../../services/auth";
 import Modal from "react-modal";
+import SignUpForm from "../auth/SignUpForm";
 
 import "./loginForm.css";
 
@@ -64,6 +65,16 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     return <Redirect to="/" />;
   }
 
+  const handleDemo = async (e) => {
+    e.preventDefault();
+    const user = await login("demo@aa.io", "password");
+    if (!user.errors) {
+      setAuthenticated(true);
+    } else {
+      setErrors(user.errors);
+    }
+  };
+
   return (
     <>
       <button onClick={openModal}>Login</button>
@@ -79,11 +90,6 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           <div className="sign-in-register">
             <div>
               <h2 className="sign-in-header-text">Sign in</h2>
-            </div>
-            <div className="link-to-sign-up">
-              <NavLink to="/sign-up" exact={true} activeClassName="active">
-                Register
-              </NavLink>
             </div>
           </div>
           <form onSubmit={onLogin} className="modal-login-form">
@@ -117,6 +123,9 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
               />
               <button className="modal-login-button" type="submit">
                 Sign in
+              </button>
+              <button classname="modal-login-button" onClick={handleDemo}>
+                Demo Sign in
               </button>
             </div>
           </form>

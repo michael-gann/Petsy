@@ -8,6 +8,9 @@
     width: 100%;
     background-color: white;
     border-bottom: 1px solid rgba(5, 4, 4, 0.068);
+    position: sticky;
+    top: 0;
+    z-index: 1;
   }
 
   .nav {
@@ -218,6 +221,9 @@ span.cart-basket {
   width: 100%;
   background-color: white;
   border-bottom: 1px solid rgba(5, 4, 4, 0.068);
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 ul.nav.navbar-items {
@@ -274,7 +280,7 @@ ul.nav.navbar-items {
   border-radius: 25px;
   width: 100%;
   min-width: 150px;
-  max-width: 1105px;
+  max-width: 1000px;
   min-height: 45px;
   height: 100%;
   padding-left: 18px;
@@ -393,8 +399,9 @@ textarea:focus, input:focus{
   justify-content: space-between;
   min-width: 100px;
   font-size: 13px;
-  margin-right: 50px;
+  padding-right: 25px;
   margin-left: 15px;
+  width: 150px;
   /* justify-content: space-around;
   min-width: 130px;
   max-width: 150px;

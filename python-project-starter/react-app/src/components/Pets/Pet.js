@@ -1,13 +1,14 @@
 import React from "react";
 import NumberFormat from "react-number-format";
 import { useHistory } from "react-router-dom";
-import AddPetToCart from '../ShoppingCart/AddPetToCart';
+import AddPetToCart from "../ShoppingCart/AddPetToCart";
 
 function Pet({ pet }) {
   const history = useHistory();
+  const user = localStorage.getItem("user");
 
   const handleClick = (e) => {
-    if (e.target.className === "addToCartBtn") return history.push('/cart')
+    if (e.target.className === "addToCartBtn") return history.push("/cart");
     return history.push(`/pets/${pet.id}`);
   };
 
@@ -17,12 +18,8 @@ function Pet({ pet }) {
         <img src={pet.imgurl} alt="Pet pic" />
       </div>
       <div className="pet-details" onClick={handleClick}>
-        <div className="pet-name">
-          {pet.name}
-        </div>
-        <div>
-          {pet.breed}
-        </div>
+        <div className="pet-name">{pet.name}</div>
+        <div>{pet.breed}</div>
         <div className="price-and-add-pet">
           <NumberFormat
             value={pet.price}
@@ -32,9 +29,11 @@ function Pet({ pet }) {
             thousandSeparator={true}
             prefix={"$"}
           />
-          <div className="add-pet-cart-btn">
-            <AddPetToCart pet={pet} />
-          </div>
+          {user ? (
+            <div className="add-item-cart-btn">
+              <AddPetToCart pet={pet} />
+            </div>
+          ) : null}
         </div>
       </div>
     </div>
