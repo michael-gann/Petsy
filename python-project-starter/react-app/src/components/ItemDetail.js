@@ -10,13 +10,61 @@ import ScoreAvg from "./Reviews/ScoreAvg";
 
 import "./itemsList.css";
 
-function ItemDetail({ user, isAuthenticated }) {
+function ItemDetail({ user, isAuthenticated, numCartItems }) {
   const [reviews, setReviews] = useState([]);
   const [item, setItem] = useState([]);
   const [seller, setSeller] = useState("");
   const { id } = useParams();
+  // const [itemInStorage, setItemInStorage] = useState({});
+
+  // const storageItem = JSON.parse(localStorage.getItem("cart")).find((item) => {
+  //   for (const key in item) {
+  //     console.log(key, id, item);
+  //     if (key === id) {
+  //       return item;
+  //     }
+  //   }
+  // });
+  // console.log("ITEM IN STORAGE", itemInStorage);
+
+  // useEffect(() => {
+  //   if (storageItem !== {}) setItemInStorage(itemInStorage);
+  //   console.log(itemInStorage);
+  // }, [numCartItems]);
+  // const [cartLength, setCartLength] = useState(0);
+
+  // const checkItemInStorage = JSON.parse(localStorage.getItem("cart")).find(
+  //   (item) => {
+  //     for (const key in item) {
+  //       if (key === id) {
+  //         return item;
+  //       }
+  //     }
+  //   }
+  // );
+  // console.log("ITEM IN STORAGE", itemInStorage);
+
+  // console.log(JSON.parse(itemInStorage));
 
   // console.log("ID:", id)
+
+  // const isCart = JSON.parse(localStorage.getItem("cart")).length !== 0;
+  // const cartLen = JSON.parse(localStorage.getItem("cart")).length;
+  // console.log("isCart", isCart);
+  // useEffect(() => {
+  //   if (cartLength > 0) {
+  //     const checkItemInStorage = JSON.parse(localStorage.getItem("cart")).find(
+  //       (item) => {
+  //         for (const key in item) {
+  //           if (key === id) {
+  //             return item;
+  //           }
+  //         }
+  //       }
+  //     );
+  //     setItemInStorage(checkItemInStorage);
+  //   }
+  // }, [cartLength]);
 
   useEffect(() => {
     async function fetchData() {

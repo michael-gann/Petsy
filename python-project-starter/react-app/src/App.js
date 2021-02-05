@@ -19,13 +19,15 @@ import ScrollToTop from "./components/ScrollToTop";
 export const ScoreContext = createContext();
 export const NumCartContext = createContext();
 
+// import { setCartContext } from "./components/ShoppingCart/Cart";
+
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [sessionUser, setSessionUser] = useState(undefined);
   const [results, setResults] = useState([]);
   const [scores, setScores] = useState({});
-  const [numCartItems, setNumCartItems] = useState(0)
+  const [numCartItems, setNumCartItems] = useState(0);
 
   useEffect(() => {
     (async () => {
@@ -46,22 +48,25 @@ function App() {
     fetchScores();
 
     const fetchCartNum = () => {
-      let localItemsCart = JSON.parse(localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem('cart')) : [{ "1": 0 }]
-      let localPetsCart = JSON.parse(localStorage.getItem('petCart')) ? JSON.parse(localStorage.getItem('petCart')) : [{ "1": 0 }]
-      let count = 0
-      localItemsCart.forEach(item => {
-        count += item[Object.keys(item)]
-      })
-      localPetsCart.forEach(item => {
-        count += item[Object.keys(item)]
-      })
-      setNumCartItems(count)
-    }
-    fetchCartNum()
-
+      let localItemsCart = JSON.parse(localStorage.getItem("cart"))
+        ? JSON.parse(localStorage.getItem("cart"))
+        : [{ 1: 0 }];
+      let localPetsCart = JSON.parse(localStorage.getItem("petCart"))
+        ? JSON.parse(localStorage.getItem("petCart"))
+        : [{ 1: 0 }];
+      let count = 0;
+      localItemsCart.forEach((item) => {
+        count += item[Object.keys(item)];
+      });
+      localPetsCart.forEach((item) => {
+        count += item[Object.keys(item)];
+      });
+      setNumCartItems(count);
+    };
+    fetchCartNum();
   }, []);
 
-  console.log(numCartItems)
+  // console.log(numCartItems);
   if (!loaded) {
     return null;
   }
@@ -87,7 +92,11 @@ function App() {
             <PetsList />
           </Route>
           <Route path="/items/:id" exact={true} authenticated={authenticated}>
-            <ItemDetail user={sessionUser} isAuthenticated={authenticated} />
+            <ItemDetail
+              numCartItems={numCartItems}
+              user={sessionUser}
+              isAuthenticated={authenticated}
+            />
           </Route>
           <ProtectedRoute
             path="/users/:userId"

@@ -7,13 +7,13 @@ import "./SignUpForm.css";
 
 const customStyles = {
   content: {
-    top: "50%",
+    top: "58%",
     left: "50%",
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    height: "700px",
+    height: "650px",
     width: "384px",
     borderRadius: "20px",
   },
