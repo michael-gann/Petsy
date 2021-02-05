@@ -223,7 +223,8 @@ label.payments {
   cursor: pointer;
 }
 
-.items-container__item > .item-info-container > a > h1{
+.items-container__item > .item-info-container > a > h1,
+.cart-items-container__item .cart-item-info-container > h1 {
   margin: 0 0 10px 15px;
 }
 
@@ -274,6 +275,7 @@ label.payments {
 
 div.cart-quant-price {
   display: flex;
+  align-items: flex-start;
   justify-content: space-between;
   width: 200px;
   margin-left: 30px;
@@ -306,4 +308,16 @@ button.removeFromCartBtn {
 
 .removeFromCartBtn-div {
   margin: 0 0 4px 0;
+}
+
+.cart-items-container .number-format {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0;
+  font-size: 12px;
+}
+
+.cart-item-info-container,
+.cart-item-info-container > * {
+  width: 100%;
 }

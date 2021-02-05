@@ -14,7 +14,7 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    height: "480px",
+    height: "90vh",
     width: "60vw",
     borderRadius: "20px",
   },
@@ -123,15 +123,17 @@ function ProceedToCheckout({ total, cartItems, petsCart, itemCarObj, setNumCartI
                     <h1>{pets.name}</h1>
                     <p>{pets.description}</p>
                   </div>
-                  <NumberFormat
-                    value={pets.price}
-                    displayType={"text"}
-                    thousandSeparator={true}
-                    prefix={"$"}
-                    renderText={(value) => <div>{value}</div>}
-                    decimalScale={2}
-                    fixedDecimalScale={true}
-                  />
+                  <div className="number-format">
+                    <NumberFormat
+                      value={pets.price}
+                      displayType={"text"}
+                      thousandSeparator={true}
+                      prefix={"$"}
+                      renderText={(value) => <div>{value}</div>}
+                      decimalScale={2}
+                      fixedDecimalScale={true}
+                    />
+                  </div>
                 </div>
               ))}
           </ul>
@@ -147,16 +149,17 @@ function ProceedToCheckout({ total, cartItems, petsCart, itemCarObj, setNumCartI
               </div>
               <div className="cart-quant-price">
                 <div>{itemCarObj[item.id]}</div>
-                <h3><NumberFormat
-                  value={item.price * itemCarObj[item.id]}
-                  displayType={"text"}
-                  thousandSeparator={true}
-                  prefix={"$"}
-                  renderText={(value) => <div>{value}</div>}
-                  decimalScale={2}
-                  fixedDecimalScale={true}
-                />
-                </h3>
+                <div className="number-format">
+                  <NumberFormat
+                    value={item.price * itemCarObj[item.id]}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    prefix={"$"}
+                    renderText={(value) => <div>{value}</div>}
+                    decimalScale={2}
+                    fixedDecimalScale={true}
+                  />
+                </div>
               </div>
             </div>
           )}
