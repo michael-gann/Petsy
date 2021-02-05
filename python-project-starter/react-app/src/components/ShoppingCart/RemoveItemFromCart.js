@@ -43,7 +43,9 @@ function RemoveItemFromCart({ id, item }) {
   return (
     <>
       <button className="removeFromCartBtn" onClick={removeItem}>
-        Remove Item
+        <div className="removeFromCartBtn-div">
+          Remove Item
+        </div>
       </button>
     </>
   );

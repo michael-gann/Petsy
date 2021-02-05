@@ -28,7 +28,9 @@ function RemovePetFromCart({ item }) {
   return (
     <>
       <button className="removeFromCartBtn" onClick={removeItem}>
-        Remove Pet
+        <div className="removeFromCartBtn-div">
+          Remove Pet
+        </div>
       </button>
     </>
   );

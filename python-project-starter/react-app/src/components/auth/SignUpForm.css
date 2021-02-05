@@ -14,7 +14,7 @@
 .sign-up-modal-container .sign-up-form {
     display: flex;
     flex-direction: column;
-    margin-top: 50px;
+    margin-top: 25px;
     min-width: 300px;
     width: 100%;
 }
@@ -27,7 +27,7 @@
 .sign-up-modal-container input {
     border: 1px solid white;
     border-radius: 5px;
-    height: 48px;
+    height: 40px;
     width: 100%;
     margin: 10px 0;
     padding-left: 8px;

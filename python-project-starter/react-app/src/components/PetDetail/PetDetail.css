@@ -49,6 +49,11 @@ div.pet-detail-img-info > .details {
 }
 
 .pet-detail-field-value > .pet-price {
+    font-weight: 700;
+    font-size: 2.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
     font-size: 1.8rem;
     margin: 10px;
 }

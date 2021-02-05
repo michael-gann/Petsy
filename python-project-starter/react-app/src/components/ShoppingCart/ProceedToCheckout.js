@@ -15,9 +15,10 @@ const customStyles = {
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     height: "480px",
-    width: "800px",
+    width: "60vw",
     borderRadius: "20px",
   },
+  overlay: { zIndex: 1000 }
 };
 
 Modal.setAppElement("#root");
@@ -65,19 +66,19 @@ function ProceedToCheckout({ total, cartItems, petsCart, itemCarObj, setNumCartI
         <h4>How you'll pay</h4>
         {paymentMethod()}
         <div className="totals">
-<div className="items-total">
+          <div className="items-total">
             <p>
               Item(s) total: {
-              <NumberFormat
-                value={total}
-                displayType={"text"}
-                thousandSeparator={true}
-                prefix={"$"}
-                renderText={(value) => <div>{value}</div>}
-                decimalScale={2}
-                fixedDecimalScale={true}
-              />
-            }
+                <NumberFormat
+                  value={total}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                  prefix={"$"}
+                  renderText={(value) => <div>{value}</div>}
+                  decimalScale={2}
+                  fixedDecimalScale={true}
+                />
+              }
             </p>
           </div>
           <div className="shipping">
