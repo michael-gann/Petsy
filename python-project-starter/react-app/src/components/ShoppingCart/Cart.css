@@ -1,5 +1,6 @@
 .cart-components {
   display: flex;
+  justify-content: space-between;
   /* flex-direction: column; */
 }
 
@@ -7,6 +8,8 @@
   display: flex;
   justify-content: left;
   flex-direction: column;
+  min-height: 20vh;
+  width: 100%;
 }
 
 .items-container__item {
@@ -112,15 +115,24 @@
   font-size: larger;
 }
 
+.items-container__item > .number-format {
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 3px;
+}
+
 .proceed-to-checkout {
   padding: 20px 50px;
   border: 1px solid black;
   box-shadow: 5px 5px 8px grey;
   border-radius: 5px;
+  margin: 50px 20px 0 30px;
   margin-top: 50px;
   margin-left: 30px;
-  position: fixed;
-  right: 50px;
+  position: -webkit-sticky;
+  position: sticky;
+  height: 300px;
+  top: 150px;
 }
 
 .proceed-to-checkout h4 {
@@ -211,6 +223,10 @@ label.payments {
   cursor: pointer;
 }
 
+.items-container__item > .item-info-container > a > h1{
+  margin: 0 0 10px 15px;
+}
+
 .cart-items-container__item p {
   margin-left: 15px;
   margin-bottom: 30px;
@@ -270,8 +286,10 @@ div.cart-quant-price {
 }
 
 button.removeFromCartBtn {
-  justify-self: center;
-  margin: 10px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
     min-width: 100px;
     max-width: 400px;
     border-radius: 20px;
@@ -284,4 +302,8 @@ button.removeFromCartBtn {
     font-weight: bold;
     transition: background 150ms ease-in-out;
     cursor: pointer;
+}
+
+.removeFromCartBtn-div {
+  margin: 0 0 4px 0;
 }
