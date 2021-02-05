@@ -164,14 +164,14 @@
 
   }
 
-  .login-container {
+  .navbar-items > .login-container {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     justify-content: center;
     /* align-items: center; */
     font-size: 13px;
-    min-width: 100px;
+    min-width: 130px;
     margin-right: 50px;
     margin-left: 15px;
     margin-bottom: 8px;
@@ -397,7 +397,7 @@ textarea:focus, input:focus{
 .login-container {
   display: flex;
   justify-content: space-between;
-  min-width: 100px;
+  min-width: 130px;
   font-size: 13px;
   padding-right: 25px;
   margin-left: 15px;
@@ -410,6 +410,7 @@ textarea:focus, input:focus{
 }
 
 .login-container button {
+  cursor: pointer;
   color: black;
   text-decoration: none;
   background-color: transparent;

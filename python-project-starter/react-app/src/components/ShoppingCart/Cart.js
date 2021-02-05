@@ -108,15 +108,17 @@ function Cart({ setNumCartItems }) {
                       />
                     </div>
                   </div>
-                  <NumberFormat
-                    value={pets.price}
-                    displayType={"text"}
-                    thousandSeparator={true}
-                    prefix={"$"}
-                    renderText={(value) => <div>{value}</div>}
-                    decimalScale={2}
-                    fixedDecimalScale={true}
-                  />
+                  <div className="number-format">
+                    <NumberFormat
+                      value={pets.price}
+                      displayType={"text"}
+                      thousandSeparator={true}
+                      prefix={"$"}
+                      renderText={(value) => <div>{value}</div>}
+                      decimalScale={2}
+                      fixedDecimalScale={true}
+                    />
+                  </div>
                 </div>
               );
             })}
@@ -235,15 +237,13 @@ function Cart({ setNumCartItems }) {
         </div>
         {fetchPets()}
       </div>
-      <div>
-        <ProceedToCheckout
-          total={total}
-          cartItems={cartItems}
-          petsCart={petsCart}
-          itemCarObj={itemCarObj}
-          setNumCartItems={setNumCartItems}
-        />
-      </div>
+      <ProceedToCheckout
+        total={total}
+        cartItems={cartItems}
+        petsCart={petsCart}
+        itemCarObj={itemCarObj}
+        setNumCartItems={setNumCartItems}
+      />
     </div>
   );
 }

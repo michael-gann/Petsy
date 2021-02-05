@@ -105,10 +105,10 @@ function ItemDetail({ user, isAuthenticated, numCartItems }) {
               <ScoreAvg itemId={id} />
             </div>
           </div>
-          <div>
+          <div className="item-detail-name">
             <h3>{item.name}</h3>
           </div>
-          <div>
+          <div className="item-detail-description">
             <p>{item.description}</p>
           </div>
           <div className="number-format">

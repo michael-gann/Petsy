@@ -7,7 +7,7 @@ function PostReview({ user, setReviews, reviews }) {
   const [score, setScore] = useState(0);
   const [review, setReview] = useState("");
   const [unReviewed, setUnReviewed] = useState(true);
-  const userId = user.id || undefined;
+  const userId = user ? user.id : undefined;
   const params = useParams();
   const itemId = params.id;
 
