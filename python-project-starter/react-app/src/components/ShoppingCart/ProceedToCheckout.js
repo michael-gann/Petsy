@@ -97,6 +97,7 @@ function ProceedToCheckout({ total, cartItems, petsCart, itemCarObj, setNumCartI
                 decimalScale={2}
                 fixedDecimalScale={true}
               />
+              
             }
           </p>
         </div>
