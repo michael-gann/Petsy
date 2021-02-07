@@ -65,24 +65,24 @@ function ProceedToCheckout({ total, cartItems, petsCart, itemCarObj, setNumCartI
         <h4>How you'll pay</h4>
         {paymentMethod()}
         <div className="totals">
-<div className="items-total">
+          <div className="items-total">
             <p>
               Item(s) total: {
-              <NumberFormat
-                value={total}
-                displayType={"text"}
-                thousandSeparator={true}
-                prefix={"$"}
-                renderText={(value) => <div>{value}</div>}
-                decimalScale={2}
-                fixedDecimalScale={true}
-              />
-            }
+                <NumberFormat
+                  value={total}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                  prefix={"$"}
+                  renderText={(value) => <div>{value}</div>}
+                  decimalScale={2}
+                  fixedDecimalScale={true}
+                />
+              }
             </p>
           </div>
           <div className="shipping">
             <p>
-              Shipping:
+              Shipping: Free
             </p>
           </div>
           <p>

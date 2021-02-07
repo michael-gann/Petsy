@@ -10,13 +10,15 @@ import "./Cart.css";
 function Cart({ setNumCartItems }) {
   let localItemsCart = JSON.parse(localStorage.getItem("cart"));
   let localPetsCart = JSON.parse(localStorage.getItem("petCart"));
-  const [total, setTotal] = useState(0);
+  // const [total, setTotal] = useState(0);
   let [cartItems, setCartItems] = useState(
     localItemsCart ? [...localItemsCart] : []
   );
   let [petsCart, setPetsCart] = useState([]);
   let [itemCarObj, setItemCartObj] = useState({});
   const loopArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  let total = 0;
 
   const handleClick = (e) => {
     updateQty(e);
@@ -27,7 +29,10 @@ function Cart({ setNumCartItems }) {
     return (
       <ul className="items-container">
         {cartItems.map((item) => {
-          // { setTotal(total + item.price * itemCarObj[item.id]) }
+          {
+            let itemTotal = item.price * itemCarObj[item.id];
+            total += itemTotal
+          }
           return (
             <div className="items-container__item" key={item.id}>
               <img className="item-image" src={item.imgurl} />
@@ -92,7 +97,7 @@ function Cart({ setNumCartItems }) {
         <ul>
           {localPetsCart &&
             petsCart.map((pets) => {
-              // { setTotal(total + pets.price) }
+              { total += pets.price }
               return (
                 <div className="items-container__item" key={pets.id}>
                   <img className="item-image" src={pets.imgurl} />
