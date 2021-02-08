@@ -7,10 +7,11 @@ import AddToCart from "./ShoppingCart/AddToCart";
 function Item({ item }) {
   const history = useHistory();
   const user = localStorage.getItem("user");
+  // const [cartLength, setCartLength] = useState(0);
 
   const handleClick = (e) => {
     e.preventDefault();
-    if (e.target.className === "addToCartBtn") return history.push("/cart");
+    // if (e.target.className === "addToCartBtn") return history.push("/cart");
     return history.push(`/items/${item.id}`);
   };
 
@@ -40,7 +41,7 @@ function Item({ item }) {
           </div>
           {user ? (
             <div className="add-item-cart-btn">
-              <AddToCart item={item} />
+              <AddToCart setCartLength={setCartLength} item={item} />
             </div>
           ) : null}
         </div>

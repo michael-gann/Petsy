@@ -4,12 +4,16 @@ import { useParams } from "react-router-dom";
 import PetBySeller from "../MoreFromSeller/PetBySeller";
 import AddPetToCart from "../ShoppingCart/AddPetToCart";
 import RemoveFromCart from "../ShoppingCart/RemovePetFromCart";
+import Pet from "../Pets/Pet";
+
+import Carousel from "react-elastic-carousel";
 
 import "./PetDetail.css";
 
 function PetDetail({ user, isAuthenticated }) {
   const [pet, setPet] = useState([]);
   const { id } = useParams();
+  const [pets, setPets] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -21,6 +25,19 @@ function PetDetail({ user, isAuthenticated }) {
     }
     fetchData();
   }, [id]);
+
+  const items = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  useEffect(() => {
+    const getPets = async () => {
+      const res = await fetch(`/api/users/${1}/pets/${1}`);
+      const json = await res.json();
+      setPets(json);
+    };
+    getPets();
+
+    // document.getElementByClassName();
+  }, []);
 
   return (
     <div className="pet-detail-container">
@@ -68,9 +85,7 @@ function PetDetail({ user, isAuthenticated }) {
         </div>
       </div>
       <div className="pet-detail-more-container">
-        <div className="pet-detail-more">
-          <PetBySeller user={user} sellerId={pet.sellerId} />
-        </div>
+        <PetBySeller user={user} sellerId={pet.sellerId} />
       </div>
     </div>
   );

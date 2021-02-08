@@ -49,6 +49,11 @@ div.pet-detail-img-info > .details {
 }
 
 .pet-detail-field-value > .pet-price {
+    font-weight: 700;
+    font-size: 2.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
     font-size: 1.8rem;
     margin: 10px;
 }
@@ -74,19 +79,32 @@ img.image-pet {
     flex-wrap: wrap;
 }
 
+.pet-detail-more-container h3 {
+    font-size: 1.8rem;
+    margin-bottom: 50px;
+}
+
 div.pet-detail-more {
-    width: 80vw;
-    height: 500px;
+    width: 300px;
+    height: 80vh;
     object-fit: cover;
     border-radius: 3px;
     transition: box-shadow 250ms ease-in-out, transform 150ms ease;
 }
 
+/* .new-width {
+    width: 79vw;
+} */
+
+/* .rec-carousel-wrapper {
+    width: 500px;
+} */
+
 div.pet-detail-more .more-pets {
     margin: 10px;
 }
 
-div.pet-detail-more .more-pets > .pet-container {
+ .more-pets > .pet-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -102,14 +120,14 @@ div.pet-detail-more .more-pets > .pet-container:focus {
     border-radius: 3px;
 }
 
-/* div.pet-detail-more .more-pets > .pet-container > .image-container {
+div.pet-detail-more .more-pets > .pet-container > .image-container {
     display: flex;
     align-content: center;
     height: 100%;
     width: 100%;
     border: .1px solid rgba(134, 126, 126, 0.226);
     border-radius: 3px;
-} */
+}
 
 div.pet-detail-more .more-pets > .pet-container > .image-container > img {
     width: 250px;
@@ -119,6 +137,15 @@ div.pet-detail-more .more-pets > .pet-container > .image-container > img {
     transition: box-shadow 250ms ease-in-out,
                   transform 150ms ease;
 
+}
+
+.pet-container > .image-container > img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 3px;
+    transition: box-shadow 250ms ease-in-out,
+                  transform 150ms ease;
 }
 
 div.pet-detail-more .more-pets > .pet-container > .image-container > img:hover,
@@ -141,8 +168,6 @@ div.pet-detail-more .more-pets > .pet-container > .image-container > img:focus {
     font-size: 18px;
 }
 
-/* these styles mess up the scroll bar but fix the carousel..... */
-
 .pet-detail-container .pet-detail-more-container .pet-detail-more .pets-scroll {
  display: flex;
  flex-direction: column;
@@ -160,7 +185,7 @@ div.pet-detail-more .more-pets > .pet-container > .image-container > img:focus {
     min-height: 415px;
 }
 
-.pets-carousel .pet-container img {
+.pet-container img {
     width: 300px;
     height: 300px;
     object-fit: cover;
@@ -170,13 +195,13 @@ div.pet-detail-more .more-pets > .pet-container > .image-container > img:focus {
     border: .1px solid rgba(134, 126, 126, 0.226);
 }
 
-.pets-carousel .pet-container img:hover,
-.pets-carousel .pet-container img:focus {
+.pet-container img:hover,
+.pet-container img:focus {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     cursor: pointer;
 }
 
-.pets-carousel .pet-details {
+.pet-details {
     font-size: 12px;
     width: 250px;
     height: 60px;
@@ -186,7 +211,7 @@ div.pet-detail-more .more-pets > .pet-container > .image-container > img:focus {
     align-items: center;
 }
 
-.pets-carousel .pet-container {
+.pet-container {
     display: flex;
     flex-direction: column;
     padding: 5px;
@@ -198,3 +223,7 @@ div.pet-detail-more .more-pets > .pet-container > .image-container > img:focus {
     margin-top: 20px;
     object-fit: cover;
 }
+
+/* .rec-carousel {
+width: 800px;
+} */

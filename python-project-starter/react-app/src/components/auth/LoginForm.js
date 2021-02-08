@@ -18,6 +18,7 @@ const customStyles = {
     width: "384px",
     borderRadius: "20px",
   },
+  overlay: { zIndex: 1000 }
 };
 
 Modal.setAppElement("#root");

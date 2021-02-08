@@ -10,28 +10,16 @@ import ScoreAvg from "./Reviews/ScoreAvg";
 
 import "./itemsList.css";
 
-function ItemDetail({ user, isAuthenticated, numCartItems }) {
+function ItemDetail({ user, isAuthenticated }) {
   const [reviews, setReviews] = useState([]);
   const [item, setItem] = useState([]);
   const [seller, setSeller] = useState("");
   const { id } = useParams();
+  const [mounted, setMounted] = useState(false);
   // const [itemInStorage, setItemInStorage] = useState({});
-
-  // const storageItem = JSON.parse(localStorage.getItem("cart")).find((item) => {
-  //   for (const key in item) {
-  //     console.log(key, id, item);
-  //     if (key === id) {
-  //       return item;
-  //     }
-  //   }
-  // });
-  // console.log("ITEM IN STORAGE", itemInStorage);
-
-  // useEffect(() => {
-  //   if (storageItem !== {}) setItemInStorage(itemInStorage);
-  //   console.log(itemInStorage);
-  // }, [numCartItems]);
   // const [cartLength, setCartLength] = useState(0);
+
+  // console.log("ITEM IN STORAGE", itemInStorage);
 
   // const checkItemInStorage = JSON.parse(localStorage.getItem("cart")).find(
   //   (item) => {
@@ -42,7 +30,6 @@ function ItemDetail({ user, isAuthenticated, numCartItems }) {
   //     }
   //   }
   // );
-  // console.log("ITEM IN STORAGE", itemInStorage);
 
   // console.log(JSON.parse(itemInStorage));
 
@@ -86,8 +73,18 @@ function ItemDetail({ user, isAuthenticated, numCartItems }) {
     fetchData();
   }, [item]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMounted(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [item]);
+
   // console.log(seller);
   // console.log("ITEM>SELLERID", item.sellerId);
+
+  // when mounted
+  // width === width ? width : ""
 
   return (
     <div className="item-detail-container">
@@ -105,10 +102,10 @@ function ItemDetail({ user, isAuthenticated, numCartItems }) {
               <ScoreAvg itemId={id} />
             </div>
           </div>
-          <div>
+          <div className="item-detail-name">
             <h3>{item.name}</h3>
           </div>
-          <div>
+          <div className="item-detail-description">
             <p>{item.description}</p>
           </div>
           <div className="number-format">
@@ -125,6 +122,7 @@ function ItemDetail({ user, isAuthenticated, numCartItems }) {
           {isAuthenticated && (
             <div className="cart-button-container">
               <AddToCart item={item} />
+
               <RemoveItemFromCart id={item.id} />
             </div>
           )}
@@ -143,10 +141,12 @@ function ItemDetail({ user, isAuthenticated, numCartItems }) {
             )}
           </div>
         </div>
-        <div className="item-more-by-seller">
-          <div className="more-by-seller">
-            <ItemBySeller user={user} sellerId={item.sellerId} />
-          </div>
+        <div
+          className={
+            mounted ? "new-item-more-by-seller" : "item-more-by-seller"
+          }
+        >
+          <ItemBySeller user={user} sellerId={item.sellerId} />
         </div>
       </div>
     </div>

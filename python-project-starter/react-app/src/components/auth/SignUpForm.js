@@ -7,16 +7,18 @@ import "./SignUpForm.css";
 
 const customStyles = {
   content: {
-    top: "58%",
+    top: "50%",
     left: "50%",
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    height: "650px",
+    height: "560px",
     width: "384px",
     borderRadius: "20px",
   },
+  overlay: { zIndex: 1000 }
+
 };
 
 Modal.setAppElement("#root");

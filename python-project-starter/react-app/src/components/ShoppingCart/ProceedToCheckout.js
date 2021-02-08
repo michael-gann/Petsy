@@ -15,9 +15,10 @@ const customStyles = {
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     height: "480px",
-    width: "800px",
+    width: "60vw",
     borderRadius: "20px",
   },
+  overlay: { zIndex: 1000 }
 };
 
 Modal.setAppElement("#root");
