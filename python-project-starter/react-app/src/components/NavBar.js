@@ -51,7 +51,10 @@ const NavBar = ({ setAuthenticated, isAuthenticated, setResults }) => {
           <li className="nav navbar-item">
             <div className="logo">
               <NavLink to="/" exact={true} activeClassName="active">
-                <img alt="petsy logo" src="/images/petsy-logo.png"></img>
+                <img
+                  alt="petsy logo"
+                  src="https://i.imgur.com/zEVkA7w.png"
+                ></img>
               </NavLink>
             </div>
           </li>
