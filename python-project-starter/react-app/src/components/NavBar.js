@@ -49,13 +49,11 @@ const NavBar = ({ setAuthenticated, isAuthenticated, setResults }) => {
       <div className="upper-section">
         <ul className="nav navbar-items">
           <li className="nav navbar-item">
-            <NavLink to="/" exact={true} activeClassName="active">
-              <img
-                className="logo"
-                alt="petsy logo"
-                src="/images/petsy-logo.svg"
-              ></img>
-            </NavLink>
+            <div className="logo">
+              <NavLink to="/" exact={true} activeClassName="active">
+                <img alt="petsy logo" src="/images/petsy-logo.png"></img>
+              </NavLink>
+            </div>
           </li>
           <input
             className="searchbar"

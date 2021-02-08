@@ -42,7 +42,7 @@ function Cart({ setNumCartItems }) {
                 </div>
               </div>
               <select
-                className="dropdown"
+                className="item-dropdown"
                 key={item.id}
                 onChange={(e) => handleClick(e)}
               >
@@ -222,28 +222,31 @@ function Cart({ setNumCartItems }) {
   }, [cartItems, petsCart]);
 
   return (
-    <div className="cart-components">
-      <div>
-        <div className="num-cart-items">
-          <h1>
-            {localItemsCart ? localItemsCart.length : "0"} item(s) in your cart
-          </h1>
+    <div className="cart-wrapper">
+      <div className="cart-components">
+        <div>
+          <div className="num-cart-items">
+            <h1>
+              {localItemsCart ? localItemsCart.length : "0"} item(s) in your
+              cart
+            </h1>
+          </div>
+          {fetchItems()}
+          <div className="num-cart-pets">
+            <h1>
+              {localPetsCart ? localPetsCart.length : "0"} pet(s) in your cart
+            </h1>
+          </div>
+          {fetchPets()}
         </div>
-        {fetchItems()}
-        <div className="num-cart-pets">
-          <h1>
-            {localPetsCart ? localPetsCart.length : "0"} pet(s) in your cart
-          </h1>
-        </div>
-        {fetchPets()}
+        <ProceedToCheckout
+          total={total}
+          cartItems={cartItems}
+          petsCart={petsCart}
+          itemCarObj={itemCarObj}
+          setNumCartItems={setNumCartItems}
+        />
       </div>
-      <ProceedToCheckout
-        total={total}
-        cartItems={cartItems}
-        petsCart={petsCart}
-        itemCarObj={itemCarObj}
-        setNumCartItems={setNumCartItems}
-      />
     </div>
   );
 }

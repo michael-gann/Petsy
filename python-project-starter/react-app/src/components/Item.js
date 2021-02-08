@@ -11,7 +11,7 @@ function Item({ item }) {
 
   const handleClick = (e) => {
     e.preventDefault();
-    // if (e.target.className === "addToCartBtn") return history.push("/cart");
+    if (e.target.className === "addToCartBtn") return history.push("/cart");
     return history.push(`/items/${item.id}`);
   };
 
