@@ -41,7 +41,7 @@ function Item({ item }) {
           </div>
           {user ? (
             <div className="add-item-cart-btn">
-              <AddToCart setCartLength={setCartLength} item={item} />
+              <AddToCart item={item} />
             </div>
           ) : null}
         </div>
