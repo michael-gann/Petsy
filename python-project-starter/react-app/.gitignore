@@ -1,0 +1,10 @@
+node_modules/
+package-lock.json
+.eslintcache
+__pycache__/
+*.py[cod]
+.venv
+.vscode
+.env
+.eslintcache
+.DS_Store
