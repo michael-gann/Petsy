@@ -10,7 +10,6 @@ import "./Cart.css";
 function Cart({ setNumCartItems }) {
   let localItemsCart = JSON.parse(localStorage.getItem("cart"));
   let localPetsCart = JSON.parse(localStorage.getItem("petCart"));
-  // const [total, setTotal] = useState(0);
   let [cartItems, setCartItems] = useState(
     localItemsCart ? [...localItemsCart] : []
   );
@@ -22,7 +21,6 @@ function Cart({ setNumCartItems }) {
 
   const handleClick = (e) => {
     updateQty(e);
-    // window.location.reload(false);
   };
 
   const fetchItems = () => {
@@ -31,7 +29,7 @@ function Cart({ setNumCartItems }) {
         {cartItems.map((item) => {
           {
             let itemTotal = item.price * itemCarObj[item.id];
-            total += itemTotal
+            total += itemTotal;
           }
           return (
             <div className="items-container__item" key={item.id}>
@@ -97,7 +95,9 @@ function Cart({ setNumCartItems }) {
         <ul>
           {localPetsCart &&
             petsCart.map((pets) => {
-              { total += pets.price }
+              {
+                total += pets.price;
+              }
               return (
                 <div className="items-container__item" key={pets.id}>
                   <img className="item-image" src={pets.imgurl} />
@@ -135,8 +135,6 @@ function Cart({ setNumCartItems }) {
   const updateQty = (e) => {
     let value = e.target.value.split("|")[1];
     let itemId = e.target.value.split("|")[0];
-    // console.log("Value:", value)
-    // console.log("Item ID:", itemId)
 
     let cartCopy = [...cartItems];
 

@@ -16,42 +16,6 @@ function ItemDetail({ user, isAuthenticated }) {
   const [seller, setSeller] = useState("");
   const { id } = useParams();
   const [mounted, setMounted] = useState(false);
-  // const [itemInStorage, setItemInStorage] = useState({});
-  // const [cartLength, setCartLength] = useState(0);
-
-  // console.log("ITEM IN STORAGE", itemInStorage);
-
-  // const checkItemInStorage = JSON.parse(localStorage.getItem("cart")).find(
-  //   (item) => {
-  //     for (const key in item) {
-  //       if (key === id) {
-  //         return item;
-  //       }
-  //     }
-  //   }
-  // );
-
-  // console.log(JSON.parse(itemInStorage));
-
-  // console.log("ID:", id)
-
-  // const isCart = JSON.parse(localStorage.getItem("cart")).length !== 0;
-  // const cartLen = JSON.parse(localStorage.getItem("cart")).length;
-  // console.log("isCart", isCart);
-  // useEffect(() => {
-  //   if (cartLength > 0) {
-  //     const checkItemInStorage = JSON.parse(localStorage.getItem("cart")).find(
-  //       (item) => {
-  //         for (const key in item) {
-  //           if (key === id) {
-  //             return item;
-  //           }
-  //         }
-  //       }
-  //     );
-  //     setItemInStorage(checkItemInStorage);
-  //   }
-  // }, [cartLength]);
 
   useEffect(() => {
     async function fetchData() {
@@ -67,7 +31,6 @@ function ItemDetail({ user, isAuthenticated }) {
       const sellerId = item.sellerId;
       const response = await fetch(`/api/users/${sellerId}`);
       const sellerData = await response.json();
-      // console.log("SELLER DATA", sellerData);
       setSeller(sellerData);
     }
     fetchData();
@@ -79,12 +42,6 @@ function ItemDetail({ user, isAuthenticated }) {
     }, 1000);
     return () => clearTimeout(timer);
   }, [item]);
-
-  // console.log(seller);
-  // console.log("ITEM>SELLERID", item.sellerId);
-
-  // when mounted
-  // width === width ? width : ""
 
   return (
     <div className="item-detail-container">

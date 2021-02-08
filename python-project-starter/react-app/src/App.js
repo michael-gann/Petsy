@@ -19,7 +19,7 @@ import ScrollToTop from "./components/ScrollToTop";
 export const ScoreContext = createContext();
 export const NumCartContext = createContext();
 
-import './App.css';
+import "./App.css";
 
 // import { setCartContext } from "./components/ShoppingCart/Cart";
 
@@ -44,7 +44,6 @@ function App() {
     const fetchScores = async () => {
       const res = await fetch("/api/reviews");
       const scoresObj = await res.json();
-      // console.log("SCORES OBJECT", scoresObj);
       setScores(scoresObj);
     };
     fetchScores();
@@ -68,7 +67,6 @@ function App() {
     fetchCartNum();
   }, []);
 
-  // console.log(numCartItems);
   if (!loaded) {
     return null;
   }

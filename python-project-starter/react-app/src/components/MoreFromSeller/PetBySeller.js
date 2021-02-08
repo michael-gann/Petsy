@@ -25,8 +25,6 @@ const PetBySeller = ({ user, sellerId }) => {
       setPet(json);
     };
     if (sellerId) getPets();
-
-    // document.getElementByClassName();
   }, [id, sellerId]);
 
   return (

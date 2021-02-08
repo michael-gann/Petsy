@@ -18,11 +18,9 @@ function PetDetail({ user, isAuthenticated }) {
 
   useEffect(() => {
     async function fetchData() {
-      // console.log(id)
       const res = await fetch(`/api/pets/${id}`);
       const resData = await res.json();
       setPet(resData);
-      // console.log(resData)
     }
     fetchData();
   }, [id]);
@@ -36,8 +34,6 @@ function PetDetail({ user, isAuthenticated }) {
       setPets(json);
     };
     getPets();
-
-    // document.getElementByClassName();
   }, []);
 
   useEffect(() => {
