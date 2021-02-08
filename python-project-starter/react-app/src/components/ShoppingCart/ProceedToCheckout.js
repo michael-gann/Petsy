@@ -91,8 +91,7 @@ function ProceedToCheckout({
             </p>
           </div>
           <div className="shipping">
-            <p>Shipping:</p>
-            <div>$0.00</div>
+            <p>Shipping: Free</p>
           </div>
           <p>
             Total:{" "}
