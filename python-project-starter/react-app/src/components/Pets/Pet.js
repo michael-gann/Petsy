@@ -7,8 +7,6 @@ function Pet({ pet }) {
   const history = useHistory();
   const user = localStorage.getItem("user");
 
-  console.log(user)
-
   const handleClick = (e) => {
     if (e.target.className === "addToCartBtn") return history.push("/cart");
     return history.push(`/pets/${pet.id}`);

@@ -7,30 +7,23 @@ function RemoveItemFromCart({ id, item }) {
   let [cartItems, setCartItems] = useState(localCart ? [...localCart] : []);
 
   const removeItem = (e) => {
-    // e.preventDefault();
     let cartCopy = [...cart];
     let itemToRemove = item.id;
 
     const newCart = cartCopy.map((item) => Object.assign(item, {}));
 
-    console.log(newCart);
-
     let newCartCopy = newCart.filter((cartItem) => {
       for (const key in cartItem) {
-        console.log(key, itemToRemove);
         if (key !== itemToRemove.toString()) {
           return cartItem;
         }
       }
     });
 
-    console.log(newCartCopy);
-
     setCartItems(newCartCopy);
 
     let cartString = JSON.stringify(newCartCopy);
     localStorage.setItem("cart", cartString);
-    // window.location.reload(false);
   };
 
   useEffect(() => {
@@ -43,9 +36,7 @@ function RemoveItemFromCart({ id, item }) {
   return (
     <>
       <button className="removeFromCartBtn" onClick={removeItem}>
-        <div className="removeFromCartBtn-div">
-          Remove Item
-        </div>
+        <div className="removeFromCartBtn-div">Remove Item</div>
       </button>
     </>
   );

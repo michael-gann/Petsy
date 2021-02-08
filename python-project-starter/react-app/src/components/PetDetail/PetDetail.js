@@ -14,14 +14,13 @@ function PetDetail({ user, isAuthenticated }) {
   const [pet, setPet] = useState([]);
   const { id } = useParams();
   const [pets, setPets] = useState([]);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
-      // console.log(id)
       const res = await fetch(`/api/pets/${id}`);
       const resData = await res.json();
       setPet(resData);
-      // console.log(resData)
     }
     fetchData();
   }, [id]);
@@ -35,9 +34,14 @@ function PetDetail({ user, isAuthenticated }) {
       setPets(json);
     };
     getPets();
-
-    // document.getElementByClassName();
   }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMounted(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [pet]);
 
   return (
     <div className="pet-detail-container">
@@ -84,7 +88,13 @@ function PetDetail({ user, isAuthenticated }) {
           )}
         </div>
       </div>
-      <div className="pet-detail-more-container">
+      <div
+        className={
+          mounted
+            ? "new-pet-detail-more-container"
+            : "pet-detail-more-container"
+        }
+      >
         <PetBySeller user={user} sellerId={pet.sellerId} />
       </div>
     </div>

@@ -8,7 +8,6 @@ function RenderReviews({ reviews, setReviews }) {
 
   const dateStringManipulation = (review) => {
     let date = review.updatedAt;
-    //Wed, 30 Dec 2020 17:31:08 GMT
     let dateArr = date.split(" ");
     let newDate = `${dateArr[2]} ${dateArr[1]}, ${dateArr[3]}`;
     return newDate;
@@ -31,7 +30,6 @@ function RenderReviews({ reviews, setReviews }) {
         return sum + parseFloat(review.score);
       }, 0);
     }
-    // console.log(sum);
     setAvgReview(sum / count);
   }, [reviews]);
 

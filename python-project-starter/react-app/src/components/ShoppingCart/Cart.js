@@ -10,7 +10,6 @@ import "./Cart.css";
 function Cart({ setNumCartItems }) {
   let localItemsCart = JSON.parse(localStorage.getItem("cart"));
   let localPetsCart = JSON.parse(localStorage.getItem("petCart"));
-  // const [total, setTotal] = useState(0);
   let [cartItems, setCartItems] = useState(
     localItemsCart ? [...localItemsCart] : []
   );
@@ -22,7 +21,6 @@ function Cart({ setNumCartItems }) {
 
   const handleClick = (e) => {
     updateQty(e);
-    // window.location.reload(false);
   };
 
   const fetchItems = () => {
@@ -31,7 +29,7 @@ function Cart({ setNumCartItems }) {
         {cartItems.map((item) => {
           {
             let itemTotal = item.price * itemCarObj[item.id];
-            total += itemTotal
+            total += itemTotal;
           }
           return (
             <div className="items-container__item" key={item.id}>
@@ -47,7 +45,7 @@ function Cart({ setNumCartItems }) {
                 </div>
               </div>
               <select
-                className="dropdown"
+                className="item-dropdown"
                 key={item.id}
                 onChange={(e) => handleClick(e)}
               >
@@ -97,7 +95,9 @@ function Cart({ setNumCartItems }) {
         <ul>
           {localPetsCart &&
             petsCart.map((pets) => {
-              { total += pets.price }
+              {
+                total += pets.price;
+              }
               return (
                 <div className="items-container__item" key={pets.id}>
                   <img className="item-image" src={pets.imgurl} />
@@ -135,8 +135,6 @@ function Cart({ setNumCartItems }) {
   const updateQty = (e) => {
     let value = e.target.value.split("|")[1];
     let itemId = e.target.value.split("|")[0];
-    // console.log("Value:", value)
-    // console.log("Item ID:", itemId)
 
     let cartCopy = [...cartItems];
 
@@ -227,28 +225,31 @@ function Cart({ setNumCartItems }) {
   }, [cartItems, petsCart]);
 
   return (
-    <div className="cart-components">
-      <div>
-        <div className="num-cart-items">
-          <h1>
-            {localItemsCart ? localItemsCart.length : "0"} item(s) in your cart
-          </h1>
+    <div className="cart-wrapper">
+      <div className="cart-components">
+        <div>
+          <div className="num-cart-items">
+            <h1>
+              {localItemsCart ? localItemsCart.length : "0"} item(s) in your
+              cart
+            </h1>
+          </div>
+          {fetchItems()}
+          <div className="num-cart-pets">
+            <h1>
+              {localPetsCart ? localPetsCart.length : "0"} pet(s) in your cart
+            </h1>
+          </div>
+          {fetchPets()}
         </div>
-        {fetchItems()}
-        <div className="num-cart-pets">
-          <h1>
-            {localPetsCart ? localPetsCart.length : "0"} pet(s) in your cart
-          </h1>
-        </div>
-        {fetchPets()}
+        <ProceedToCheckout
+          total={total}
+          cartItems={cartItems}
+          petsCart={petsCart}
+          itemCarObj={itemCarObj}
+          setNumCartItems={setNumCartItems}
+        />
       </div>
-      <ProceedToCheckout
-        total={total}
-        cartItems={cartItems}
-        petsCart={petsCart}
-        itemCarObj={itemCarObj}
-        setNumCartItems={setNumCartItems}
-      />
     </div>
   );
 }

@@ -26,10 +26,8 @@ function PostReview({ user, setReviews, reviews }) {
       }),
     });
     const reviewData = await reviewFetch.json();
-    // console.log("REVIEW DATA", reviewData);
     if (!reviewData.errors) {
       let reviewsDupe = _.cloneDeep(reviews);
-      // console.log(reviewsDupe);
       reviewsDupe.push(reviewData);
       setReviews(reviewsDupe);
       setReview("");

@@ -17,7 +17,6 @@ function RemovePetFromCart({ item }) {
 
     let cartString = JSON.stringify(newCartCopy);
     localStorage.setItem("petCart", cartString);
-    // window.location.reload(false);
   };
 
   useEffect(() => {
@@ -28,9 +27,7 @@ function RemovePetFromCart({ item }) {
   return (
     <>
       <button className="removeFromCartBtn" onClick={removeItem}>
-        <div className="removeFromCartBtn-div">
-          Remove Pet
-        </div>
+        <div className="removeFromCartBtn-div">Remove Pet</div>
       </button>
     </>
   );
