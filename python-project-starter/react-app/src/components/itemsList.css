@@ -14,16 +14,18 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    max-width: 1050px;
-    min-height: 550px;
+    max-width: 1200px;
+    min-height: 800px;
+    margin: 3% 0;
 }
 
 .inner-item-detail-container .img-container {
     margin-top: 50px;
     width: 400px;
     height: 450px;
-    margin-bottom: 50px;
+    margin-bottom:240px;
     align-self: center;
+    margin-right: 100px;
 }
 
 .inner-item-detail-container .img-container img {
@@ -38,6 +40,7 @@
     padding: 20px;
     min-width: 500px;
     min-height: 420px;
+    margin-top:
 }
 
 .details-container h3 {
