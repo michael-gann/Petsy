@@ -33,7 +33,7 @@ const PetBySeller = ({ user, sellerId }) => {
     <>
       <h3>More from this seller:</h3>
 
-      <Carousel itemsToShow={1}>
+      <Carousel itemsToShow={3}>
         {pet.map((pet) => {
           return (
             <div className="more-pets" key={pet.id}>

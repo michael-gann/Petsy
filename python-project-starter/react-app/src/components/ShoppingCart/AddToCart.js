@@ -7,9 +7,8 @@ function AddToCart({ item }) {
 
   let localCart = localStorage.getItem("cart");
 
-  // console.log("localcart:", localCart)
-
-  const addItem = () => {
+  const addItem = (e) => {
+    e.preventDefault();
     let cartCopy = [...cart];
     let itemToAdd = item.id;
 

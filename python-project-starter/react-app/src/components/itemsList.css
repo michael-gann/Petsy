@@ -6,6 +6,7 @@
     justify-content: center;
     align-items: center;
     max-width: 100vw;
+    margin-bottom: 8%;
 }
 
 .inner-item-detail-container {
@@ -173,7 +174,9 @@ font-size: 12px;
     flex-wrap: wrap;
     /* width: 80vw; */
     /* min-width: 300px; */
-    width: 499px;
+    height: 399px;
+    width: 79vw;
+    margin-bottom: 8%;
 }
 
 .more-by-sellers {
@@ -193,6 +196,10 @@ font-size: 12px;
     border-radius: 3px;
     transition: box-shadow 250ms ease-in-out, transform 150ms ease;
     min-height: 420px; */
+}
+
+.rec-item-wrapper {
+    margin-top: 50px;
 }
 
 .more-items .item-container {
@@ -226,7 +233,7 @@ object-fit: cover;
     margin-bottom: 5px;
 }
 
-.item-container .image-container img {
+.more-items > .item-container .image-container img {
     width: 250px;
     height: 250px;
     object-fit: cover;
@@ -234,14 +241,24 @@ object-fit: cover;
     transition: box-shadow 250ms ease-in-out, transform 150ms ease;
 }
 
-.item-container .image-container:hover
-.item-container  .image-container:focus {
+.image-container img:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+}
+
+.more-items > .item-container > .image-container > img:hover
+.more-items > .item-container > .image-container img:focus {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     cursor: pointer;
 }
 
 
 .item-more-by-seller h3 {
+    font-size: 1.6rem;
+    align-self: center;
+}
+
+.new-item-more-by-seller h3 {
     font-size: 1.6rem;
     align-self: center;
 }
@@ -312,5 +329,7 @@ form button:hover {
     flex-wrap: wrap;
     /* width: 80vw; */
     /* min-width: 300px; */
-    width: 500px;
+    width: 80vw;
+    height: 450px;
+    margin-bottom: 8%;
 }

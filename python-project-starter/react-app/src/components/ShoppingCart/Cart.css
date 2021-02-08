@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   /* flex-direction: column; */
+  margin-bottom: 5%;
 }
 
 .items-container {
@@ -133,6 +134,7 @@
   position: sticky;
   height: 300px;
   top: 150px;
+  margin-bottom: 100px;
 }
 
 .proceed-to-checkout h4 {
@@ -185,6 +187,7 @@ label.payments {
   padding: 20px;
   margin: 10px;
   width: 60rem;
+  justify-content: space-between;
 }
 
 
@@ -194,12 +197,24 @@ label.payments {
   flex-direction: column;
 }
 
+.cart-item-info-container {
+  min-width: 520px;
+  max-width: 520px;
+}
+
 .cart-items-container__item img {
   max-width: 100px;
 }
 
 .cart-item-info-container h2 {
   margin-bottom: 30px;
+}
+
+
+.cart-item-info-container > h1 {
+  margin-bottom: 5px;
+  margin-left: 15px;
+  font-size: 1.4em;
 }
 
 .cart-item-info-container button {
@@ -279,6 +294,10 @@ div.cart-quant-price {
   margin-left: 30px;
 }
 
+.cart-quant-price > div {
+  margin-right: 4px;
+}
+
 .ReactModalPortal .cart-checkout {
   display: flex;
   justify-self: center;
@@ -302,6 +321,7 @@ button.removeFromCartBtn {
     font-weight: bold;
     transition: background 150ms ease-in-out;
     cursor: pointer;
+    margin: 5% 0;
 }
 
 .removeFromCartBtn-div {

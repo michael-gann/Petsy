@@ -27,7 +27,7 @@ const ItemBySeller = ({ user, sellerId }) => {
   return (
     <>
       <h3>More from this seller: </h3>
-      <Carousel itemsToShow={1}>
+      <Carousel itemsToShow={3}>
         {items.map((item) => {
           return (
             <div className="more-items" key={item.id}>

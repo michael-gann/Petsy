@@ -3,7 +3,7 @@
     margin-top: 30px;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 80px;
+    margin-bottom: 10%;
 }
 
 .search-results .item-container {
@@ -60,6 +60,22 @@
 
 .search-results .pet-container .pet-details {
     min-height: 100px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    width: 250px;
+    align-self: center;
+}
+
+.search-results .pet-container .pet-details .pet-name {
+font-weight: bold;
+font-size: 1.1em;
+}
+
+.search-results .pet-container .pet-details .price-and-add-pet {
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
 .search-results .pet-container {

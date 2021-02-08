@@ -14,6 +14,7 @@ function PetDetail({ user, isAuthenticated }) {
   const [pet, setPet] = useState([]);
   const { id } = useParams();
   const [pets, setPets] = useState([]);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -38,6 +39,13 @@ function PetDetail({ user, isAuthenticated }) {
 
     // document.getElementByClassName();
   }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMounted(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [pet]);
 
   return (
     <div className="pet-detail-container">
@@ -84,7 +92,13 @@ function PetDetail({ user, isAuthenticated }) {
           )}
         </div>
       </div>
-      <div className="pet-detail-more-container">
+      <div
+        className={
+          mounted
+            ? "new-pet-detail-more-container"
+            : "pet-detail-more-container"
+        }
+      >
         <PetBySeller user={user} sellerId={pet.sellerId} />
       </div>
     </div>
