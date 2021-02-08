@@ -83,7 +83,7 @@ function ProceedToCheckout({ total, cartItems, petsCart, itemCarObj, setNumCartI
           </div>
           <div className="shipping">
             <p>
-              Shipping:
+              Shipping: Free
             </p>
           </div>
           <p>

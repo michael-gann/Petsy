@@ -1,7 +1,10 @@
 .cart-components {
   display: flex;
   justify-content: space-between;
-  /* flex-direction: column; */
+
+  height: 100vh;
+  margin: 0 70px 0 50px;
+
 }
 
 .items-container {
@@ -20,7 +23,7 @@
 }
 
 .items-container__item:hover {
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(41, 46, 49, 0.15) 0px 2px 6px 2px;
 }
 
 .cart-page-button-container {
@@ -126,6 +129,7 @@
   border: 1px solid black;
   box-shadow: 5px 5px 8px grey;
   border-radius: 5px;
+
   margin: 50px 20px 0 30px;
   margin-top: 50px;
   margin-left: 30px;
@@ -303,6 +307,7 @@ button.removeFromCartBtn {
     transition: background 150ms ease-in-out;
     cursor: pointer;
 }
+
 
 .removeFromCartBtn-div {
   margin: 0 0 4px 0;
