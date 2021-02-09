@@ -19,7 +19,7 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 
-@review_routes.route("/")
+@review_routes.route("")
 def reviews():
     # reviews = db.session.query(Review).options(selectinload
     # (Review.review)).all()
@@ -44,7 +44,7 @@ def reviews():
     return score
 
 
-@review_routes.route("/", methods=["POST"])
+@review_routes.route("", methods=["POST"])
 def post_reviews():
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']

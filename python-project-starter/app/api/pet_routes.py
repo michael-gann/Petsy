@@ -6,7 +6,7 @@ from sqlalchemy.orm import selectinload
 pet_routes = Blueprint('pets', __name__)
 
 
-@pet_routes.route("/", methods=["GET"])
+@pet_routes.route("", methods=["GET"])
 def pets():
     pets = db.session.query(Pet).options(selectinload(Pet.user)).all()
 
