@@ -1,6 +1,7 @@
 .cart-components {
   display: flex;
   justify-content: space-between;
+  min-height: 100vh;
   height: 100%;
   margin: 0 40px 0 10px;
   margin-top: 3%;
