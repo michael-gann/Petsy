@@ -1,8 +1,9 @@
 .cart-components {
   display: flex;
   justify-content: space-between;
-  height: 100vh;
-  margin: 0 70px 0 50px;
+  min-height: 100vh;
+  height: 100%;
+  margin: 0 40px 0 10px;
   margin-top: 3%;
 
 }
@@ -133,8 +134,6 @@
   border-radius: 5px;
 
   margin: 50px 20px 0 30px;
-  margin-top: 50px;
-  margin-left: 30px;
   position: -webkit-sticky;
   position: sticky;
   height: 335px;
