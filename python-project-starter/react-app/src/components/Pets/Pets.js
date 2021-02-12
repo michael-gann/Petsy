@@ -23,7 +23,7 @@ function Pets() {
       </div>
       <Spinner area={areas.pet} />
       <div className="pet-components">
-        {pets.map((pet) => {
+        {pets.length && pets.map((pet) => {
           return <Pet key={pet.id} pet={pet} />;
         })}
       </div>

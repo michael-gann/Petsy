@@ -35,13 +35,13 @@ function Items() {
     trackPromise(fetchData(), areas.item);
   }, []);
 
-  const itemComponents = items.map((item) => {
+  const itemComponents = items.length ? items.map((item) => {
     return (
       <div key={item.id}>
         <Item item={item} />
       </div>
     );
-  });
+  }) : null;
 
   return (
     <div className="item-page-container">
