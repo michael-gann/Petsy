@@ -6,7 +6,7 @@ from sqlalchemy.orm import selectinload
 item_routes = Blueprint('items', __name__)
 
 
-@item_routes.route("/", methods=["GET"])
+@item_routes.route("", methods=["GET"])
 def items():
     items = db.session.query(Item).options(selectinload(Item.user)).all()
 

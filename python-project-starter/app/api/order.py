@@ -5,7 +5,7 @@ from app.models import Order, db
 order_routes = Blueprint('orders', __name__)
 
 
-@order_routes.route("/", methods=["POST"])
+@order_routes.route("", methods=["POST"])
 def orders():
   # get data from post
     order = data.something # set it to something
