@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from 'react-redux';
+import { removeCartItem } from '../ShoppingCart/cartSlice';
 import { useParams } from "react-router-dom";
 
 function RemoveItemFromCart({ id, item }) {
