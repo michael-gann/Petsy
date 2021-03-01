@@ -41,7 +41,11 @@ function Cart({ setNumCartItems }) {
                   </NavLink>
                 </div>
                 <div className="cart-page-button-container">
-                  <RemoveItemFromCart item={item} setCartItems={setCartItems} />
+                  <RemoveItemFromCart
+                    item={item}
+                    cartItems={cartItems}
+                    setCartItems={setCartItems}
+                  />
                 </div>
               </div>
               <select

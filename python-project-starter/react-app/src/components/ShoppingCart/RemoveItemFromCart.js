@@ -3,12 +3,13 @@ import { useDispatch } from 'react-redux';
 import { removeCartItem } from '../ShoppingCart/cartSlice';
 import { useParams } from "react-router-dom";
 
-function RemoveItemFromCart({ id, item }) {
+function RemoveItemFromCart({ id, item, cartItems, setCartItems }) {
   let [cart, setCart] = useState([]);
   let localCart = localStorage.getItem("cart");
-  let [cartItems, setCartItems] = useState(localCart ? [...localCart] : []);
+  // let [cartItems, setCartItems] = useState(localCart ? [...localCart] : []);
 
   const removeItem = (e) => {
+
     let cartCopy = [...cart];
     let itemToRemove = item.id;
 
@@ -22,7 +23,7 @@ function RemoveItemFromCart({ id, item }) {
       }
     });
 
-    setCartItems(newCartCopy);
+    setCartItems([...newCartCopy]);
 
     let cartString = JSON.stringify(newCartCopy);
     localStorage.setItem("cart", cartString);
