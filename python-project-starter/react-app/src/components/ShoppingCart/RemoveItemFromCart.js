@@ -1,21 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
-import { removeCartItem } from '../ShoppingCart/cartSlice';
-import { useParams } from "react-router-dom";
 
-function RemoveItemFromCart({ id, item, cartItems, setCartItems }) {
-  let [cart, setCart] = useState([]);
-  let localCart = localStorage.getItem("cart");
-  // let [cartItems, setCartItems] = useState(localCart ? [...localCart] : []);
+function RemoveItemFromCart({ id, item, cartItems, setCartItems, localItemsCart, setLocalItemsCart }) {
+  let itemToRemove = item.id;
 
   const removeItem = (e) => {
+    let cartCopy = [...localItemsCart];
 
-    let cartCopy = [...cart];
-    let itemToRemove = item.id;
-
-    const newCart = cartCopy.map((item) => Object.assign(item, {}));
-
-    let newCartCopy = newCart.filter((cartItem) => {
+    let newCartCopy = cartCopy.filter((cartItem) => {
       for (const key in cartItem) {
         if (key !== itemToRemove.toString()) {
           return cartItem;
@@ -23,18 +14,26 @@ function RemoveItemFromCart({ id, item, cartItems, setCartItems }) {
       }
     });
 
-    setCartItems([...newCartCopy]);
+    cartCopy = [...newCartCopy]
+    setLocalItemsCart([...newCartCopy]);
 
     let cartString = JSON.stringify(newCartCopy);
     localStorage.setItem("cart", cartString);
-  };
 
-  useEffect(() => {
-    localCart = JSON.parse(localCart);
-    if (localCart) {
-      setCart(localCart);
+    async function fetchData() {
+      if (newCartCopy.length < 1) {
+        setCartItems([]);
+      }
+      let fetchedItems = [];
+      newCartCopy.map(async (cartItem) => {
+        const response = await fetch(`/api/items/${Object.keys(cartItem)}`);
+        const itemData = await response.json();
+        fetchedItems.push(itemData);
+        setCartItems([...fetchedItems]);
+      });
     }
-  }, []);
+    fetchData();
+  };
 
   return (
     <>
