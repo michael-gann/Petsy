@@ -8,13 +8,15 @@ import NumberFormat from "react-number-format";
 import "./Cart.css";
 
 function Cart({ setNumCartItems }) {
-  // let localItemsCart = JSON.parse(localStorage.getItem("cart"));
   let [localItemsCart, setLocalItemsCart] = useState(JSON.parse(localStorage.getItem("cart")));
-  let localPetsCart = JSON.parse(localStorage.getItem("petCart"));
+  // let localPetsCart = JSON.parse(localStorage.getItem("petCart"));
+  let [localPetsCart, setLocalPetsCart] = useState(JSON.parse(localStorage.getItem("petCart")));
   let [cartItems, setCartItems] = useState(
     localItemsCart ? [...localItemsCart] : []
   );
-  let [petsCart, setPetsCart] = useState([]);
+  // let [petsCart, setPetsCart] = useState([]);
+  let [petsCart, setPetsCart] = useState(
+    localPetsCart ? [...localPetsCart] : []);
   let [itemCarObj, setItemCartObj] = useState({});
   const loopArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -119,6 +121,8 @@ function Cart({ setNumCartItems }) {
                       <RemovePetFromCart
                         item={pets}
                         setPetsCart={setPetsCart}
+                        localPetsCart={localPetsCart}
+                        setLocalPetsCart={setLocalPetsCart}
                       />
                     </div>
                   </div>

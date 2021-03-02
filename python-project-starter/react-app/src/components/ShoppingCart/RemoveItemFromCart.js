@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-function RemoveItemFromCart({ id, item, cartItems, setCartItems, localItemsCart, setLocalItemsCart }) {
+function RemoveItemFromCart({ id, item, setCartItems, localItemsCart, setLocalItemsCart }) {
   let itemToRemove = item.id;
 
   const removeItem = (e) => {
@@ -14,17 +14,19 @@ function RemoveItemFromCart({ id, item, cartItems, setCartItems, localItemsCart,
       }
     });
 
-    cartCopy = [...newCartCopy]
+    cartCopy = [...newCartCopy];
     setLocalItemsCart([...newCartCopy]);
 
     let cartString = JSON.stringify(newCartCopy);
     localStorage.setItem("cart", cartString);
 
     async function fetchData() {
+      let fetchedItems = [];
+
       if (newCartCopy.length < 1) {
         setCartItems([]);
-      }
-      let fetchedItems = [];
+      };
+
       newCartCopy.map(async (cartItem) => {
         const response = await fetch(`/api/items/${Object.keys(cartItem)}`);
         const itemData = await response.json();
