@@ -12,6 +12,14 @@ const NavBar = ({ setAuthenticated, isAuthenticated, setResults }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    if (isAuthenticated) {
+      return;
+    } else {
+      localStorage.removeItem("user");
+    }
+  }, [isAuthenticated])
+
+  useEffect(() => {
     const fetchAll = async () => {
       const itemRes = await fetch("/api/items");
       const itemResData = await itemRes.json();
@@ -108,21 +116,21 @@ const NavBar = ({ setAuthenticated, isAuthenticated, setResults }) => {
               </div>
             </>
           ) : (
-            <div className="login-container">
-              <li className="nav login">
-                <LoginForm
-                  authenticated={isAuthenticated}
-                  setAuthenticated={setAuthenticated}
-                />
-              </li>
-              <li className="nav sign-up">
-                <SignUpForm
-                  authenticated={isAuthenticated}
-                  setAuthenticated={setAuthenticated}
-                />
-              </li>
-            </div>
-          )}
+              <div className="login-container">
+                <li className="nav login">
+                  <LoginForm
+                    authenticated={isAuthenticated}
+                    setAuthenticated={setAuthenticated}
+                  />
+                </li>
+                <li className="nav sign-up">
+                  <SignUpForm
+                    authenticated={isAuthenticated}
+                    setAuthenticated={setAuthenticated}
+                  />
+                </li>
+              </div>
+            )}
         </ul>
         <div className="lower-section">
           <div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import RemoveItemFromCart from "./RemoveItemFromCart";
 import RemovePetFromCart from "./RemovePetFromCart";
@@ -8,12 +8,15 @@ import NumberFormat from "react-number-format";
 import "./Cart.css";
 
 function Cart({ setNumCartItems }) {
-  let localItemsCart = JSON.parse(localStorage.getItem("cart"));
-  let localPetsCart = JSON.parse(localStorage.getItem("petCart"));
+  let [localItemsCart, setLocalItemsCart] = useState(JSON.parse(localStorage.getItem("cart")));
+  // let localPetsCart = JSON.parse(localStorage.getItem("petCart"));
+  let [localPetsCart, setLocalPetsCart] = useState(JSON.parse(localStorage.getItem("petCart")));
   let [cartItems, setCartItems] = useState(
     localItemsCart ? [...localItemsCart] : []
   );
-  let [petsCart, setPetsCart] = useState([]);
+  // let [petsCart, setPetsCart] = useState([]);
+  let [petsCart, setPetsCart] = useState(
+    localPetsCart ? [...localPetsCart] : []);
   let [itemCarObj, setItemCartObj] = useState({});
   const loopArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -23,68 +26,76 @@ function Cart({ setNumCartItems }) {
     updateQty(e);
   };
 
+
   const fetchItems = () => {
     return (
       <ul className="items-container">
-        {cartItems.map((item) => {
-          {
-            let itemTotal = item.price * itemCarObj[item.id];
-            total += itemTotal;
-          }
-          return (
-            <div className="items-container__item" key={item.id}>
-              <img className="item-image" src={item.imgurl} />
-              <div className="item-info-container">
-                <div className="navlink">
-                  <NavLink to={`/items/${item.id}`}>
-                    <h1>{item.name}</h1>
-                  </NavLink>
+        {cartItems &&
+          cartItems.map((item) => {
+            {
+              let itemTotal = item.price * itemCarObj[item.id];
+              total += itemTotal;
+            }
+            return (
+              <div className="items-container__item" key={item.id}>
+                <img className="item-image" src={item.imgurl} />
+                <div className="item-info-container">
+                  <div className="navlink">
+                    <NavLink to={`/items/${item.id}`}>
+                      <h1>{item.name}</h1>
+                    </NavLink>
+                  </div>
+                  <div className="cart-page-button-container">
+                    <RemoveItemFromCart
+                      item={item}
+                      cartItems={cartItems}
+                      setCartItems={setCartItems}
+                      localItemsCart={localItemsCart}
+                      setLocalItemsCart={setLocalItemsCart}
+                    />
+                  </div>
                 </div>
-                <div className="cart-page-button-container">
-                  <RemoveItemFromCart item={item} setCartItems={setCartItems} />
+                <select
+                  className="item-dropdown"
+                  key={item.id}
+                  onChange={(e) => handleClick(e)}
+                >
+                  {loopArr.map((num) => {
+                    if (itemCarObj[item.id] == num)
+                      return (
+                        <option
+                          id={`${item.id}|${num}`}
+                          selected="selected"
+                          value={`${item.id}|${num}`}
+                        >
+                          Qty: {num}
+                        </option>
+                      );
+                    else
+                      return (
+                        <option
+                          id={`${item.id}|${num}`}
+                          value={`${item.id}|${num}`}
+                        >
+                          Qty: {num}
+                        </option>
+                      );
+                  })}
+                </select>
+                <div className="number-format">
+                  <NumberFormat
+                    value={item.price * itemCarObj[item.id]}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    prefix={"$"}
+                    renderText={(value) => <div>{value}</div>}
+                    decimalScale={2}
+                    fixedDecimalScale={true}
+                  />
                 </div>
               </div>
-              <select
-                className="item-dropdown"
-                key={item.id}
-                onChange={(e) => handleClick(e)}
-              >
-                {loopArr.map((num) => {
-                  if (itemCarObj[item.id] == num)
-                    return (
-                      <option
-                        id={`${item.id}|${num}`}
-                        selected="selected"
-                        value={`${item.id}|${num}`}
-                      >
-                        Qty: {num}
-                      </option>
-                    );
-                  else
-                    return (
-                      <option
-                        id={`${item.id}|${num}`}
-                        value={`${item.id}|${num}`}
-                      >
-                        Qty: {num}
-                      </option>
-                    );
-                })}
-              </select>
-              <div className="number-format">
-                <NumberFormat
-                  value={item.price * itemCarObj[item.id]}
-                  displayType={"text"}
-                  thousandSeparator={true}
-                  prefix={"$"}
-                  renderText={(value) => <div>{value}</div>}
-                  decimalScale={2}
-                  fixedDecimalScale={true}
-                />
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
       </ul>
     );
   };
@@ -110,6 +121,8 @@ function Cart({ setNumCartItems }) {
                       <RemovePetFromCart
                         item={pets}
                         setPetsCart={setPetsCart}
+                        localPetsCart={localPetsCart}
+                        setLocalPetsCart={setLocalPetsCart}
                       />
                     </div>
                   </div>
